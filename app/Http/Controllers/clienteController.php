@@ -4,28 +4,34 @@ namespace App\Http\Controllers;
 
 use App\cliente;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class clienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
         //$clientes
         $clientes = Cliente::all();
-        foreach ($clientes as $cliente){
-            echo $cliente->nombres . '<br>';
+//        foreach ($clientes as $cliente){
+//            echo $cliente->nombres . '<br>';
+//
+//            foreach ($cliente->mascotas as $mascota){
+//                echo $mascota->nombre .'<br>';
+//            }
+//
+//
+//
+//        }
+        return response()->json($clientes, 200);
 
-            foreach ($cliente->mascotas as $mascota){
-                echo $mascota->nombre .'<br>';
-            }
 
 
 
-        }
     }
 
     public function register(Request $request){
@@ -39,7 +45,7 @@ class clienteController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -49,8 +55,8 @@ class clienteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -60,8 +66,8 @@ class clienteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\cliente  $cliente
-     * @return \Illuminate\Http\Response
+     * @param cliente $cliente
+     * @return Response
      */
     public function show(cliente $cliente)
     {
@@ -71,8 +77,8 @@ class clienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\cliente  $cliente
-     * @return \Illuminate\Http\Response
+     * @param cliente $cliente
+     * @return Response
      */
     public function edit(cliente $cliente)
     {
@@ -82,9 +88,9 @@ class clienteController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\cliente  $cliente
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param cliente $cliente
+     * @return Response
      */
     public function update(Request $request, cliente $cliente)
     {
@@ -94,8 +100,8 @@ class clienteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\cliente  $cliente
-     * @return \Illuminate\Http\Response
+     * @param cliente $cliente
+     * @return Response
      */
     public function destroy(cliente $cliente)
     {
