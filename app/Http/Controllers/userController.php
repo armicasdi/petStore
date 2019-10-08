@@ -77,8 +77,8 @@ class userController extends Controller
         $params = json_decode($json);
 
         $usuario = (!is_null($json)&& isset($params->usuario)) ? $params->usuario : null;
-        $password= (!is_null($json)&& isset($params->password)) ? $params->password : null;;
-        $getToken =(!is_null($json)&& isset($params->gettoken) && $params->gettoken == true) ?          $params->gettoken : null;
+        $password= (!is_null($json)&& isset($params->password)) ? $params->password : null;
+        $getToken =(!is_null($json)&& isset($params->gettoken)) ? $params->gettoken : null;
 
         $pwd = hash('sha256', $password);
 
