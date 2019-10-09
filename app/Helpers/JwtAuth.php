@@ -36,9 +36,7 @@ class JwtAuth
                 'usuario' => $user->usuario,
                 'iat' => time(),
                 'exp' => time()+(7*24*60*60)
-
             );
-
             $jwt = JWT::encode($token, $this->key, 'HS256');
             $decoded = JWT::decode($jwt, $this->key, array('HS256'));
 
@@ -47,8 +45,6 @@ class JwtAuth
             }else{
                 return $decoded;
             }
-
-
         }else{
             //error
             return array('status'=>'error', 'message'=>'Login ha Fallado');
@@ -66,16 +62,14 @@ class JwtAuth
             $auth=false;
         }
 
-        if(isset($decode) && is_object($decoded) && isset($decoded->sub)){
+        if(isset($decoded) && is_object($decoded) && isset($decoded->sub)){
             $auth = true;
         }else{
             $auth = false;
         }
-
         if($getIdentity ){
             return $decoded;
         }
-
         return $auth;
 
     }

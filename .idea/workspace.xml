@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PropietarioController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Propietario.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_10_09_173742_create_propietarios_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/JwtAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/JwtAuth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/userController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mascota.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Paciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Paciente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Raza.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Raza.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropietarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropietarioController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570604324861</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Modelos Creados">
+      <created>1570657634835</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1570657634835</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
