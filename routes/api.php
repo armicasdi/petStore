@@ -18,5 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('/clientes', 'clienteController');
+Route::resource('/pacientes', 'PacienteController');
+Route::resource('/consultas', 'ConsultaController');
+
+//Rutas de Registro y Login de Usuarios
 Route::post('/register', 'userController@register');
 Route::post('/login', 'userController@login');

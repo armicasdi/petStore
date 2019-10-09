@@ -39,6 +39,7 @@ class clienteController extends Controller
 //
 //
 //        }
+
         return response()->json($clientes, 200);
 
 
@@ -84,7 +85,8 @@ class clienteController extends Controller
             $user = $jwtAuth->checkToken($hash, true);
 
 
-            if($params->nombre && $params->apellidos && $params->)
+            if($params->nombre && $params->apellidos){}
+
             $cliente = new cliente();
 
             $cliente->nombre = $params->nombre;

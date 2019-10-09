@@ -10,8 +10,8 @@ class cliente extends Model
 
     //relacion One To Many
 
-    public function mascotas(){
-        return $this->hasMany('App\Mascota');
+    public function pacientes(){
+        return $this->hasMany('App\Paciente');
     }
 
 

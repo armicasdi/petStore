@@ -13,20 +13,17 @@ use UnexpectedValueException;
 
 class JwtAuth
 {
-
     public $key;
     public function __construct()
     {
         $this->key = 'clave$69308';
     }
-
     public function signup($usuario, $password, $getToken=null){
         $user = User::where(
             array(
                 'usuario' => $usuario,
                 'password' => $password
             ))->first();
-
         $signup = false;
 
         if(is_object($user)) {

@@ -70,6 +70,7 @@ class userController extends Controller
     }
 
     public function login(Request $request){
+
         $jwtAuth = new JwtAuth();
 
         //Recibir Post
@@ -85,17 +86,12 @@ class userController extends Controller
 
         if(!is_null($usuario) && !is_null($password) && ($getToken == null || $getToken == 'false')){
             $signup = $jwtAuth->signup($usuario, $pwd);
-
-
         }elseif ($getToken != null){
             $signup = $jwtAuth->signup($usuario, $pwd, $getToken);
-
-
         }else{
             $signup =array(
                 'status'=>'error',
                 'message'=>"Envia tus Datos por Post"
-
             );
         }
 
