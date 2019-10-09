@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\cliente;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Helpers\JwtAuth;
+
 
 class clienteController extends Controller
 {
@@ -13,9 +15,19 @@ class clienteController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //$clientes
+        $hash = $request->header('Authorization', null);
+        $jwtAuth = new JwtAuth();
+        $checkToken = $jwtAuth->checkToken($hash);
+
+        if($checkToken ){
+
+        }else {
+            echo "error";
+        }
+
+
         $clientes = Cliente::all();
 //        foreach ($clientes as $cliente){
 //            echo $cliente->nombres . '<br>';
@@ -60,7 +72,33 @@ class clienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hash = $request->header('Authorization', null);
+        $jwtAuth = new JwtAuth();
+        $checkToken = $jwtAuth->checkToken($hash);
+
+        if($checkToken ){
+
+            $json = $request->input('json', null);
+            $params = json_decode($json);
+
+            $user = $jwtAuth->checkToken($hash, true);
+
+
+            if($params->nombre && $params->apellidos && $params->)
+            $cliente = new cliente();
+
+            $cliente->nombre = $params->nombre;
+            $cliente->apellido = $params->apellido;
+            $cliente->nombre = $params->nombre;
+
+            $cliente->save();
+
+        }else {
+            echo "error";
+        }
+
+
+
     }
 
     /**

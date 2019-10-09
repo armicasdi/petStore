@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/JwtAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/JwtAuth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/clienteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/clienteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/userController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +25,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -123,8 +132,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -158,26 +166,10 @@
       <workItem from="1570398670858" duration="10634000" />
       <workItem from="1570425469257" duration="442000" />
       <workItem from="1570428750240" duration="1736000" />
-      <workItem from="1570481632326" duration="334000" />
-      <workItem from="1570500870315" duration="8892000" />
-      <workItem from="1570517667113" duration="67000" />
-      <workItem from="1570567150800" duration="3468000" />
+      <workItem from="1570481632326" duration="268000" />
+      <workItem from="1570580743202" duration="458000" />
+      <workItem from="1570581343611" duration="2703000" />
     </task>
-    <task id="LOCAL-00001" summary="Jwt Token Created">
-      <created>1570481945814</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1570481945814</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Errores de Api Router">
-      <created>1570517721469</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1570517721469</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,10 +187,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Jwt Token Created" />
-    <MESSAGE value="Errores de Api Router" />
-    <option name="LAST_COMMIT_MESSAGE" value="Errores de Api Router" />
   </component>
 </project>

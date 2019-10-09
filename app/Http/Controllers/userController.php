@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Env\Response;
 use Illuminate\Http\Request;
 use App\User;
 use App\Helpers\JwtAuth;
@@ -82,11 +83,23 @@ class userController extends Controller
 
         $pwd = hash('sha256', $password);
 
-        if(!is_null($usuario) && !is_null($password)){
+        if(!is_null($usuario) && !is_null($password) && ($getToken == null || $getToken == 'false')){
             $signup = $jwtAuth->signup($usuario, $pwd);
 
-            return response()->json($signup, 200);
+
+        }elseif ($getToken != null){
+            $signup = $jwtAuth->signup($usuario, $pwd, $getToken);
+
+
+        }else{
+            $signup =array(
+                'status'=>'error',
+                'message'=>"Envia tus Datos por Post"
+
+            );
         }
+
+        return response()->json($signup, 200);
 
     }
 }
