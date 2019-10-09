@@ -16,20 +16,20 @@ class userController extends Controller
         $json = $request->input('json', null);
         $parametros = json_decode($json);
 
-        $nombre = (!is_null($json)&&isset($parametros->nombre)) ? $parametros->nombre : null;
+        /*$nombre = (!is_null($json)&&isset($parametros->nombre)) ? $parametros->nombre : null;
         $apellido = (!is_null($json)&&isset($parametros->apellido)) ? $parametros->apellido : null;
-        $email = (!is_null($json)&&isset($parametros->email)) ? $parametros->email : null;
+        $email = (!is_null($json)&&isset($parametros->email)) ? $parametros->email : null;*/
         $usuario = (!is_null($json)&&isset($parametros->usuario)) ? $parametros->usuario : null;
         $password = (!is_null($json)&&isset($parametros->password)) ? $parametros->password : null;
 
-        if(!is_null($nombre) && !is_null($email) && !is_null($usuario) && !is_null($password)){
+        if(!is_null($usuario) && !is_null($password)){
 
             //Crear Usuario
 
             $nuevoUsuario = new User();
-            $nuevoUsuario->nombre = $nombre;
+            /*$nuevoUsuario->nombre = $nombre;
             $nuevoUsuario->apellido = $apellido;
-            $nuevoUsuario->email = $email;
+            $nuevoUsuario->email = $email;*/
             $nuevoUsuario->usuario = $usuario;
 
             $pwd = hash('sha256', $password);

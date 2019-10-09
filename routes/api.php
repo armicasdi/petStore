@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/clientes', 'clienteController');
+Route::resource('/propietarios', 'PropietarioController');
 Route::resource('/pacientes', 'PacienteController');
 Route::resource('/consultas', 'ConsultaController');
 

@@ -13,4 +13,8 @@ class Raza extends Model
     public function pacientes(){
         return $this->belongsTo('App\Paciente');
     }
+
+    public function especies(){
+        return $this->hasOne('App\Paciente', 'id_especie');
+    }
 }

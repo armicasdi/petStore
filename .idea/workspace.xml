@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PropietarioController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Propietario.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_10_09_173742_create_propietarios_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Cliente.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Cliente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Consulta.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Consulta.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClienteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClienteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmpleadosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmpleadosController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/JwtAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/JwtAuth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/userController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/userController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mascota.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Paciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Paciente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cargo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/cargo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/empleados.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Empleado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_09_064352_create_empleados_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_09_064352_create_empleados_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Raza.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Raza.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,6 +139,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\petStore" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
