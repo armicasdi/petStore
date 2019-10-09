@@ -11,7 +11,7 @@ class cliente extends Model
     //relacion One To Many
 
     public function pacientes(){
-        return $this->hasMany('App\Paciente');
+        return $this->hasMany('App\Paciente', 'cliente_id');
     }
 
 

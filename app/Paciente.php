@@ -8,7 +8,7 @@ class Paciente extends Model
 {
     protected $table='pacientes';
 
-    public function cliente(){
-        return $this->belongsTo('App/Cliente', 'cliente_id');
+    public function clientes(){
+        return $this->belongsTo('App\Cliente');
     }
 }

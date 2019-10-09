@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\empleados;
+use App\empleado;
 use Illuminate\Http\Request;
 
 class EmpleadosController extends Controller
@@ -41,10 +41,10 @@ class EmpleadosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\empleados  $empleados
+     * @param  \App\empleado  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function show(empleados $empleados)
+    public function show(empleado $empleados)
     {
         //
     }
@@ -52,10 +52,10 @@ class EmpleadosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\empleados  $empleados
+     * @param  \App\empleado  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function edit(empleados $empleados)
+    public function edit(empleado $empleados)
     {
         //
     }
@@ -64,10 +64,10 @@ class EmpleadosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\empleados  $empleados
+     * @param  \App\empleado  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, empleados $empleados)
+    public function update(Request $request, empleado $empleados)
     {
         //
     }
@@ -75,10 +75,10 @@ class EmpleadosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\empleados  $empleados
+     * @param  \App\empleado  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function destroy(empleados $empleados)
+    public function destroy(empleado $empleados)
     {
         //
     }

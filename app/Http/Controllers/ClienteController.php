@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\cliente;
+use App\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Helpers\JwtAuth;
@@ -17,7 +17,7 @@ class clienteController extends Controller
      */
     public function index(Request $request)
     {
-        $hash = $request->header('Authorization', null);
+        /*$hash = $request->header('Authorization', null);
         $jwtAuth = new JwtAuth();
         $checkToken = $jwtAuth->checkToken($hash);
 
@@ -25,10 +25,11 @@ class clienteController extends Controller
 
         }else {
             echo "error";
-        }
+        }*/
 
 
         $clientes = Cliente::all();
+
 //        foreach ($clientes as $cliente){
 //            echo $cliente->nombres . '<br>';
 //
