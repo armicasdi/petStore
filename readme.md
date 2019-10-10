@@ -2,24 +2,25 @@
 
 ## Configuracion inicial del proyect Laravel
 
-## Iniciar el proyecto ya creado
-## comandos
+### Iniciar el proyecto ya creado
+### comandos
 1. Ir a la carpeta del proyeto
 2. composer install
 3. Renombar el archivo .env.example a .env
 4. php artisan key:generate  --> Generara un clave del proyecto aleatoria
 5. configurar el archivo .env con la congiguracion del proyecto
-##Ejemplo
 
-APP_NAME=petfamily
-APP_URL=http://www.petfamily.com   (Opcion por si configuran un virtualhost)
+###Ejemplo
 
-DB_CONNECTION=mysql
-DB_HOST=192.168.0.250
-DB_PORT=3306
-DB_DATABASE=petfamily
-DB_USERNAME=usario_db
-DB_PASSWORD=password
+* APP_NAME=petfamily
+* APP_URL=http://www.petfamily.com   (Opcion por si configuran un virtualhost)
+
+* DB_CONNECTION=mysql
+* DB_HOST=192.168.0.250
+* DB_PORT=3306
+* DB_DATABASE=petfamily
+* DB_USERNAME=usario_db
+* DB_PASSWORD=password
 
 ## Documentacion Laravel
 
