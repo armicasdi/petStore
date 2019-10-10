@@ -13,14 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+//
+//Route::resource('/propietarios', 'PropietarioController');
+//Route::resource('/pacientes', 'PacienteController');
+//Route::resource('/consultas', 'ConsultaController');
+//
+////Rutas de Registro y Login de Usuarios
+//Route::post('/register', 'userController@register');
+//Route::post('/login', 'userController@login');
 
-Route::resource('/propietarios', 'PropietarioController');
-Route::resource('/pacientes', 'PacienteController');
-Route::resource('/consultas', 'ConsultaController');
-
-//Rutas de Registro y Login de Usuarios
-Route::post('/register', 'userController@register');
-Route::post('/login', 'userController@login');
+    //OM
+    Route::resource('propietarios', 'PropietarioController',['only'=>['index','show']]);
