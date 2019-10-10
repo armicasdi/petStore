@@ -6,9 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Propietario extends Model
 {
-    protected $table = 'propietarios';
+    protected $table = 'propietario';
+    protected $primaryKey = 'cod_propietario';
+    protected $fillable = [
+        'nombres',
+        'apellidos',
+        'direccion',
+        'telefono',
+        'correo',
+    ];
 
-    public function pacientes(){
-        return $this->hasMany('App\Paciente', 'id_propietario');
+    public function mascotas(){
+        return $this->hasMany('App\Mascota','cod_propietario','cod_propietario');
     }
+
 }

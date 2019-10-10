@@ -4,23 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Consulta extends Model
+class Peluqueria extends Model
 {
-    protected $table = 'consulta';
-    protected $primaryKey = 'cod_consulta';
+    protected $table = 'peluqueria';
+    protected $primaryKey = 'cod_peluqueria';
     protected $fillable = [
-        'peso',
-        'temperatura',
-        'fr_cardiaca',
-        'referido',
-        'historia_clinica',
-        'diagnostico',
-        'tratamiento',
+        'fecha',
         'observaciones',
-        'cod_usuario',
         'cod_expediente',
         'estado',
-        'fecha',
+        'cod_usuario',
     ];
 
     public function empleados(){
@@ -29,5 +22,9 @@ class Consulta extends Model
 
     public function mascota(){
         return $this->belongsTo('App\Mascota', 'cod_expediente', 'cod_expediente');
+    }
+
+    public function detalle_peluqueria(){
+        return $this->hasMany('App\Detalle_peluqueria', 'cod_peluqueria', 'cod_peluqueria');
     }
 }

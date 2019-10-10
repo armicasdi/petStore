@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'apellido', 'email', 'usuario', 'password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -36,14 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    protected $table = 'usuarios';
-
-    public function tipo_usuario(){
-
-        return $this->hasOne('tipo_usuario');
-
-
-    }
-
 }

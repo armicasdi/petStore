@@ -1,161 +1,88 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Helpers\JwtAuth;
-use App\Propietario;
+
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
+use App\Propietario;
+use App\Http\Controllers\ApiController;
 
-
-class PropietarioController extends Controller
+class PropietarioController extends ApiController
 {
-
-    public function index(Request $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-
-        $hash = $request->header('Authorization', null);
-        $jwtAuth = new JwtAuth();
-        $checkToken = $jwtAuth->checkToken($hash);
-        if($checkToken) {
-            $data = Propietario::all()->load('pacientes');
-        }else {
-            $data = [
-                'message' => 'Login Incorrecto',
-                'status' => 'error',
-                'codigo'=>400,
-            ];
-        }
-        return response()->json($data, 200);
+        $propietarios = Propietario::all();
+        return $this->showAll($propietarios);
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
+
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $hash = $request->header('Authorization', null);
-
-        $jwtAuth = new JwtAuth();
-        $checkToken = $jwtAuth->checkToken($hash);
-
-        if($checkToken ) {
-
-
-            //Recoger datos en POST
-            $json = $request->input('json', null);
-            $params = json_decode($json);
-            $params_array =  json_decode($json, true);
-            //$user = $jwtAuth->checkToken($hash, true);
-            //$request->merge($params_array);
-
-            /*try{
-                $validate = $this->validate($request, [
-                    'nombres' => 'required|min:3',
-                    'apellidos' => 'required|min:3',
-                    'telefono' => 'required',
-                    'direccion'=>'required',
-                    'correo' =>'required'
-                ]);
-
-            }catch (\Illuminate\Validation\ValidationException $e){
-                return $e->getResponse();
-            }*/
-
-            if (isset($params->nombres) && isset($params->apellidos) && isset($params->direccion) && isset( $params->telefono)  && isset($params ->correo)) {
-                $propietario = new propietario();
-
-                $propietario->nombres = $params->nombre;
-                $propietario->apellidos = $params->apellido;
-                $propietario->direccion = $params->direccion;
-                $propietario->telefono = $params->telefono;
-                $propietario->correo = $params->corre;
-
-                $propietario->save();
-
-                $data = [
-                    'propietario' => $propietario,
-                    'status' => 'success',
-                    'codigo'=>200
-                ];
-            }
-
-        }else {
-            $data = [
-                'message' => 'Login Incorrecto',
-                'status' => 'error',
-                'codigo'=>400
-            ];
-        }
-
-        return response()->json($data, 200);
-    }
-
-    public function show(Propietario $propietario)
-    {
-        $data = Propietario::find($propietario)->load('pacientes');
-        return response()->json($data, 200);
 
     }
 
-
-    public function edit(Propietario $propietario)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-
+        $propietario = Propietario::find($id);
+        return $this->showOne($propietario);
     }
 
-
-    public function update(Request $request, Propietario $propietario)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        $hash = $request->header('Authorization', null);
-
-        $jwtAuth = new JwtAuth();
-        $checkToken = $jwtAuth->checkToken($hash);
-        if($checkToken) {
-           $json = $request->input('json', null);
-           $params = json_decode($json);
-           $params_array=json_decode($json, true),
-
-            $validate = \Validator::make($params_array, [
-                'nombres' => 'required|min:3',
-                'apellidos' => 'required|min:3',
-                'telefono' => 'required',
-                'direccion'=>'required',
-                'correo' =>'required'
-            ]);
-
-           if($validate->fails()){
-               return response()->json($validate->errors(),400);
-           }
-
-           $propietario = Propietario::where($propietario)->update($params_array);
-
-           $data = array(
-               'propietario' => $propietario,
-               'status' => 'success',
-               'codigo'=>200
-
-           );
-
-        }else{
-
-            $data = array(
-                'message' => 'Login Incorrecto',
-                'status' => 'error',
-                'codigo'=>400
-
-            );
-
-        }
-        return response()->json($data);
-
+        //
     }
 
-
-    public function destroy(Propietario $propietario)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
+        //
+    }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

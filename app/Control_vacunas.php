@@ -4,23 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Consulta extends Model
+class Control_vacunas extends Model
 {
-    protected $table = 'consulta';
-    protected $primaryKey = 'cod_consulta';
+    protected $table = 'control_vacunas';
+    protected $primaryKey = 'cod_control_vacunas';
     protected $fillable = [
-        'peso',
-        'temperatura',
-        'fr_cardiaca',
-        'referido',
-        'historia_clinica',
-        'diagnostico',
-        'tratamiento',
-        'observaciones',
-        'cod_usuario',
-        'cod_expediente',
-        'estado',
         'fecha',
+        'cod_vacuna',
+        'cod_expediente',
+        'proxima',
+        'estado',
+        'cod_usuario',
     ];
 
     public function empleados(){
@@ -29,5 +23,9 @@ class Consulta extends Model
 
     public function mascota(){
         return $this->belongsTo('App\Mascota', 'cod_expediente', 'cod_expediente');
+    }
+
+    public function vacunas(){
+        return  $this->belongsTo('App\Vacunas', 'cod_vacuna', 'cod_vacuna');
     }
 }
