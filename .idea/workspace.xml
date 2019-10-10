@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="Login Correcto">
+    <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PacienteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PacienteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropietarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropietarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Paciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Paciente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Propietario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Propietario.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -196,11 +193,28 @@
       <option name="project" value="LOCAL" />
       <updated>1570658975930</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Relaciones Listas">
+      <created>1570665604819</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1570665604819</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -219,6 +233,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Modelos Creados" />
     <MESSAGE value="Login Correcto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login Correcto" />
+    <MESSAGE value="Relaciones Listas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Relaciones Listas" />
   </component>
 </project>

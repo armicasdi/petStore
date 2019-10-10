@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Helpers\JwtAuth;
 use App\Propietario;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
+
 
 class PropietarioController extends Controller
 {
@@ -111,6 +113,47 @@ class PropietarioController extends Controller
 
     public function update(Request $request, Propietario $propietario)
     {
+        $hash = $request->header('Authorization', null);
+
+        $jwtAuth = new JwtAuth();
+        $checkToken = $jwtAuth->checkToken($hash);
+        if($checkToken) {
+           $json = $request->input('json', null);
+           $params = json_decode($json);
+           $params_array=json_decode($json, true),
+
+            $validate = \Validator::make($params_array, [
+                'nombres' => 'required|min:3',
+                'apellidos' => 'required|min:3',
+                'telefono' => 'required',
+                'direccion'=>'required',
+                'correo' =>'required'
+            ]);
+
+           if($validate->fails()){
+               return response()->json($validate->errors(),400);
+           }
+
+           $propietario = Propietario::where($propietario)->update($params_array);
+
+           $data = array(
+               'propietario' => $propietario,
+               'status' => 'success',
+               'codigo'=>200
+
+           );
+
+        }else{
+
+            $data = array(
+                'message' => 'Login Incorrecto',
+                'status' => 'error',
+                'codigo'=>400
+
+            );
+
+        }
+        return response()->json($data);
 
     }
 
