@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
+    <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="Login Correcto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/JwtAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/JwtAuth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PacienteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PacienteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropietarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropietarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Paciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Paciente.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Propietario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Propietario.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570657634835</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Login Correcto">
+      <created>1570658975930</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1570658975930</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +218,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Modelos Creados" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modelos Creados" />
+    <MESSAGE value="Login Correcto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login Correcto" />
   </component>
 </project>

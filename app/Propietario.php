@@ -9,6 +9,6 @@ class Propietario extends Model
     protected $table = 'propietarios';
 
     public function pacientes(){
-        return $this->hasMany('App\Paciente', 'id_propiertario');
+        return $this->hasMany('App\Paciente', 'id_propietario');
     }
 }

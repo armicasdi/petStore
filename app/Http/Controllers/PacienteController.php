@@ -2,82 +2,63 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\JwtAuth;
 use App\Paciente;
 use Illuminate\Http\Request;
 
 class PacienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
+        $hash = $request->header('Authorization', null);
+
+        $jwtAuth = new JwtAuth();
+        $checkToken = $jwtAuth->checkToken($hash);
+        if($checkToken) {
+            $data = Paciente::all()->load(['razas', 'sexo', 'propietarios']);
+        }else {
+            $data = array(
+                'message' => 'Login Incorrecto',
+                'status' => 'error',
+                'codigo'=>400
+
+            );
+        }
+        return response()->json($data, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Paciente  $paciente
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Paciente $paciente)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Paciente  $paciente
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Paciente $paciente)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Paciente  $paciente
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Paciente $paciente)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Paciente  $paciente
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Paciente $paciente)
     {
         //

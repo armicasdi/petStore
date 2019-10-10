@@ -7,20 +7,15 @@ use Illuminate\Http\Request;
 
 class PropietarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
-        //
 
         $hash = $request->header('Authorization', null);
         $jwtAuth = new JwtAuth();
         $checkToken = $jwtAuth->checkToken($hash);
         if($checkToken) {
-            $data = Propietario::all();
+            $data = Propietario::all()->load('pacientes');
         }else {
             $data = array(
                 'message' => 'Login Incorrecto',
@@ -53,22 +48,21 @@ class PropietarioController extends Controller
             $json = $request->input('json', null);
             $params = json_decode($json);
             $params_array =  json_decode($json, true);
+            //$user = $jwtAuth->checkToken($hash, true);
+            //$request->merge($params_array);
 
-            $user = $jwtAuth->checkToken($hash, true);
+            /*try{
+                $validate = $this->validate($request, [
+                    'nombres' => 'required|min:3',
+                    'apellidos' => 'required|min:3',
+                    'telefono' => 'required',
+                    'direccion'=>'required',
+                    'correo' =>'required'
+                ]);
 
-                //Validaciones
-
-            $validate = $this->validate($params_array, [
-                'nombres' => 'required|min:3',
-                'apellidos' => 'required|min:3',
-                'telefono' => 'required',
-                'direccion'=>'required',
-                'correo' =>'required'
-            ]);
-            $errors = $validate->errors();
-            if($errors){
-                return $errors->toJson();
-            }
+            }catch (\Illuminate\Validation\ValidationException $e){
+                return $e->getResponse();
+            }*/
 
             if (isset($params->nombres) && isset($params->apellidos) && isset($params->direccion) && isset( $params->telefono)  && isset($params ->correo)) {
                 $propietario = new propietario();
@@ -103,24 +97,26 @@ class PropietarioController extends Controller
 
     public function show(Propietario $propietario)
     {
-        //
+        $data = Propietario::find($propietario)->load('pacientes');
+        return response()->json($data, 200);
+
     }
 
 
     public function edit(Propietario $propietario)
     {
-        //
+
     }
 
 
     public function update(Request $request, Propietario $propietario)
     {
-        //
+
     }
 
 
     public function destroy(Propietario $propietario)
     {
-        //
+
     }
 }
