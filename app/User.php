@@ -38,6 +38,7 @@ class User extends Authenticatable
     ];
 
     protected $table = 'usuarios';
+
     public function tipo_usuario(){
 
         return $this->hasOne('tipo_usuario');

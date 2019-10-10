@@ -19,12 +19,11 @@ class PropietarioController extends Controller
         if($checkToken) {
             $data = Propietario::all()->load('pacientes');
         }else {
-            $data = array(
+            $data = [
                 'message' => 'Login Incorrecto',
                 'status' => 'error',
-                'codigo'=>400
-
-            );
+                'codigo'=>400,
+            ];
         }
         return response()->json($data, 200);
     }
@@ -32,7 +31,6 @@ class PropietarioController extends Controller
 
     public function create()
     {
-        //
     }
 
 
@@ -77,21 +75,19 @@ class PropietarioController extends Controller
 
                 $propietario->save();
 
-                $data = array(
+                $data = [
                     'propietario' => $propietario,
                     'status' => 'success',
                     'codigo'=>200
-
-                );
+                ];
             }
 
         }else {
-            $data = array(
+            $data = [
                 'message' => 'Login Incorrecto',
                 'status' => 'error',
                 'codigo'=>400
-
-            );
+            ];
         }
 
         return response()->json($data, 200);
