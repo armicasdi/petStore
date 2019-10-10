@@ -2,18 +2,24 @@
 
 ## Configuracion inicial del proyect Laravel
 
+### Requisitos iniciales
+
+1. Tener instalado [composer](https://getcomposer.org/ "composer")
+2. Tener instalado PHP 7.2 o superior  
+2. Configura el `$PATH` del sistema para tanto composer y PHP sean accedido de forma global
+
 ### Iniciar el proyecto ya creado
-### comandos
+
 1. Ir a la carpeta del proyeto
-2. composer install
+2. `composer install`
 3. Renombar el archivo .env.example a .env
-4. php artisan key:generate  --> Generara un clave del proyecto aleatoria
+4. `php artisan key:generate`  --> Generara un clave del proyecto aleatoria
 5. configurar el archivo .env con la congiguracion del proyecto
 
-###Ejemplo
+### Ejemplo
 
 * APP_NAME=petfamily
-* APP_URL=http://www.petfamily.com   (Opcion por si configuran un virtualhost)
+* APP_URL=http://www.petfamily.com (Opcion por si configuran un virtualhost)
 
 * DB_CONNECTION=mysql
 * DB_HOST=192.168.0.250
@@ -21,6 +27,12 @@
 * DB_DATABASE=petfamily
 * DB_USERNAME=usario_db
 * DB_PASSWORD=password
+
+### Crear un nuevo proyecto
+
+`composer create-project --prefer-dist laravel/laravel  [NombreAplicacion]`
+o pueden usar el instalador de laravel
+`laravel new [NombreProyecto]`
 
 ## Documentacion Laravel
 
