@@ -16,7 +16,7 @@ class Inventario
      */
     public function handle($request, Closure $next)
     {
-        if(! Auth::user()->tipo_usuario->cod_tipo_usuario == 4){
+        if(Auth::user()->tipo_usuario->cod_tipo_usuario != 4){
             return redirect()->route('noAutorizado');
         }
 
