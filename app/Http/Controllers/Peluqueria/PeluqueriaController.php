@@ -34,18 +34,7 @@ class PeluqueriaController extends Controller
     public function create($cod_expediente, $cod_peluqueria)
     {
         $pagActual = 'servicio';
-
-        $servicios = Peluqueria::where('cod_peluqueria','=',$cod_peluqueria)->with('detalle_peluqueria')->whereHas('detalle_peluqueria',function ($query){
-            $query->where('estado','=',0);
-        })->get();
-
-        foreach($servicios as $detalle){
-            foreach ($detalle->detalle_peluqueria as $servicio){
-                $servicio->tipo_servicio;
-            }
-        }
-
-//        dd($servicios);
+        $servicios = Detalle_peluqueria::where('estado','=',0)->where('cod_peluqueria','=',$cod_peluqueria)->with('peluqueria','tipo_servicio')->get();
         return view('peluqueria.atenderMascota',compact('servicios','cod_peluqueria','pagActual'));
     }
 
@@ -95,14 +84,14 @@ class PeluqueriaController extends Controller
         try{
                 $servicios = Arr::except($request, ['_token','_method'])->toArray();
 
-                $detalles = Detalle_peluqueria::where('cod_peluqueria','=',$cod_peluqueria)->get();
-
-                foreach ($detalles as $detalle) {
-                    $detalle->fill([
-                        'estado' => 0,
-                    ]);
-                    $detalle->save();
-                }
+//                $detalles = Detalle_peluqueria::where('cod_peluqueria','=',$cod_peluqueria)->where('estado','=',0)->get();
+//
+//                foreach ($detalles as $detalle) {
+//                    $detalle->fill([
+//                        'estado' => 0,
+//                    ]);
+//                    $detalle->save();
+//                }
 
                 foreach ($servicios as $servicio){
                     $detalle = Detalle_peluqueria::findOrFail($servicio);
