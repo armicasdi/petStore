@@ -8,6 +8,7 @@ class Consulta extends Model
 {
     protected $table = 'consulta';
     protected $primaryKey = 'cod_consulta';
+    public $timestamps = false;
     protected $fillable = [
         'peso',
         'temperatura',

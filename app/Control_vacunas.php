@@ -8,6 +8,7 @@ class Control_vacunas extends Model
 {
     protected $table = 'control_vacunas';
     protected $primaryKey = 'cod_control_vacunas';
+    public $timestamps = false;
     protected $fillable = [
         'fecha',
         'cod_vacuna',

@@ -16,7 +16,7 @@ class Usuarios extends Authenticatable
         'usuario',
         'password',
         'is_active',
-        'isLoged',
+        'isLogged',
         'cod_tipo_usuario'
     ];
 
@@ -25,7 +25,7 @@ class Usuarios extends Authenticatable
     ];
 
     public function tipo_usuario(){
-        return $this->belongsTo('App\Tipo_usuario', 'cod_tipo_usuario');
+        return $this->belongsTo('App\Tipo_usuario', 'cod_tipo_usuario', 'cod_tipo_usuario');
     }
     public function empleados(){
         return $this->hasOne('App\Empleados','cod_usuario', 'cod_usuario');

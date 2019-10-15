@@ -2,9 +2,185 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/DashboardController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/EmpleadosController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/EspecialidadesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/EspeciesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/EstadoCivilController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/GeneroController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/RazasController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/SexoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/TipoServicioController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/TipoUsuarioController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/VacunasController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Inventario/DashboardController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/NoAutorizadoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Peluqueria/DashboardController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Peluqueria/DetallePeluqueriaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Peluqueria/PeluqueriaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PerfilBloquedoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/ConsultaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/ControlVacunasController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/DashboardController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/MascotasController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/PeluqueriaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/PropietarioController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Veterinario/ConsultaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Veterinario/DashboardController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Veterinario/VacunasController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Administrador.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Inventario.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Peluqueria.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Secretaria.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Veterinario.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/font-awesome/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/material/demo/demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/material/material-dashboard-rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/material/material-dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/material/material-dashboard.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/message/toastr.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/img_app/403.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/img_app/404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/img_app/lock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/Macbook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/angular.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/apple-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/ex1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/ex2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/ex3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/faces/avatar.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/faces/card-profile1-square.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/faces/card-profile2-square.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/faces/marc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/html.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/iPad2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/imac1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/ipad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/iphonex.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/mask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/new_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/notification.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/react.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/sidebar-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/sidebar-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/sidebar-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/sidebar-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/table.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/material/vue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/core/bootstrap-material-design.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/core/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/core/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/demo/demo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/material-dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/material-dashboard.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/arrive.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/bootstrap-datetimepicker.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/bootstrap-notify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/bootstrap-selectpicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/bootstrap-tagsinput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/chartist.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/fullcalendar.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/jasny-bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/jquery-jvectormap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/jquery.bootstrap-wizard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/jquery.dataTables.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/jquery.tagsinput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/jquery.validate.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/moment.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/nouislider.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/perfect-scrollbar.jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material/plugins/sweetalert2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/message/toastr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/es/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/es/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/es/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/es/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/accesoNoAutorizado.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/empleados.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/inicio.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/403.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/404.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/inventario/inicio.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/inventario/menuLateral.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/material.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/mascota.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/message.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/propietario.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/peluqueria/atender.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/peluqueria/atenderMascota.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/peluqueria/inicio.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/peluqueria/menuLateral.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/perfilBloqueado.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/agregarMascota.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/consulta.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/inicio.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/menuLateral.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaConsulta.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaPeluqueria.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaVacuna.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/veterinario/consulta.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/veterinario/inicio.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/veterinario/menuLateral.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/veterinario/nuevaConsulta.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/veterinario/nuevaVacuna.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/veterinario/vacuna.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/petStore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/petStore.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Consulta.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Consulta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Control_vacunas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Control_vacunas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Detalle_peluqueria.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Detalle_peluqueria.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Empleados.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Empleados.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Especie.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Especie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropietarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FuncionesComunesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mascota.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mascota.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Peluqueria.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Peluqueria.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Propietario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Propietario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Raza.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Raza.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Usuarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Usuarios.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +207,13 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,7 +263,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
       <path value="$PROJECT_DIR$/vendor/symfony/routing" />
-      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
@@ -126,6 +308,8 @@
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
     </include_path>
   </component>
   <component name="ProjectId" id="1RodctkeCR22sJzbjviozvSkwct" />
@@ -136,7 +320,8 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/peluqueria" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -144,12 +329,18 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\public\css\material" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily" />
-      <recent name="C:\laragon\www\petStore" />
+      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\peluqueria" />
+      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\veterinario" />
+      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\secretaria" />
+      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\public\img\img_app" />
+      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\public\js\material\demo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -198,6 +389,12 @@
       <workItem from="1570678692416" duration="53000" />
       <workItem from="1570678747056" duration="2189000" />
       <workItem from="1570680972125" duration="264000" />
+      <workItem from="1570770094444" duration="9435000" />
+      <workItem from="1570786257997" duration="25000" />
+      <workItem from="1570812208071" duration="13843000" />
+      <workItem from="1570853308081" duration="38046000" />
+      <workItem from="1570914038618" duration="20748000" />
+      <workItem from="1570980236189" duration="101460000" />
     </task>
     <task id="LOCAL-00001" summary="Modelos Creados">
       <created>1570604324861</created>

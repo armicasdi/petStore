@@ -8,6 +8,7 @@ class Propietario extends Model
 {
     protected $table = 'propietario';
     protected $primaryKey = 'cod_propietario';
+    public $timestamps = false;
     protected $fillable = [
         'nombres',
         'apellidos',
@@ -16,7 +17,7 @@ class Propietario extends Model
         'correo',
     ];
 
-    public function mascotas(){
+    public function mascota(){
         return $this->hasMany('App\Mascota','cod_propietario','cod_propietario');
     }
 

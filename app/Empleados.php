@@ -36,7 +36,7 @@ class Empleados extends Model
         return $this->hasMany('App\Entrada_producto', 'cod_usuario', 'cod_usuario');
     }
 
-    public function consultas(){
+    public function consulta(){
         return $this->hasMany('App\Consulta','cod_usuario','cod_usuario');
     }
 
@@ -46,6 +46,10 @@ class Empleados extends Model
 
     public function peluqueria(){
         return $this->hasMany('App\Peluqueria','cod_usuario','cod_usuario');
+    }
+
+    public function usuario(){
+        return $this->hasOne('App\Usuarios', 'cod_usuario', 'cod_usuario');
     }
 
 }

@@ -8,6 +8,7 @@ class Peluqueria extends Model
 {
     protected $table = 'peluqueria';
     protected $primaryKey = 'cod_peluqueria';
+    public $timestamps = false;
     protected $fillable = [
         'fecha',
         'observaciones',

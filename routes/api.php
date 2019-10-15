@@ -26,4 +26,4 @@ use Illuminate\Http\Request;
 //Route::post('/login', 'userController@login');
 
     //OM
-    Route::resource('propietarios', 'PropietarioController',['only'=>['index','show']]);
+  //  Route::resource('propietarios', 'PropietarioController',['only'=>['index','show']]);

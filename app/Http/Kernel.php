@@ -2,12 +2,17 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Administrador;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckForMaintenanceMode;
 use App\Http\Middleware\EncryptCookies;
+use App\Http\Middleware\Inventario;
+use App\Http\Middleware\Peluqueria;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\Secretaria;
 use App\Http\Middleware\TrimStrings;
 use App\Http\Middleware\TrustProxies;
+use App\Http\Middleware\Veterinario;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
@@ -50,9 +55,9 @@ class Kernel extends HttpKernel
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
             StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            // Illuminate\Session\Middleware\AuthenticateSession::class,
             ShareErrorsFromSession::class,
-           // \App\Http\Middleware\VerifyCsrfToken::class,
+            // App\Http\Middleware\VerifyCsrfToken::class,
             SubstituteBindings::class,
         ],
 
@@ -79,6 +84,12 @@ class Kernel extends HttpKernel
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
+        // Validar el acceso a las rutas
+        'admin' => Administrador::class,
+        'inventario' => Inventario::class,
+        'peluqueria' => Peluqueria::class,
+        'secretaria' => Secretaria::class,
+        'veterinario' => Veterinario::class,
     ];
 
     /**

@@ -8,6 +8,7 @@ class Detalle_peluqueria extends Model
 {
     protected $table = 'detalle_peluqueria';
     protected $primaryKey = 'cod_detalle';
+    public $timestamps = false;
     protected $fillable = [
         'fecha',
         'cod_tipo_servicio',

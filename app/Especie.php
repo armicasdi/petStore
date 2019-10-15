@@ -8,6 +8,7 @@ class Especie extends Model
 {
     protected $table = 'especies';
     protected $primaryKey  = 'cod_especie';
+    public $timestamps = false;
     protected $fillable = [
         'especie'
     ];
