@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Administrador;
 
+use App\Consulta;
+use App\Control_vacunas;
 use App\Http\Controllers\Controller;
+use App\Mascota;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -14,8 +19,17 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
         $pagActual = 'dashboard';
-        return view('administrador.inicio',compact('pagActual'));
+        $year = date("Y");
+        $mes = date("m");
+        $dia = date("d");
+        $mAtendidas = Consulta::where('estado','=',1)->where('fecha','like',"$year-$mes-$dia%")->count();
+        $mAtendidasSemana = Consulta::where('fecha','>',Carbon::now()->subDay(7))->count();
+        $mAtendidasMes = Consulta::where('fecha','like',"$year-$mes-%")->where('estado','=',1)->count();
+        $mTotal = Mascota::all()->count();
+
+        return view('administrador.inicio',compact('mAtendidas','mAtendidasSemana','mAtendidasMes','mTotal','pagActual'));
     }
 
     /**

@@ -13,18 +13,16 @@
                     </div>
                 </div>
                 <div class="card-body" id="servicios">
-                    @foreach($servicios as $peluqueria)
-                        @foreach($peluqueria->detalle_peluqueria as $detalle)
+                    @foreach($servicios as $servicio)
                             <div class="row">
                                 <div class="col-md-10">
-                                    <input type="text" hidden name="cod_detalle_peluqueria{{ $detalle->cod_detalle }}" value="{{ $detalle->cod_detalle}}">
-                                    <span>{{ $detalle->tipo_servicio->servicio }}</span>
+                                    <input type="text" hidden name="cod_detalle_peluqueria{{ $servicio->cod_detalle }}" value="{{ $servicio->cod_detalle}}">
+                                    <span>{{ $servicio->tipo_servicio->servicio }}</span>
                                 </div>
                                 <div class="text-left">
                                     <i class="fa  fa-check-square fa-2x text-info"></i>
                                 </div>
                             </div>
-                        @endforeach
                     @endforeach
 
                 </div>

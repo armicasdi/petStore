@@ -65,7 +65,7 @@ Route::group(['prefix'=>'peluqueria', 'namespace' =>'Peluqueria','middleware'=>[
 /*
  * SECRETARIA
  * */
-Route::group(['prefix'=>'secretaria', 'namespace' =>'Secretaria', 'middleware'=>['auth', 'secretaria']],function (){
+Route::group(['prefix'=>'secretaria', 'namespace' =>'Secretaria', 'middleware'=>['auth','secretaria']],function (){
     Route::get('dashboard', 'DashboardController@index')->name('secretaria.dashboard');
     Route::get('agregar','MascotasController@create')->name('secretaria.crear');
     Route::post('agregar','MascotasController@store')->name('secretaria.gmascota');
