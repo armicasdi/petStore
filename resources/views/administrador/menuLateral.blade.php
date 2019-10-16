@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item {{ $pagActual == 'roles' ? 'active' : '' }}">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.roles') }}">
                     <i class="material-icons">security</i>
                     <p>Roles</p>
                 </a>

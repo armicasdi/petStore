@@ -12,7 +12,7 @@
                     <h4>Vaya, parece que estas perdido</h4>
                 </div>
                 <div class="card-body text-center">
-                    <img src="{{ asset('img/img_app/404.png') }}" alt="404.png">
+                    <img src="{{ asset('img/img_app/404.png') }}" alt="404.png" width="45%">
                     <h4 class="card-title">Esto no es una falla, solo que el recuros buscado no existe</h4>
                 </div>
             </div>

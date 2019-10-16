@@ -12,47 +12,44 @@
             <div class="card">
 
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Usuarios registrados</h4>
+                    <h4 class="card-title ">Roles existentes</h4>
                 </div>
 
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
-                                <th>usuario</th>
-                                <th>Nombre</th>
-                                <th>Tipo Usuario</th>
+                                <th>Tipo</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                                 </thead>
                             <tbody>
-                                @foreach($empleados as $empleado)
+                                @foreach($roles as $rol)
                                     <tr>
-                                        <td>{{ $empleado->usuario->usuario }}</td>
-                                        <td>{{ $empleado->nombres }} {{ $empleado->apellidos }}</td>
-                                        <td>{{ $empleado->usuario->tipo_usuario->tipo }}</td>
-                                        @if( $empleado->usuario->is_active)
+                                        <td>{{ $rol->tipo }}</td>
+
+                                        @if( $rol->isActive)
                                             <td>
-                                                <a href="#" title="Bloquear" data-toggle="modal" data-target="#bloquear{{ $empleado->cod_usuario }}">
-                                                   <i class="fa fa-unlock fa-lg text-success" aria-hidden="true"></i>
+                                                <a href="#" title="Bloquear" data-toggle="modal" data-target="#bloquear{{ $rol->cod_tipo_usuario }}">
+                                                   <i class="fa fa-unlock fa-2x text-success" aria-hidden="true"></i>
                                                 </a>
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="bloquear{{ $empleado->cod_usuario }}" tabindex="-1" role="dialog" aria-labelledby="bloquearm{{ $empleado->cod_usuario }}" aria-hidden="true">
+                                                <div class="modal fade" id="bloquear{{ $rol->cod_tipo_usuario }}" tabindex="-1" role="dialog" aria-labelledby="bloquearm{{ $rol->cod_tipo_usuario }}" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header text-center">
-                                                                <h5 class="modal-title" id="bloquearm{{ $empleado->cod_usuario }}">Bloquear usuario</h5>
+                                                                <h5 class="modal-title" id="bloquearm{{ $rol->cod_tipo_usuario }}">Bloquear rol</h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Si bloquea el usuario no podra acceder a sus funciones
+                                                                Si bloquea el rol, los usuarios asignados ha este no podran ingresar a sus funciones
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                                <form action="{{ route('admin.bloquear',['cod_usuario'=>$empleado->cod_usuario]) }}" method="POST">
+                                                                <form action="{{ route('admin.bloquearRol',['cod_tipo_usuario'=>$rol->cod_tipo_usuario]) }}" method="POST">
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <input type="submit" class="btn btn-primary">
@@ -65,26 +62,26 @@
                                             </td>
                                              @else
                                                 <td>
-                                                    <a href="#" title="Bloquear" data-toggle="modal" data-target="#desbloquear{{ $empleado->cod_usuario }}">
-                                                        <i class="fa fa-lock fa-lg text-danger" aria-hidden="true"></i>
+                                                    <a href="#" title="Bloquear" data-toggle="modal" data-target="#desbloquear{{ $rol->cod_tipo_usuario }}">
+                                                        <i class="fa fa-lock fa-2x text-danger" aria-hidden="true"></i>
                                                     </a>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="desbloquear{{ $empleado->cod_usuario }}" tabindex="-1" role="dialog" aria-labelledby="desbloquearm{{ $empleado->cod_usuario }}" aria-hidden="true">
+                                                    <div class="modal fade" id="desbloquear{{ $rol->cod_tipo_usuario }}" tabindex="-1" role="dialog" aria-labelledby="desbloquearm{{ $rol->cod_tipo_usuario }}" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header text-center">
-                                                                    <h5 class="modal-title" id="desbloquearm{{ $empleado->cod_usuario }}">Desbloquear usuario</h5>
+                                                                    <h5 class="modal-title" id="desbloquearm{{ $rol->cod_tipo_usuario }}">Desbloquear rol</h5>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Si realiza la siguiente acción, el usuario tendra acceso a sus funciones
+                                                                    Si desbloquea el rol, los usuarios asignados ha este podran ingresar a sus funciones
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                                    <form action="{{ route('admin.bloquear',['cod_usuario'=>$empleado->cod_usuario]) }}" method="POST">
+                                                                    <form action="{{ route('admin.bloquearRol',['cod_tipo_usuario'=>$rol->cod_tipo_usuario]) }}" method="POST">
                                                                         @csrf
                                                                         @method('PUT')
                                                                         <input type="submit" class="btn btn-primary">
@@ -97,14 +94,8 @@
                                                 </td>
                                         @endif
                                         <td>
-                                            <a href="#" title="Mostrar">
-                                                <i class="fa fa-eye fa-lg mr-2" aria-hidden="true"></i>
-                                            </a>
                                             <a href="#" title="Editar">
-                                                <i class="fa fa-pencil-square fa-lg ml-2 mr-2" aria-hidden="true"></i>
-                                            </a>
-                                            <a href="#" title="Eliminar">
-                                                <i class="fa fa-trash fa-lg ml-2" aria-hidden="true"></i>
+                                                <i class="fa fa-pencil-square fa-2x ml-2 mr-2" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>

@@ -7,3 +7,9 @@
 .logo_dashboard{
     width: 30%;
 }
+
+.fa-check-square,
+.fa-trash{
+    cursor: pointer;
+}
+

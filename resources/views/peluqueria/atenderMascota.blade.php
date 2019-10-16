@@ -48,6 +48,7 @@
 
             <button class="btn btn-warning">Guardar servicios</button>
         </form>
+
 @endsection
 
 @section('jsExtra')

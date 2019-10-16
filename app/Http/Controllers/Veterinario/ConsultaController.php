@@ -18,9 +18,9 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-        $pagActual  = 'consulta';
-        $consultas = Consulta::where('estado','=',0)->where('cod_usuario','=',Auth::user()->cod_usuario)->with('mascota.raza','mascota.sexo','mascota.propietario') ->orderBy('fecha', 'asc')->get();
-        return view('veterinario.consulta', compact('pagActual','consultas'));
+            $pagActual  = 'consulta';
+            $consultas = Consulta::where('estado','=',0)->where('cod_usuario','=',Auth::user()->cod_usuario)->with('mascota.raza','mascota.sexo','mascota.propietario') ->orderBy('fecha', 'asc')->get();
+            return view('veterinario.consulta', compact('pagActual','consultas'));
     }
 
     /**
@@ -33,7 +33,8 @@ class ConsultaController extends Controller
         $pagActual = 'consulta';
         $mascota = Mascota::findOrFail($cod_expediente);
         $consulta = Consulta::findOrFail($cod_consulta);
-        return view('veterinario.nuevaConsulta',compact('mascota','consulta','pagActual'));
+        $historial = Consulta::where('cod_expediente',$cod_expediente)->where('estado',1)->with('empleados')->orderBy('fecha','desc')->limit(5)->get();
+        return view('veterinario.nuevaConsulta',compact('mascota','consulta','historial','pagActual'));
     }
 
     /**

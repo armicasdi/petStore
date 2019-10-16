@@ -39,7 +39,8 @@ class VacunasController extends Controller
         $mascota = Mascota::findOrFail($cod_expediente);
         $vacuna = Control_vacunas::findOrFail($cod_control_vacunas);
         $vacuna->vacunas;
-        return view('veterinario.nuevaVacuna',compact('mascota','vacuna','pagActual'));
+        $historial = Control_vacunas::where('cod_expediente',$cod_expediente)->where('estado',1)->with('empleados','vacunas')->orderBy('fecha','desc')->limit(5)->get();
+        return view('veterinario.nuevaVacuna',compact('mascota','vacuna','historial','pagActual'));
 
     }
 

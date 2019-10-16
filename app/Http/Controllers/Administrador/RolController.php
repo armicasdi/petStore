@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Administrador;
 
+use App\Empleados;
 use App\Http\Controllers\Controller;
+use App\Tipo_usuario;
 use App\Usuarios;
 use Illuminate\Http\Request;
-use App\Empleados;
-use Illuminate\Support\Facades\Auth;
 
-class EmpleadosController extends Controller
+class RolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +17,10 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        $pagActual = 'usuarios';
-        $empleados =  Empleados::where('cod_usuario','<>',Auth::user()->cod_usuario)->get();
+        $pagActual = 'roles';
+        $roles =  Tipo_usuario::where('cod_tipo_usuario','<>',1)->get();
 
-        foreach ($empleados as $empleado){
-            $empleado->usuario->tipo_usuario;
-        }
-
-        return view('administrador.empleados', compact('empleados','pagActual'));
+        return view('administrador.roles', compact('roles','pagActual'));
     }
 
     /**
@@ -94,18 +90,17 @@ class EmpleadosController extends Controller
     }
 
     /**
-     * @param $cod_usuario
+     * @param $cod_tipo_usuario
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function bloquearEmpleado($cod_usuario){
+    public function bloquearRol($cod_tipo_usuario){
 
-        $empleado = Usuarios::findOrFail($cod_usuario);
-        $empleado->is_active = ! $empleado->is_active;
-        $sucess = $empleado->save();
+        $rol = Tipo_usuario::findOrFail($cod_tipo_usuario);
+        $rol->isActive = ! $rol->isActive;
+        $sucess = $rol->save();
         if(!$sucess){
-            return redirect()->route('admin.empleados')->with('error', 'Error al actulizar el registro del usuario');
+            return redirect()->route('admin.roles')->with('error', 'Error al actulizar el registro del usuario');
         }
-        return redirect()->route('admin.empleados')->with('success', 'Reguistro actualizado correctamente');
+        return redirect()->route('admin.roles')->with('success', 'Reguistro actualizado correctamente');
     }
-
 }

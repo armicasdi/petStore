@@ -2,10 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/RolController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/roles.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Inventario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Inventario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Secretaria.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Secretaria.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Veterinario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Veterinario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrador/EmpleadosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/EmpleadosController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Veterinario/ConsultaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Veterinario/ConsultaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Veterinario/VacunasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Veterinario/VacunasController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tipo_usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tipo_usuario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/accesoNoAutorizado.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/accesoNoAutorizado.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/administrador/empleados.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/administrador/empleados.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/administrador/inicio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/administrador/inicio.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/403.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/403.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/404.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/404.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/peluqueria/atenderMascota.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/peluqueria/atenderMascota.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/perfilBloqueado.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/perfilBloqueado.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/veterinario/nuevaConsulta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/veterinario/nuevaConsulta.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/veterinario/nuevaVacuna.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/veterinario/nuevaVacuna.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +160,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/administrador" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -157,15 +172,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\public\css\material" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\administrador" />
       <recent name="$PROJECT_DIR$" />
       <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\peluqueria" />
       <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\veterinario" />
       <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\secretaria" />
-      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\public\img\img_app" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\public\css\material" />
     </key>
   </component>
   <component name="RunDashboard">

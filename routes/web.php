@@ -48,8 +48,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middleware'=> ['auth','admin'] ], function (){
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
+
     Route::get('empleados', 'EmpleadosController@index')->name('admin.empleados');
     Route::put('bloquear/{cod_usuario}', 'EmpleadosController@bloquearEmpleado')->name('admin.bloquear');
+
+    Route::get('roles', 'RolController@index')->name('admin.roles');
+    Route::put('bloquearRol/{cod_tipo_usuario}', 'RolController@bloquearRol')->name('admin.bloquearRol');
 });
 
 /*
