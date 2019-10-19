@@ -12,7 +12,6 @@ class PacienteController extends Controller
     public function index(Request $request)
     {
         $hash = $request->header('Authorization', null);
-
         $jwtAuth = new JwtAuth();
         $checkToken = $jwtAuth->checkToken($hash);
         if($checkToken) {
@@ -22,7 +21,6 @@ class PacienteController extends Controller
                 'message' => 'Login Incorrecto',
                 'status' => 'error',
                 'codigo'=>400
-
             );
         }
         return response()->json($data, 200);
