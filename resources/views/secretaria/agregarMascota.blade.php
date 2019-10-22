@@ -17,6 +17,7 @@
 @endsection
 
 @section('jsExtra')
+    <scrip src="{{ asset('js/mask/inputmask.bundle.min.js') }}"></scrip>
     <script>
         $(document).ready(function (){
             // Agregar el token en la solicitud ajax
@@ -47,6 +48,21 @@
                     }
                 });
             });
+
+            $("#raza").change(function (event){
+                let raza = $(this).val();
+                let mestizo = $("#mestizo");
+                let tipo = $("#tipo");
+                //Compara el valor seleccionado (cod asignado en la DB)
+                if(raza == 29 || raza == 30 ){
+                    mestizo.fadeIn(1000);
+                }else{
+                    tipo.val('');
+                    mestizo.fadeOut(1000);
+                }
+
+            });
+
         });
     </script>
 

@@ -26,7 +26,7 @@
             @endforeach
         </select>
         <br>
-        <button class="btn btn-info" id="agregar">Guardar</button>
+        <button class="btn btn-info" id="agregar">Agregar</button>
 
         <form action="{{ route('secretaria.gpeluqueria') }}" method="POST">
             @csrf

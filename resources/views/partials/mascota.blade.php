@@ -63,5 +63,10 @@
                     </span>
             @enderror
         </div>
+
+        <div class="form-group" id="mestizo" style="display: none;">
+            <label for="tipo">Especificar</label>
+            <input type="text" class="form-control" id="tipo" name="tipo">
+        </div>
     </div>
 </div>

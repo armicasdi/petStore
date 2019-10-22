@@ -40,7 +40,7 @@
                             <th>Nombre</th>
                             <th>Raza</th>
                             <th>Propietario</th>
-                            <th>Correo</th>
+                            <th>Teléfono</th>
                             <th>Accion</th>
                             </thead>
                             <tbody id="data">
@@ -91,7 +91,7 @@
                                             <td>${v.nombre}</td>
                                             <td>${v.raza.raza}</td>
                                             <td>${v.propietario.nombres} ${v.propietario.apellidos }</td>
-                                            <td>${v.propietario.correo}</td>
+                                            <td>${v.propietario.telefono}</td>
                                             <td>
                                                 <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta">
                                                     <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
@@ -116,7 +116,7 @@
                                                     <td>${v.nombre}</td>
                                                     <td>${v.raza.raza}</td>
                                                     <td>${a.nombres} ${a.apellidos}</td>
-                                                    <td>${a.correo}</td>
+                                                    <td>${a.telefono}</td>
                                                     <td>
                                                         <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta" >
                                                             <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
@@ -146,13 +146,6 @@
                 }
             });
 
-
-        //    FUNCIONES PERSONALIZADAS
-
-            // $('#data').click(function (event) {
-            //     // let expediente = $(this).attr('data-code').val();
-            //     console.log(event.target);
-            // });
         });
     </script>
 

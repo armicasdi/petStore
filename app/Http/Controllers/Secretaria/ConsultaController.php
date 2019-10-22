@@ -139,7 +139,6 @@ class ConsultaController extends Controller
         $validator = Validator::make($request->all(), [
             'peso'         => ['required'],
             'temperatura'  => ['required'],
-            'fr_cardiaca'  => ['required'],
             'cod_expediente'  => ['required'],
             'cod_usuario'  => ['required']
         ]);

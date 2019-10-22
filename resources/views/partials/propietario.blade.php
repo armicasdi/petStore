@@ -5,7 +5,7 @@
     <div class="card-body">
         <div class="form-group">
             <label for="exampleFormControlInput1">Nombres</label>
-            <input type="text" class="form-control @error('nombresPropietario') is-invalid @enderror" id="exampleFormControlInput1" name="nombresPropietario"  value="{{ isset($propietario->nombres)?? '' || old('nombresPropietario') }}">
+            <input type="text" class="form-control @error('nombresPropietario') is-invalid @enderror" id="exampleFormControlInput1" name="nombresPropietario"  value="{{ old('nombresPropietario') }}">
             @error('nombresPropietario')
             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -31,8 +31,8 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Teléfono</label>
-            <input type="tel" class="form-control @error('telefono') is-invalid @enderror" id="exampleFormControlInput1" name="telefono" value="{{ old('telefono') }}">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" class="form-control @error('telefono') is-invalid @enderror telefono" id="telefono" name="telefono" value="{{ old('telefono') }}">
             @error('telefono')
             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

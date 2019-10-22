@@ -50,14 +50,15 @@ class MascotasController extends Controller
             'nombresPropietario'    => ['required','max:50','string'],
             'apellidosPropietario'  => ['required','max:50','string'],
             'direccion'             => ['required','max:200','string'],
-            'telefono'              => ['required','max:15','string'],
+            'telefono'              => ['required','max:9','string'],
             'correo'                => ['required','email'],
             'nombreMascota'         => ['required','max:30','string'],
             'fechaNacimiento'       => ['required','date'],
             'color'                 => ['required','max:40','string'],
             'sexo'                  => ['required'],
             'especie'               => ['required'],
-            'raza'                  => ['required']
+            'raza'                  => ['required'],
+            'tipo'                  => ['max:100'],
         ]);
 
         if ($validator->fails()) {
@@ -86,15 +87,16 @@ class MascotasController extends Controller
                $postfijo = date("y");
                $clave = $prefijo.$aleatorio.$postfijo;
 
-               $mascota->fill([
-                   'cod_expediente' => $clave,
-                   'nombre'     => $request['nombreMascota'],
-                   'fecha_nac'  => $request['fechaNacimiento'],
-                   'Color'      => $request['color'],
-                   'cod_propietario' => $propietario->cod_propietario,
-                   'cod_sexo'   => $request['sexo'],
-                   'cod_raza'   => $request['raza'],
-               ]);
+               $mascota->cod_expediente = $clave;
+               $mascota->nombre     = $request['nombreMascota'];
+               $mascota->fecha_nac  = $request['fechaNacimiento'];
+               $mascota->Color     = $request['color'];
+               $mascota->cod_propietario = $propietario->cod_propietario;
+               $mascota->cod_sexo   = $request['sexo'];
+               $mascota->cod_raza   = $request['raza'];
+               if($request->raza == 29 || $request->raza == 30){
+                   $mascota->tipo = $request['tipo'];
+               }
 
                $success = $mascota->save();
 
