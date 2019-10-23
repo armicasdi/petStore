@@ -6,20 +6,18 @@
 
 @section('contenido')
 
-    <form action="{{ route('secretaria.gmascota') }}" method="POST">
+    <form action="{{ route('secretaria.gactualizarMascota',['cod_expediente' => $mascota->cod_expediente]) }}" method="POST">
         @csrf
-        @include('partials.propietario')
-        <br>
-       @include('partials.mascota')
-        <button type="submit" class="btn btn-info mr-5">Guardar</button>
-        <a  class="btn btn-info" href="{{ route('secretaria.crear') }}"> Cancelar</a>
+        @method('PUT')
+        @include('partials.mascota')
+        <button type="submit" class="btn btn-info mr-5">Actualizar</button>
+        <a  class="btn btn-info" href="{{ route('secretaria.actualizarMascota') }}"> Cancelar</a>
 
     </form>
 
 @endsection
 
 @section('jsExtra')
-    <scrip src="{{ asset('js/mask/inputmask.bundle.min.js') }}"></scrip>
     <script>
         $(document).ready(function (){
             // Agregar el token en la solicitud ajax
@@ -81,4 +79,3 @@
     @endif
 
 @endsection
-

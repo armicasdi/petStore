@@ -5,21 +5,31 @@
 @endsection
 
 @section('contenido')
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header card-header-text card-header-info">
+                <div class="card-text">
+                    <h4 class="card-title"> {{ $propietario->nombres }} {{ $propietario->apellidos }}</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div>Direccion: {{ $propietario->direccion }}</div>
+                <div>Teléfono: {{ $propietario->telefono }}</div>
+                <div>Correo: {{ $propietario->correo }}</div>
+            </div>
+        </div>
+    </div>
+    <br>
 
-    <form action="{{ route('secretaria.gmascota') }}" method="POST">
-        @csrf
-        @include('partials.propietario')
-        <br>
+    <form action="{{ route('secretaria.gactualizar',['cod_propietario'=> $propietario->cod_propietario]) }}" method="POST">
        @include('partials.mascota')
-        <button type="submit" class="btn btn-info mr-5">Guardar</button>
-        <a  class="btn btn-info" href="{{ route('secretaria.crear') }}"> Cancelar</a>
-
+        <button type="submit" class="btn btn-info  mr-5">Guardar</button>
+        <a  class="btn btn-info" href="{{ route('secretaria.actualizar') }}"> Cancelar</a>
     </form>
 
 @endsection
 
 @section('jsExtra')
-    <scrip src="{{ asset('js/mask/inputmask.bundle.min.js') }}"></scrip>
     <script>
         $(document).ready(function (){
             // Agregar el token en la solicitud ajax

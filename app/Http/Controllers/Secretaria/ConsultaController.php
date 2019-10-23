@@ -72,14 +72,14 @@ class ConsultaController extends Controller
                 break;
             case '2':
                 $data = Mascota::where('nombre', 'like', "$busqueda%")->with(['raza', 'propietario'])->get();
-                if($data){
+                if(!$data->isEmpty()){
                     $resultado['data'] = $data;
                     $resultado['tipo'] = 2;
                 }
                 break;
             case '3':
                 $data = Propietario::where('nombres', 'like', "$busqueda%")->with('mascota.raza')->get();
-                if($data){
+                if(!$data->isEmpty()){
                     $resultado['data'] = $data;
                     $resultado['tipo'] = 3;
                 }
@@ -123,6 +123,14 @@ class ConsultaController extends Controller
     }
 
     public function createConsulta($cod_expediente = null){
+
+        // Verificar si hay consulta pendiente
+        $val = Consulta::where('cod_expediente',$cod_expediente)->where('estado',0)->get();
+
+        if(!$val->isEmpty()){
+            return redirect()->route('secretaria.consulta')->with('warning', 'La mascota tiene ya tiene programada una consulta');
+        }
+
        if($cod_expediente){
            $pagActual = 'consulta';
            $mascota = Mascota::findOrFail($cod_expediente);
@@ -148,22 +156,23 @@ class ConsultaController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-            $consulta = new Consulta;
 
-            $consulta->fill([
-                'peso'    => $request['peso'],
-                'temperatura'  => $request['temperatura'],
-                'fr_cardiaca'  => $request['fr_cardiaca'],
-                'referido'  => $request['referido'] ? 1 : 0,
-                'cod_usuario'  => Auth::user()->cod_usuario,
-                'cod_expediente'  => $request['cod_expediente'],
-                'cod_usuario'  => $request['cod_usuario'],
-            ]);
-            $success = $consulta->save();
+        $consulta = new Consulta;
 
-            if(!$success){
-                return redirect()->route('secretaria.consulta')->with('error', 'Error al agregar el registro');
-            }
+        $consulta->fill([
+            'peso'    => $request['peso'],
+            'temperatura'  => $request['temperatura'],
+            'fr_cardiaca'  => $request['fr_cardiaca'],
+            'referido'  => $request['referido'] ? 1 : 0,
+            'cod_usuario'  => Auth::user()->cod_usuario,
+            'cod_expediente'  => $request['cod_expediente'],
+            'cod_usuario'  => $request['cod_usuario'],
+        ]);
+        $success = $consulta->save();
+
+        if(!$success){
+            return redirect()->route('secretaria.consulta')->with('error', 'Error al agregar el registro');
+        }
         return redirect()->route('secretaria.consulta')->with('success', 'Registro agreado correctamente');
     }
 

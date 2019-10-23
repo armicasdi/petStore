@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="nav-item {{ $pagActual == 'agregar' ? 'active' : '' }}">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.agregar') }}">
                     <i class="material-icons">add_box</i>
                     <p>Agregar usuario</p>
                 </a>
@@ -83,12 +83,6 @@
                                 <a class="nav-link" href="#">
                                     <i class="material-icons">table_chart</i>
                                     <p>Razas</p>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">
-                                    <i class="material-icons">table_chart</i>
-                                    <p>Estado civil</p>
                                 </a>
                             </li>
 

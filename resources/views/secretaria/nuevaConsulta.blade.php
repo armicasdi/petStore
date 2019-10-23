@@ -67,6 +67,7 @@
         </select>
         <input type="hidden" name="cod_expediente" value="{{ $mascota->cod_expediente }}">
         <br>
-        <button class="btn btn-info">Agregar consulta</button>
+        <button class="btn btn-info mr-5">Agregar consulta</button>
+        <a  class="btn btn-info" href="{{ route('secretaria.consulta') }}"> Cancelar</a>
     </form>
 @endsection

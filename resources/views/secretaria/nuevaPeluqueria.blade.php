@@ -49,7 +49,9 @@
                     <option value="{{ $peluquero->cod_usuario }}">{{$peluquero->nombres}} {{ $peluquero->apellidos }}</option>
                 @endforeach
             </select>
-            <button class="btn btn-info">Guardar</button>
+            <br>
+            <button class="btn btn-info mr-5">Guardar</button>
+            <a  class="btn btn-info" href="{{ route('secretaria.consulta') }}"> Cancelar</a>
         </form>
 @endsection
 
@@ -102,6 +104,11 @@
     @elseif(session()->has('error'))
         <script>
             Command: toastr["error"]("{{ session()->get('error') }}", "¡Error!")
+            @include('partials.message')
+        </script>
+    @elseif(session()->has('info'))
+        <script>
+            Command: toastr["info"]("{{ session()->get('info') }}", "¡Información!")
             @include('partials.message')
         </script>
     @endif

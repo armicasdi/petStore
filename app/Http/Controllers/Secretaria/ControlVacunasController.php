@@ -6,6 +6,7 @@ use App\Control_vacunas;
 use App\Empleados;
 use App\Http\Controllers\Controller;
 use App\Mascota;
+use App\Peluqueria;
 use App\vacunas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -30,6 +31,12 @@ class ControlVacunasController extends Controller
      */
     public function create($cod_expediente = null)
     {
+        // Verificar si hay consulta pendiente
+        $val = Control_vacunas::where('cod_expediente',$cod_expediente)->where('estado',0)->get();
+        if(!$val->isEmpty()){
+            session()->flash('info','La mascota tiene vacunas pendientes');
+        }
+
         if($cod_expediente){
             $pagActual = 'consulta';
             $mascota = Mascota::findOrFail($cod_expediente);

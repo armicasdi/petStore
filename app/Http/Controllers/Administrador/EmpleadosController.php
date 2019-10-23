@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Administrador;
 
+use App\Genero;
 use App\Http\Controllers\Controller;
+use App\Tipo_usuario;
 use App\Usuarios;
 use Illuminate\Http\Request;
 use App\Empleados;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class EmpleadosController extends Controller
 {
@@ -34,7 +38,10 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        //
+        $pagActual = 'agregar';
+        $tipos_usuario = Tipo_usuario::all();
+        $generos = Genero::all();
+        return view('administrador.agregarUsuario',compact('tipos_usuario','generos','pagActual'));
     }
 
     /**
@@ -45,7 +52,74 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nombres'           => ['required','max:50','string'],
+            'apellidos'         => ['required','max:50','string'],
+            'dui'               => ['required','max:10','min:9'],
+            'fech_nac'          => ['required','date'],
+            'telefono1'         => ['required','max:9','string'],
+            'correo'            => ['required','email'],
+            'direccion'         => ['required','max:200','string'],
+            'usuario'           => ['required'],
+            'cod_tipo_usuario'  => ['required'],
+            'cod_genero'        => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('admin.agregar')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $val = Usuarios::where('usuario',$request['usuario'])->get();
+        if(!$val->isEmpty()){
+            return redirect()->route('admin.agregar')->with('warning', 'El nombre de usuario ya esta registrado')->withInput();
+        }
+
+        DB::beginTransaction();
+        try{
+            $usuario = new Usuarios;
+            $usuario->fill([
+                'usuario'    => $request['usuario'],
+                'password'   => bcrypt('pass1234'),
+                'cod_tipo_usuario' => $request['cod_tipo_usuario'],
+            ]);
+            $success = $usuario->save();
+
+            if($success){
+                $empleado = new Empleados;
+                $empleado->fill([
+                    'nombres'       => $request['nombres'],
+                    'apellidos'     => $request['apellidos'],
+                    'dui'           => $request['dui'],
+                    'fech_nac'      => $request['fech_nac'],
+                    'genero'        => $request['genero'],
+                    'telefono1'     => $request['telefono1'],
+                    'telefono2'     => $request['telefono2'],
+                    'correo'        => $request['correo'],
+                    'direccion'     => $request['direccion'],
+                    'cod_usuario'   => $usuario->cod_usuario,
+                    'cod_genero'    => $request['cod_genero'],
+                ]);
+
+                $success = $empleado->save();
+
+                if($success){
+                    DB::commit();
+                }else{
+                    DB::rollBack();
+                    return redirect()->route('admin.agregar')->with('error', 'Error al agregar el registro del empleado');
+                }
+            }else{
+                DB::rollBack();
+                return redirect()->route('admin.agregar')->with('error', 'Error al agregar el registro del usuario');
+            }
+        }catch (\Exception $e){
+            DB::rollBack();
+            return redirect()->route('admin.agregar')->with('error', 'Error al agregar el registro');
+        }
+
+        return redirect()->route('admin.agregar')->with('success', 'Registro agreado correctamente');
     }
 
     /**

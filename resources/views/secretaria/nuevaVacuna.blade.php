@@ -34,74 +34,22 @@
                 <option value="{{ $veterinario->cod_usuario }}">{{$veterinario->nombres}} {{ $veterinario->apellidos }}</option>
             @endforeach
         </select>
+        <br>
         <input type="hidden" name="cod_expediente" value="{{ $mascota->cod_expediente }}">
-        <button class="btn btn-info" id="agregar">Guardar</button>
+        <button class="btn btn-info mr-5" id="agregar">Guardar</button>
+        <a  class="btn btn-info" href="{{ route('secretaria.consulta') }}"> Cancelar</a>
     </form>
 
-{{--    Formulario para Agregar muchas vacuanas el mismo tiempo --}}
-{{--    <form action="{{ route('secretaria.gvacuna') }}" method="POST">--}}
-{{--        @csrf--}}
-{{--        <div class="row">--}}
-{{--            <div class="col-md-6">--}}
-{{--                <div class="card">--}}
-{{--                    <div class="card-header">--}}
-{{--                        <h4 class="card-title">Vacunas selecionadas</h4>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-body" id="data">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <input type="hidden" name="cod_expediente" value="{{ $mascota->cod_expediente }}">--}}
-{{--        <br>--}}
-{{--        <label for="metodo">Veterinario que atendera la mascota</label>--}}
-{{--        <select class="form-control" name="cod_usuario">--}}
-{{--            @foreach($veterinarios as $veterinario)--}}
-{{--                <option value="{{ $veterinario->cod_usuario }}">{{$veterinario->nombres}} {{ $veterinario->apellidos }}</option>--}}
-{{--            @endforeach--}}
-{{--        </select>--}}
-{{--        <button class="btn btn-info">Guardar</button>--}}
-{{--    </form>--}}
 @endsection
 
-{{--@section('jsExtra')--}}
-{{--    <script>--}}
-{{--    $(document).ready(function (){--}}
+@section('jsExtra')
 
-{{--        $('#agregar').click(function (e) {--}}
-{{--           e.preventDefault();--}}
-{{--           let vacuna = $('#vacuna').val();--}}
-{{--           if(vacuna){--}}
-{{--               let objVacuna = $("#vacuna [value="+vacuna+"]");--}}
-{{--               let html = `--}}
-{{--                        <div class="row">--}}
-{{--                            <div class="col-md-10">--}}
-{{--                                <input type="text" hidden name="vacuna${vacuna}" value="${vacuna}">--}}
-{{--                                <span data-code="${vacuna}" >${ $(objVacuna).text()}</span>--}}
-{{--                            </div>--}}
-{{--                            <div class="text-center">--}}
-{{--                                <i class="fa fa-trash fa-2x text-danger"></i>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                   `;--}}
-{{--               $("#data").append(html);--}}
-{{--               objVacuna.remove();--}}
-{{--           }--}}
-{{--        });--}}
+    @if(session()->has('info'))
+        <script>
+            Command: toastr["info"]("{{ session()->get('info') }}", "¡Información!")
+            @include('partials.message')
+        </script>
+    @endif
 
-{{--        $("#data").click(function (e) {--}}
-{{--            let vacuna = $(e.target).parent().prev().children("span");--}}
-{{--            let id = $(vacuna).attr('data-code');--}}
-{{--            if(id){--}}
-{{--                let txt = $(vacuna).text();--}}
-{{--                let html = `--}}
-{{--                    <option value="${id}">${txt}</option>--}}
-{{--                `;--}}
-{{--                $("#vacuna").append(html);--}}
-{{--                $(vacuna).parent().parent().remove().fadeOut(1000);--}}
-{{--            }--}}
-{{--        });--}}
+@endsection
 
-{{--    });--}}
-{{--    </script>--}}
-{{--@endsection--}}

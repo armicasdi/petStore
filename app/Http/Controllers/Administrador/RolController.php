@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Administrador;
 
-use App\Empleados;
 use App\Http\Controllers\Controller;
+use App\Mascota;
+use App\Propietario;
 use App\Tipo_usuario;
 use App\Usuarios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RolController extends Controller
 {
@@ -95,12 +97,56 @@ class RolController extends Controller
      */
     public function bloquearRol($cod_tipo_usuario){
 
-        $rol = Tipo_usuario::findOrFail($cod_tipo_usuario);
-        $rol->isActive = ! $rol->isActive;
-        $sucess = $rol->save();
-        if(!$sucess){
-            return redirect()->route('admin.roles')->with('error', 'Error al actulizar el registro del usuario');
+        $rol = Tipo_usuario::findOrfail($cod_tipo_usuario);
+
+        if(!$rol){
+            return redirect()->route('admin.roles')->with('error', 'El rol especificado no existe');
         }
+
+        $usuarios = Usuarios::where('cod_tipo_usuario',$cod_tipo_usuario)->get();
+
+        DB::beginTransaction();
+        try{
+            if($rol->isActive){
+                $rol->isActive = ! $rol->isActive;
+                $success = $rol->save();
+                if(!$success){
+                    DB::rollBack();
+                    return redirect()->route('admin.roles')->with('error', 'Error al actualizar el estado del rol');
+                }
+                foreach ($usuarios as $usuario){
+                    $usuario->temp = $usuario->is_active;
+                    $usuario->is_active = 0;
+                    $success = $usuario->save();
+                    if(!$success){
+                        DB::rollBack();
+                        return redirect()->route('admin.roles')->with('error', 'Error al actulizar los usuarios asignados al rol');
+                    }
+                }
+            }else {
+                $rol->isActive = ! $rol->isActive;
+                $success = $rol->save();
+                if(!$success){
+                    DB::rollBack();
+                    return redirect()->route('admin.roles')->with('error', 'Error al actualizar el estado del rol');
+                }
+
+                foreach ($usuarios as $usuario){
+                    $usuario->is_active = $usuario->temp;
+                    $usuario->temp = 0;
+                    $success = $usuario->save();
+                    if(!$success){
+                        DB::rollBack();
+                        return redirect()->route('admin.roles')->with('error', 'Error al actulizar los usuarios asignados al rol');
+                    }
+                }
+            }
+        }catch (\Exception $e){
+            DB::rollBack();
+            return redirect()->route('admin.roles')->with('error', 'Error al actulizar el registro');
+        }
+
+        DB::commit();
         return redirect()->route('admin.roles')->with('success', 'Reguistro actualizado correctamente');
     }
 }
