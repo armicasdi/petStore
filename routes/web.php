@@ -54,6 +54,9 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
 
     Route::get('roles', 'RolController@index')->name('admin.roles');
     Route::put('bloquearRol/{cod_tipo_usuario}', 'RolController@bloquearRol')->name('admin.bloquearRol');
+
+    Route::get('agregar', 'EmpleadosController@create')->name('admin.agregar');
+    Route::post('agregar', 'EmpleadosController@store')->name('admin.gagregar');
 });
 
 /*
@@ -84,6 +87,19 @@ Route::group(['prefix'=>'secretaria', 'namespace' =>'Secretaria', 'middleware'=>
 
     Route::get('nuevaPeluqueria/{cod_expediente?}', 'PeluqueriaController@create')->name('secretaria.nuevaPeluqueria');
     Route::post('nuevaPeluqueria','PeluqueriaController@store')->name('secretaria.gpeluqueria');
+
+    Route::get('actualizar', 'MascotasController@fmostrar')->name('secretaria.actualizar');
+    Route::get('asignar/{cod_propietario?}', 'MascotasController@factualizar')->name('secretaria.asignar');
+    Route::post('actualizar/{cod_propietario}', 'MascotasController@actualizar')->name('secretaria.gactualizar');
+
+    Route::get('actualizarMascota', 'MascotasController@index')->name('secretaria.actualizarMascota');
+    Route::get('actualizarMascota/{cod_expediente?}', 'MascotasController@edit')->name('secretaria.actualizarMascota');
+    Route::put('actualizarMascota/{cod_expediente?}', 'MascotasController@update')->name('secretaria.gactualizarMascota');
+
+    Route::get('actualizarPropietario', 'PropietarioController@index')->name('secretaria.actualizarPropietario');
+    Route::get('actualizarPropietario/{cod_propietario?}', 'PropietarioController@editar')->name('secretaria.actualizarPropietario');
+    Route::put('actualizarPropietario/{cod_propietario?}', 'PropietarioController@update')->name('secretaria.gactualizarPropietario');
+
 });
 
 /*

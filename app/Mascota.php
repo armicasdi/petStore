@@ -16,7 +16,8 @@ class Mascota extends Model
       'Color',
       'cod_propietario',
       'cod_sexo',
-      'cod_raza'
+      'cod_raza',
+      'tipo',
     ];
 
     protected $casts = [

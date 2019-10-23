@@ -41,7 +41,7 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="frecuencia">Frecuencia cardiaca</label>
+            <label for="frecuencia">Frecuencia cardiaca (Campo opcional)</label>
             <input type="text" class="form-control @error('fr_cardiaca') is-invalid @enderror" id="frecuencia" name="fr_cardiaca" value="{{ old('fr_cardiaca') }}">
             @error('fr_cardiaca')
                 <span class="invalid-feedback" role="alert">
@@ -67,6 +67,7 @@
         </select>
         <input type="hidden" name="cod_expediente" value="{{ $mascota->cod_expediente }}">
         <br>
-        <button class="btn btn-info">Agregar consulta</button>
+        <button class="btn btn-info mr-5">Agregar consulta</button>
+        <a  class="btn btn-info" href="{{ route('secretaria.consulta') }}"> Cancelar</a>
     </form>
 @endsection

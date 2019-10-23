@@ -8,6 +8,7 @@ class Empleados extends Model
 {
     protected $table = 'empleados';
     protected $primaryKey = 'cod_usuario';
+    public $timestamps = false;
     protected $fillable = [
         'nombres',
         'apellidos',
@@ -16,8 +17,9 @@ class Empleados extends Model
         'telefono1',
         'telefono2',
         'correo',
-        'cod_civil',
+        'cod_usuario',
         'cod_genero',
+        'direccion',
     ];
 
     public function estado_civil(){

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Secretaria;
 
 
+use App\Consulta;
+use App\Control_vacunas;
 use App\Detalle_peluqueria;
 use App\Empleados;
 use App\Http\Controllers\Controller;
@@ -34,6 +36,13 @@ class PeluqueriaController extends Controller
      */
     public function create($cod_expediente = null)
     {
+        // Verificar si hay consulta pendiente
+        $val = Peluqueria::where('cod_expediente',$cod_expediente)->where('estado',0)->get();
+        $info = null;
+        if(!$val->isEmpty()){
+            session()->flash('info','La mascota tiene servicios pendientes');
+        }
+
         if($cod_expediente){
             $pagActual = 'consulta';
             $mascota = Mascota::findOrFail($cod_expediente);
@@ -70,7 +79,6 @@ class PeluqueriaController extends Controller
             $peluqueria = new Peluqueria;
 
             $peluqueria->fill([
-                'fecha' => date("y-m-d"),
                 'cod_expediente'  => $request['cod_expediente'],
                 'cod_usuario'  => $request['cod_usuario']
             ]);

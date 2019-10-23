@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Secretaria;
 
+use App\Consulta;
+use App\Control_vacunas;
 use App\Http\Controllers\Controller;
+use App\Peluqueria;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,7 +18,11 @@ class DashboardController extends Controller
     public function index()
     {
         $pagActual = 'dashboard';
-        return view('secretaria.inicio',compact('pagActual'));
+
+        $consultas = Consulta::orderBy('fecha','desc')->limit(10)->with('mascota.raza','mascota.propietario','empleados')->get();
+        $vacunas = Control_vacunas::orderBy('fecha','desc')->limit(10)->with('mascota.raza','mascota.propietario','empleados','vacunas')->get();
+        $servicios = Peluqueria::orderBy('fecha','desc')->limit(10)->with('mascota.raza','mascota.propietario','empleados')->get();
+        return view('secretaria.inicio',compact('consultas','vacunas','servicios','pagActual'));
     }
 
     /**

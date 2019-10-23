@@ -93,14 +93,8 @@
                                             <td>${v.propietario.nombres} ${v.propietario.apellidos }</td>
                                             <td>${v.propietario.telefono}</td>
                                             <td>
-                                                <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta">
-                                                    <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
-                                                </a>
-                                                <a href="{{ route('secretaria.nuevaVacuna') }}/${v.cod_expediente}" title="Vacuna" id="vacuna" >
-                                                    <i class="fa fa-suitcase fa-2x mr-2" aria-hidden="true"></i>
-                                                </a>
-                                                <a href="{{ route('secretaria.nuevaPeluqueria') }}/${v.cod_expediente}" title="Peluqueria" id="peluqueria" >
-                                                    <i class="fa fa-paw fa-2x" aria-hidden="true"></i>
+                                                <a href="{{ route('secretaria.actualizarMascota') }}/${v.cod_expediente}" title="Editar Expediente" id="consulta">
+                                                    <i class="fa  fa-pencil-square fa-2x" aria-hidden="true"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -157,16 +151,6 @@
     @elseif(session()->has('error'))
         <script>
             Command: toastr["error"]("{{ session()->get('error') }}", "¡Error!")
-            @include('partials.message')
-        </script>
-    @elseif(session()->has('warning'))
-        <script>
-            Command: toastr["warning"]("{{ session()->get('warning') }}", "¡Advertencia!")
-            @include('partials.message')
-        </script>
-    @elseif(session()->has('info'))
-        <script>
-            Command: toastr["info"]("{{ session()->get('info') }}", "¡Informacion!")
             @include('partials.message')
         </script>
     @endif
