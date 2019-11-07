@@ -45,7 +45,25 @@
                     <p>Editar usuario</p>
                 </a>
             </li>
-
+            
+            <div id="accordion2" role="tablist" class="nav-item">
+                <div class="card card-collapse nav-link">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                Reportes
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </a>
+                        </h5>
+                        <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('admin.agregar') }}">
+                                    <i class="material-icons">bar_chart</i>
+                                    <p>Productos más vendidos</p>
+                                </a>
+                            </li>
+                        </div>
+                </div>
+            </div>
             <div id="accordion" role="tablist" class="nav-item">
                 <div class="card card-collapse nav-link">
                         <h5 class="mb-0">
@@ -54,7 +72,6 @@
                                 <i class="material-icons">keyboard_arrow_down</i>
                             </a>
                         </h5>
-
                     <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                             <li class="nav-item ">
                                 <a class="nav-link" href="#">

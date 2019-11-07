@@ -56,6 +56,9 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
     Route::put('bloquearRol/{cod_tipo_usuario}', 'RolController@bloquearRol')->name('admin.bloquearRol');
 
     Route::get('agregar', 'EmpleadosController@create')->name('admin.agregar');
+    Route::get('dynamic_pdf', 'DynamicPDFController@index');
+
+    Route::get('dynamic_pdf/pdf', 'DynamicPDFController@pdf');
     Route::post('agregar', 'EmpleadosController@store')->name('admin.gagregar');
 });
 
