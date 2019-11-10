@@ -1,3 +1,10 @@
+@extends('layouts.material')
+
+@section('menuLateral')
+    @include('administrador.menuLateral')
+@endsection
+
+@section('contenido')
 
     <div class="container">
      <h3 align="center">PetFamily</h3><br />
@@ -7,7 +14,7 @@
        <h4>Productos más vendidos</h4>
       </div>
       <div class="col-md-5" align="right">
-       <a href="{{ url('dynamic_pdf/pdf') }}" class="btn btn-danger">Convert into PDF</a>
+       <a href="{{ route('pdf') }}" class="btn btn-danger">Obtener Reporte</a>
       </div>
      </div>
      <br />
@@ -32,3 +39,4 @@
       </table>
      </div>
     </div>
+@endsection

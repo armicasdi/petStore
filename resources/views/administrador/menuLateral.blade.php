@@ -54,9 +54,9 @@
                                 <i class="material-icons">keyboard_arrow_down</i>
                             </a>
                         </h5>
-                        <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                            <li class="nav-item ">
-                                <a class="nav-link" href="{{ route('admin.agregar') }}">
+                        <div id="collapse2" class="collapse @if($pagActual == 'reporte') show @endif" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                            <li class="nav-item {{ $pagActual == 'reporte' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.reporte') }}">
                                     <i class="material-icons">bar_chart</i>
                                     <p>Productos más vendidos</p>
                                 </a>

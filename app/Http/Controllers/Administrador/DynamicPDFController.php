@@ -4,28 +4,29 @@ namespace App\Http\Controllers\Administrador;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
+use Illuminate\Support\Facades\DB;
 use PDF;
 class DynamicPDFController extends Controller
 {
     public function index()
     {
-        $costumer_data = $this->get_costumer_data();
-        return view('dynamic_pdf')->with('costumer_data', $costumer_data);
+        $pagActual = "reporte";
+        $customer_data = $this->get_customer_data();
+        return view('administrador.dynamic_pdf',compact('customer_data','pagActual'));
     }
-    public function get_costumer_data()
+    public function get_customer_data()
     {
-        $costumer_data = DB::table('productos')
+        $customer_data = DB::table('productos')
         ->select('nombre', 'precio', 'cantidad')
-        ->orderBy('cantidad', 'asc')
+        ->orderBy('cantidad', 'desc')
         ->get();
-        return $costumer_data;
+        return $customer_data;
     }
     function pdf()
     {
      $pdf = \App::make('dompdf.wrapper');
      $pdf->loadHTML($this->convert_customer_data_to_html());
-     return $pdf->stream();
+     return $pdf->stream(); 
     }
 
     function convert_customer_data_to_html()
