@@ -58,7 +58,7 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
     Route::get('agregar', 'EmpleadosController@create')->name('admin.agregar');
     Route::get('dynamic_pdf', 'DynamicPDFController@index')->name('admin.reporte');
 
-    Route::get('dynamic_pdf/pdf', 'DynamicPDFController@pdf')->name('pdf');
+    Route::get('dynamic_pdf/pdf', 'DynamicPDFController@pdf')->name('pdf2');
     Route::post('agregar', 'EmpleadosController@store')->name('admin.gagregar');
 
     Route::get('reporteMascotas', 'ReporteMascotasController@index')->name('admin.reporteMascotas');

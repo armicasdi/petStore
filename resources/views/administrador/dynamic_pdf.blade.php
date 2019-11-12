@@ -16,7 +16,7 @@
        <h4>Creado por: {{ Auth::user()->empleados->nombres }} {{ Auth::user()->empleados->apellidos }}</h4>
       </div>
       <div class="col-md-5" align="right">
-       <a href="{{ route('pdf') }}" class="btn btn-danger">Obtener Reporte</a>
+       <a href="{{ route('pdf2') }}" class="btn btn-danger">Obtener Reporte</a>
       </div>
      </div>
      <br />
@@ -33,7 +33,7 @@
        @foreach($customer_data as $customer)
         <tr>
          <td>{{ $customer->nombre }}</td>
-         <td>{{ $customer->precio }}</td>
+         <td>$ {{ $customer->precio }}</td>
          <td>{{ $customer->cantidad }}</td>
         </tr>
        @endforeach
