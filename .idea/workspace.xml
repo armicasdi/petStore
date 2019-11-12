@@ -2,35 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/administrador/agregarUsuario.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/partials/usuario.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/actualizarMascota.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/actualizarPropietario.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/asignarMascota.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/editarMascota.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/editarPropietario.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaMascota.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/petStore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/petStore.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Empleados.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Empleados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrador/EmpleadosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/EmpleadosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrador/RolController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/RolController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/ConsultaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/ConsultaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/ControlVacunasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/ControlVacunasController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/MascotasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/MascotasController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/PeluqueriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/PeluqueriaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/PropietarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/PropietarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/mascota.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/mascota.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/propietario.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/propietario.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/agregarMascota.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/agregarMascota.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/consulta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/consulta.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/inicio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/inicio.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/menuLateral.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/menuLateral.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/nuevaConsulta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaConsulta.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/nuevaPeluqueria.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaPeluqueria.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/nuevaVacuna.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaVacuna.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -160,6 +134,11 @@
       <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
     </include_path>
   </component>
   <component name="ProjectId" id="1RodctkeCR22sJzbjviozvSkwct" />
@@ -170,7 +149,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/partials" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -250,6 +229,8 @@
       <workItem from="1571369909618" duration="7465000" />
       <workItem from="1571775433630" duration="405000" />
       <workItem from="1571805012235" duration="37867000" />
+      <workItem from="1573490114115" duration="4651000" />
+      <workItem from="1573508063979" duration="1198000" />
     </task>
     <task id="LOCAL-00001" summary="Modelos Creados">
       <created>1570604324861</created>
