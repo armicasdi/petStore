@@ -63,6 +63,8 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
 
     Route::get('reporteMascotas', 'ReporteMascotasController@index')->name('admin.reporteMascotas');
     Route::get('reporteMascotas/pdf', 'ReporteMascotasController@pdf')->name('pdf');
+
+    Route::get('chartjs', 'GraficaController@chartjs')->name('grafica');
 });
 
 /*

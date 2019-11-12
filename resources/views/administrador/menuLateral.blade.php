@@ -126,24 +126,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="accordion" role="tablist" class="nav-item">
-                <div class="card card-collapse nav-link">
-                        <h5 class="mb-0">
-                            <a data-toggle="collapse" href="#collapseDos" aria-expanded="true" aria-controls="collapseDos">
-                                Reportes 
-                                <i class="material-icons">keyboard_arrow_down</i>
-                            </a>
-                        </h5>
-                     <div id="collapseDos" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">
-                                    <i class="material-icons">bar_chart</i>
-                                    <p>Productos más Vendidos</p>
-                                </a>
-                            </li>
-                     </div>
-                    </div>
-                </div>
+                
         </ul>
     </div>
 </div>
