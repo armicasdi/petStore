@@ -25,8 +25,9 @@
        <thead>
         <tr>
          <th>Cod Expediente</th>
-         <th>Nombre</th>
+         <th>Nombre de la mascota</th>
          <th>Color</th>
+         <th>Creado</th>
         </tr>
        </thead>
        <tbody>
@@ -35,6 +36,7 @@
          <td>{{ $customer->cod_expediente }}</td>
          <td>{{ $customer->nombre }}</td>
          <td>{{ $customer->Color }}</td>
+         <td>{{ date('Y-m-d', strtotime($customer->fecha_creacion)) }}</td>
         </tr>
        @endforeach
        </tbody>

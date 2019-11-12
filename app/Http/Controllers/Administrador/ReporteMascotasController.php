@@ -22,9 +22,12 @@ class ReporteMascotasController extends Controller
     }
     public function get_customer_data()
     {
+        $mes = date('n');
+        $anio = date('y');
+        $time = strtotime($mes.'/01/'.$anio);
         $customer_data = DB::table('mascotas')
-        ->select('cod_expediente', 'nombre', 'Color')
-        ->where('fecha_creacion', '>=', date('Y-m-d').' 00:00:00')
+        ->select('cod_expediente', 'nombre', 'Color', 'fecha_creacion')
+        ->whereBetween(DB::raw('date(fecha_creacion)'), array(date('Y-m-d',$time), date('Y-m-t',$time)))
         ->get();
         return $customer_data;
     }
@@ -48,9 +51,10 @@ class ReporteMascotasController extends Controller
         <h3 align="center">Creado por: '.Auth::user()->empleados->nombres.' '.Auth::user()->empleados->apellidos.'</h3>
         <table width="100%" style="border-collapse: collapse; border: 0px;">
         <tr>
-        <th style="border: 1px solid; padding:12px;" width="40%">Cod Expediente</th>
-        <th style="border: 1px solid; padding:12px;" width="30%">Nombre</th>
-        <th style="border: 1px solid; padding:12px;" width="30%">color</th>
+        <th style="border: 1px solid; padding:12px;" width="25%">Cod expediente</th>
+        <th style="border: 1px solid; padding:12px;" width="25%">Nombre de la mascota</th>
+        <th style="border: 1px solid; padding:12px;" width="25%">Color</th>
+        <th style="border: 1px solid; padding:12px;" width="25%">Creado</th>
         </tr>
         ';  
         foreach($customer_data as $customer)
@@ -60,6 +64,7 @@ class ReporteMascotasController extends Controller
         <td style="border: 1px solid; padding:12px;">'.$customer->cod_expediente.'</td>
         <td style="border: 1px solid; padding:12px;">'.$customer->nombre.'</td>
         <td style="border: 1px solid; padding:12px;">'.$customer->Color.'</td>
+        <td style="border: 1px solid; padding:12px;">'.$customer->fecha_creacion.'</td>
         </tr>
         ';
         }
