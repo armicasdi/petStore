@@ -49,7 +49,7 @@ class DynamicPDFController extends Controller
       $output .= '
       <tr>
        <td style="border: 1px solid; padding:12px;">'.$customer->nombre.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$customer->precio.'</td>
+       <td style="border: 1px solid; padding:12px;">$ '.$customer->precio.'</td>
        <td style="border: 1px solid; padding:12px;">'.$customer->cantidad.'</td>
       </tr>
       ';
