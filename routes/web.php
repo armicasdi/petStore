@@ -60,6 +60,10 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
 
     Route::get('dynamic_pdf/pdf', 'DynamicPDFController@pdf')->name('pdf');
     Route::post('agregar', 'EmpleadosController@store')->name('admin.gagregar');
+
+//Grafica
+    Route::get('chartjs', 'GraficaController@chartjs')->name('grafica');
+
 });
 
 /*
