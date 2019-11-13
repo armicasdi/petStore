@@ -17,7 +17,7 @@
                 <h4>Creado por: {{ Auth::user()->empleados->nombres }} {{ Auth::user()->empleados->apellidos }}</h4>
             </div>
             <div class="col-md-5" align="right">
-                <a href="{{ route('pdf2') }}" class="btn btn-danger">Obtener Reporte</a>
+                <a href="{{ route('admin.reporteAtenciones', ['servicio' => $servicio, 'mes'=> $mes, 'year'=> $year, 'semana'=>$semana]) }}" class="btn btn-danger">Obtener Reporte</a>
             </div>
         </div>
         <br />

@@ -52,6 +52,18 @@
             </div>
             <br>
             <div class="form-group">
+                <label for="semana">Mes de Consulta</label>
+                <select class="form-control" id="semana" name="semana">
+                    <option value="all">Todas</option>
+                    <option value="1">Semana 1</option>
+                    <option value="2">Semana 2</option>
+                    <option value="3">Semana 3</option>
+                    <option value="4">Semana 4</option>
+
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
                 <label for="year">Año</label>
                 <select class="form-control" id="year" name="year">
                     <option value="2019">2019</option>
@@ -76,8 +88,9 @@
             console.log("Hola");
             let servicio = $('#servicio').val();
             let mes = $('#mes').val();
+            let semana = $('#semana').val();
             let year = $('#year').val();
-            window.location.href = '/administracion/registroAtencion/'+servicio+'/'+mes+'/'+year;
+            window.location.href = '/administracion/registroAtencion/'+servicio+'/'+mes+'/'+year+'/'+semana;
         })
         })
     </script>
