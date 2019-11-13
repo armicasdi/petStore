@@ -7,13 +7,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use Illuminate\Support\Facades\Auth;
-class DynamicPDFController extends Controller
+class ReporteProductosController extends Controller
 {
     public function index()
     {
         $pagActual = "reporte";
         $customer_data = $this->get_customer_data();
-        return view('administrador.dynamic_pdf',compact('customer_data','pagActual'));
+        return view('administrador.reporteproductos',compact('customer_data','pagActual'));
     }
     public function get_customer_data()
     {
