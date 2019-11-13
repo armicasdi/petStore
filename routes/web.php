@@ -71,6 +71,7 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
 
        //Historia 7
     Route::get('reporteAtencion', 'atencionMascotasReporte@index')->name('admin.reporteAtencion');
+    Route::get('registroAtencion/{servicio}/{mes}/{year}', 'atencionMascotasReporte@registro');
     Route::get('reporteAtencion/pdf', 'atencionMascotasReporte@pdf')->name('pdfAtencion');
 
 });
