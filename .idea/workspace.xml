@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/petStore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/petStore.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="Controlador y Vista de Reporte de Atencion listos. Faltan poblado de tabla y generacion de pdf">
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/atencionReporte.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/registroAtencion.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrador/AtencionMascotasReporte.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/AtencionMascotasReporte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/consulta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/consulta.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -230,7 +234,8 @@
       <workItem from="1571775433630" duration="405000" />
       <workItem from="1571805012235" duration="37867000" />
       <workItem from="1573490114115" duration="4651000" />
-      <workItem from="1573508063979" duration="1198000" />
+      <workItem from="1573508063979" duration="1235000" />
+      <workItem from="1573587562305" duration="6872000" />
     </task>
     <task id="LOCAL-00001" summary="Modelos Creados">
       <created>1570604324861</created>
@@ -294,6 +299,7 @@
     <MESSAGE value="Modelos Creados" />
     <MESSAGE value="Login Correcto" />
     <MESSAGE value="Relaciones Listas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Relaciones Listas" />
+    <MESSAGE value="Controlador y Vista de Reporte de Atencion listos. Faltan poblado de tabla y generacion de pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="Controlador y Vista de Reporte de Atencion listos. Faltan poblado de tabla y generacion de pdf" />
   </component>
 </project>

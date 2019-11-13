@@ -61,10 +61,19 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
     Route::get('reporteproductos/pdf', 'ReporteProductosController@pdf')->name('pdf2');
     Route::post('agregar', 'EmpleadosController@store')->name('admin.gagregar');
 
+
+    //Mascotas
     Route::get('reporteMascotas', 'ReporteMascotasController@index')->name('admin.reporteMascotas');
     Route::get('reporteMascotas/pdf', 'ReporteMascotasController@pdf')->name('pdf');
 
     Route::get('chartjs', 'GraficaController@chartjs')->name('grafica');
+
+
+       //Historia 7
+    Route::get('reporteAtencion', 'atencionMascotasReporte@index')->name('admin.reporteAtencion');
+    Route::get('registroAtencion/{servicio}/{mes}/{year}', 'atencionMascotasReporte@registro');
+    Route::get('reporteAtencion/pdf', 'atencionMascotasReporte@pdf')->name('pdfAtencion');
+
 });
 
 /*
