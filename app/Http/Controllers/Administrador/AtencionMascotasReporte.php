@@ -29,7 +29,7 @@ class atencionMascotasReporte extends Controller
             $data = Consulta::whereYear('fecha', '=', $year)
                 ->whereMonth('fecha', '=', $mes)
                 ->get();
-            return view('administrador.registroAtencion', compact('data', 'pagActual'));
+            return view('administrador.registroAtencion', compact('data', 'pagActual', 'servicio', 'mes'));
         }
 
         if($servicio == "Peluqueria"){
@@ -37,7 +37,7 @@ class atencionMascotasReporte extends Controller
             $data = Peluqueria::whereYear('fecha', '=', $year)
                 ->whereMonth('fecha', '=', $mes)
                 ->get();
-            return view('administrador.registroAtencion', compact('data', 'pagActual'));
+            return view('administrador.registroAtencion', compact('data', 'pagActual', 'servicio', 'mes'));
         }
 
         if($servicio == "Control_Vacunas"){
@@ -46,7 +46,7 @@ class atencionMascotasReporte extends Controller
                 ->whereMonth('fecha', '=', $mes)
                 ->with('mascota.raza','mascota.propietario','empleados')
                 ->get();
-            return view('administrador.registroAtencion', compact('data', 'pagActual'));
+            return view('administrador.registroAtencion', compact('data', 'pagActual', 'servicio', 'mes'));
         }
 
 

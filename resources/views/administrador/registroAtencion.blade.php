@@ -22,23 +22,32 @@
         </div>
         <br />
         <div class="table-responsive">
+            <h3>Servicio: {{$servicio}}</h3>
+
+            <h3>Atendidos: {{count($data)}} </h3>
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
+                    <th>Codigo </th>
                     <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
+                    <th>Raza</th>
+                    <th>Fecha</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($data as $customer)
                     <tr>
-                        <td>{{ $customer->peso }}</td>
+                        <td>{{ $customer->cod_expediente }}</td>
                         <td>{{ $customer->mascota->nombre }}</td>
+                        <td>{{ $customer->mascota->raza->raza }}</td>
+
+                        <td>{{date('d-m-Y', strtotime($customer->fecha))}}</td>
+
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
+
     </div>
 @endsection
