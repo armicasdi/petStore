@@ -8,8 +8,10 @@ use App\Http\Controllers\Controller;
 use App\Mascota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 class DashboardController extends Controller
 {
     /**
@@ -21,9 +23,9 @@ class DashboardController extends Controller
     {
         //Consulta gráfica
         $viewer = DB::table('consulta')
-        ->select(DB::raw('count(cod_consulta) as cod_count')) 
+        ->select(DB::raw('count(cod_consulta) as cod_count'))
         ->where('estado','=',1)
-        ->groupBy(DB::raw('year(fecha)')) 
+        ->groupBy(DB::raw('year(fecha)'))
         ->get()->toArray();
         $viewer = array_column($viewer, 'cod_count');
 
