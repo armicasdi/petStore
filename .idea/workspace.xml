@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/Mantto/BodegaController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/Mantto/EspecieController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/Mantto/RazaController.php" afterDir="false" />
@@ -41,6 +42,12 @@
       <change beforePath="$PROJECT_DIR$/app/vacunas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vacunas.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrador/AtencionMascotasReporte.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/AtencionMascotasReporte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/administrador/atencionReporte.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/administrador/atencionReporte.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" afterDir="false" />
+>>>>>>> 1464e84c1d8cbec249ace1c83275e534d89b29cc
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,6 +177,11 @@
       <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
     </include_path>
   </component>
   <component name="ProjectId" id="1RodctkeCR22sJzbjviozvSkwct" />
@@ -180,7 +192,11 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/administrador/mantto" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+>>>>>>> 1464e84c1d8cbec249ace1c83275e534d89b29cc
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -260,6 +276,7 @@
       <workItem from="1571369909618" duration="7465000" />
       <workItem from="1571775433630" duration="405000" />
       <workItem from="1571805012235" duration="37867000" />
+<<<<<<< HEAD
       <workItem from="1572232768518" duration="90000" />
       <workItem from="1572237495585" duration="520000" />
       <workItem from="1572238117827" duration="613000" />
@@ -267,6 +284,12 @@
       <workItem from="1573617593333" duration="2219000" />
       <workItem from="1573705290454" duration="28086000" />
       <workItem from="1573741876938" duration="4416000" />
+=======
+      <workItem from="1573490114115" duration="4651000" />
+      <workItem from="1573508063979" duration="1235000" />
+      <workItem from="1573587562305" duration="6872000" />
+      <workItem from="1573689023755" duration="3596000" />
+>>>>>>> 1464e84c1d8cbec249ace1c83275e534d89b29cc
     </task>
     <task id="LOCAL-00001" summary="Modelos Creados">
       <created>1570604324861</created>
@@ -296,7 +319,21 @@
       <option name="project" value="LOCAL" />
       <updated>1570665604819</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Vista Previa creada y terminada....falta generar pdf de Atencion a Mascotas">
+      <created>1573668304388</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573668304388</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Terminada Historia 7. Generacion de Reportes">
+      <created>1573686146526</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1573686146526</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +367,10 @@
     <MESSAGE value="Modelos Creados" />
     <MESSAGE value="Login Correcto" />
     <MESSAGE value="Relaciones Listas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Relaciones Listas" />
+    <MESSAGE value="Controlador y Vista de Reporte de Atencion listos. Faltan poblado de tabla y generacion de pdf" />
+    <MESSAGE value="Vista Previa creada y terminada....falta generar pdf de Atencion a Mascotas" />
+    <MESSAGE value="Terminada Historia 7. Generacion de Reportes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Terminada Historia 7. Generacion de Reportes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -8,8 +8,13 @@ use App\Http\Controllers\Controller;
 use App\Mascota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+<<<<<<< HEAD
 
 
+=======
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+>>>>>>> 1464e84c1d8cbec249ace1c83275e534d89b29cc
 class DashboardController extends Controller
 {
     /**
@@ -19,6 +24,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        //Consulta gráfica
+        $viewer = DB::table('consulta')
+        ->select(DB::raw('count(cod_consulta) as cod_count')) 
+        ->where('estado','=',1)
+        ->groupBy(DB::raw('year(fecha)')) 
+        ->get()->toArray();
+        $viewer = array_column($viewer, 'cod_count');
+
 
         $pagActual = 'dashboard';
         $year = date("Y");
@@ -29,7 +42,7 @@ class DashboardController extends Controller
         $mAtendidasMes = Consulta::where('fecha','like',"$year-$mes-%")->where('estado','=',1)->count();
         $mTotal = Mascota::all()->count();
 
-        return view('administrador.inicio',compact('mAtendidas','mAtendidasSemana','mAtendidasMes','mTotal','pagActual'));
+        return view('administrador.inicio',compact('mAtendidas','mAtendidasSemana','mAtendidasMes','mTotal','pagActual','viewer')) ->with('viewer',json_encode($viewer,JSON_NUMERIC_CHECK));
     }
 
     /**

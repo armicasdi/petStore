@@ -33,6 +33,7 @@
                     <p>Roles</p>
                 </a>
             </li>
+
             <li class="nav-item {{ $pagActual == 'agregar' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.agregar') }}">
                     <i class="material-icons">add_box</i>
@@ -46,6 +47,36 @@
                 </a>
             </li>
 
+            <div id="accordion2" role="tablist" class="nav-item">
+                <div class="card card-collapse nav-link">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                Reportes
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </a>
+                        </h5>
+                        <div id="collapse2" class="collapse @if($pagActual == 'reporte' || $pagActual == 'reporteMascotas' || $pagActual == 'Reporte de Atencion') show @endif" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                            <li class="nav-item {{ $pagActual == 'reporte' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.reporte') }}">
+                                    <i class="material-icons">bar_chart</i>
+                                    <p>Productos más vendidos</p>
+                                </a>
+                            </li>
+                            <li class="nav-item {{ $pagActual == 'reporteMascotas' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.reporteMascotas') }}">
+                                    <i class="material-icons">bar_chart</i>
+                                    <p>Reporte de mascotas</p>
+                                </a>
+                            </li>
+                            <li class="nav-item {{ $pagActual == 'Reporte de Atencion' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.reporteAtencion') }}">
+                                    <i class="material-icons">bar_chart</i>
+                                    <p>Reporte de Atenciones</p>
+                                </a>
+                            </li>
+                        </div>
+                </div>
+            </div>
             <div id="accordion" role="tablist" class="nav-item">
                 <div class="card card-collapse nav-link">
                         <h5 class="mb-0">
@@ -54,10 +85,22 @@
                                 <i class="material-icons">keyboard_arrow_down</i>
                             </a>
                         </h5>
+<<<<<<< HEAD
 
                     <div id="collapseOne" class="collapse @if($pagActual == 'vacunas' || $pagActual == 'servicios' || $pagActual == 'especies' || $pagActual == 'bodegas' || $pagActual == 'tiposProductos'|| $pagActual == 'razas') show @endif" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                             <li class="nav-item {{ $pagActual == 'vacunas' ? 'active' : '' }} ">
                                 <a class="nav-link" href="{{ route('vacunas') }}">
+=======
+                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">
+                                    <i class="material-icons">table_chart</i>
+                                    <p>Especialidades</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#">
+>>>>>>> 1464e84c1d8cbec249ace1c83275e534d89b29cc
                                     <i class="material-icons">table_chart</i>
                                     <p>Vacunas</p>
                                 </a>
@@ -97,7 +140,6 @@
                         </div>
                     </div>
                 </div>
-
 
         </ul>
     </div>
