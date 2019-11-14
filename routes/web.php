@@ -61,7 +61,6 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
     Route::get('reporteproductos/pdf', 'ReporteProductosController@pdf')->name('pdf2');
     Route::post('agregar', 'EmpleadosController@store')->name('admin.gagregar');
 
-<<<<<<< HEAD
     // MANTENIMIENTO
     Route::get('vacunas', 'Mantto\VacunasController@index')->name('vacunas');
     Route::get('vacunasfagregar', 'Mantto\VacunasController@create')->name('vacuna.fagregar');
@@ -110,7 +109,6 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
     Route::put('raza/{cod_raza}', 'Mantto\RazaController@update')->name('raza.actualizar');
     Route::delete('raza/{cod_raza}', 'Mantto\RazaController@destroy')->name('raza.eliminar');
     Route::put('razaBloquear/{cod_raza}', 'Mantto\RazaController@bloquear')->name('raza.bloquear');
-=======
 
     //Mascotas
     Route::get('reporteMascotas', 'ReporteMascotasController@index')->name('admin.reporteMascotas');
@@ -124,8 +122,6 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
     Route::get('registroAtencion/{servicio}/{mes}/{year}/{semana?}', 'atencionMascotasReporte@registro');
     Route::get('registroAtencion/{servicio}/{mes}/{year}/{semana?}/pdf', 'atencionMascotasReporte@pdf')->name('admin.reporteAtenciones');
 
-
->>>>>>> 1464e84c1d8cbec249ace1c83275e534d89b29cc
 });
 
 /*

@@ -77,7 +77,8 @@
                         </div>
                 </div>
             </div>
-            <div id="accordion" role="tablist" class="nav-item">
+            {{-- End arcordion2--}}
+            <div id="accordion" role="tablist" class="nav-item pb-5">
                 <div class="card card-collapse nav-link">
                         <h5 class="mb-0">
                             <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -85,22 +86,10 @@
                                 <i class="material-icons">keyboard_arrow_down</i>
                             </a>
                         </h5>
-<<<<<<< HEAD
 
-                    <div id="collapseOne" class="collapse @if($pagActual == 'vacunas' || $pagActual == 'servicios' || $pagActual == 'especies' || $pagActual == 'bodegas' || $pagActual == 'tiposProductos'|| $pagActual == 'razas') show @endif" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapseOne" class="collapse @if($pagActual == 'vacunas' || $pagActual == 'servicios' || $pagActual == 'especies' || $pagActual == 'bodegas' || $pagActual == 'tiposProductos'|| $pagActual == 'razas') show @endif" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                             <li class="nav-item {{ $pagActual == 'vacunas' ? 'active' : '' }} ">
                                 <a class="nav-link" href="{{ route('vacunas') }}">
-=======
-                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">
-                                    <i class="material-icons">table_chart</i>
-                                    <p>Especialidades</p>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">
->>>>>>> 1464e84c1d8cbec249ace1c83275e534d89b29cc
                                     <i class="material-icons">table_chart</i>
                                     <p>Vacunas</p>
                                 </a>
@@ -136,11 +125,11 @@
                                     <p>Tipo producto</p>
                                 </a>
                             </li>
-
                         </div>
                     </div>
-                </div>
-
+            </div>
+            {{-- End arcordion--}}
         </ul>
+
     </div>
 </div>
