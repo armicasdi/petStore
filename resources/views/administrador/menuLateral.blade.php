@@ -55,7 +55,7 @@
                                 <i class="material-icons">keyboard_arrow_down</i>
                             </a>
                         </h5>
-                        <div id="collapse2" class="collapse @if($pagActual == 'reporte' || $pagActual == 'reporteMascotas') show @endif" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapse2" class="collapse @if($pagActual == 'reporte' || $pagActual == 'reporteMascotas' || $pagActual == 'Reporte de Atencion') show @endif" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                             <li class="nav-item {{ $pagActual == 'reporte' ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('admin.reporte') }}">
                                     <i class="material-icons">bar_chart</i>
@@ -68,7 +68,6 @@
                                     <p>Reporte de mascotas</p>
                                 </a>
                             </li>
-
                             <li class="nav-item {{ $pagActual == 'Reporte de Atencion' ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('admin.reporteAtencion') }}">
                                     <i class="material-icons">bar_chart</i>
