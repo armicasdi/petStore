@@ -24,7 +24,7 @@ class atencionMascotasReporte extends Controller
     public function registro($servicio, $mes, $year, $semana=NULL)
     {
         if (isset($semana)) {
-            if ($semana=="all"){
+            if ($semana=="todas"){
                 global $from, $to;
                 $from = 1;
                 $to = 31;
@@ -86,7 +86,7 @@ class atencionMascotasReporte extends Controller
     {
 
         if (isset($semana)){
-            if($semana == "all"){
+            if($semana == "todas"){
                 global $from1, $to1;
                 $from1 = 1;
                 $to1 = 31;
@@ -153,16 +153,19 @@ class atencionMascotasReporte extends Controller
     function convert_customer_data_to_html($servicio, $mes, $year, $semana)
     {
         setlocale(LC_TIME, 'spanish');
-        $mes_actual = date('n');
-        $dateObj   = DateTime::createFromFormat('!m', $mes_actual);
+
+        $dateObj   = DateTime::createFromFormat('!m', $mes);
         $monthName = strftime('%B', $dateObj->getTimestamp());
 
         $customer_data = $this->registroPdf($servicio, $mes, $year, $semana);
 
         $output = '
-        <h3 align="center">Mascotas generadas en el mes de '. $monthName .' </h3>
+        <h3 align="center">Mascotas atendidas en el mes de '. $monthName .' </h3>
         <h3 align="center">Generado: '.date('d-m-Y h:i:s a').' </h3>
         <h3 align="center">Creado por: '.Auth::user()->empleados->nombres.' '.Auth::user()->empleados->apellidos.'</h3>
+        <h3>Servicio: '.$servicio .'</h3>
+        <h3>Atendidos: '.count($customer_data) .'</h3>
+        <h3>Semana: '.$semana.'</h3>
         <table width="100%" style="border-collapse: collapse; border: 0px;">
         <tr>
         <th style="border: 1px solid; padding:12px;" width="25%">Cod expediente</th>

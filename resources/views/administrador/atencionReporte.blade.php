@@ -54,7 +54,7 @@
             <div class="form-group">
                 <label for="semana">Mes de Consulta</label>
                 <select class="form-control" id="semana" name="semana">
-                    <option value="all">Todas</option>
+                    <option value="todas">Todas</option>
                     <option value="1">Semana 1</option>
                     <option value="2">Semana 2</option>
                     <option value="3">Semana 3</option>

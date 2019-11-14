@@ -33,7 +33,7 @@
                     <p>Roles</p>
                 </a>
             </li>
-            
+
             <li class="nav-item {{ $pagActual == 'agregar' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.agregar') }}">
                     <i class="material-icons">add_box</i>
@@ -46,7 +46,7 @@
                     <p>Editar usuario</p>
                 </a>
             </li>
-            
+
             <div id="accordion2" role="tablist" class="nav-item">
                 <div class="card card-collapse nav-link">
                         <h5 class="mb-0">
@@ -66,6 +66,13 @@
                                 <a class="nav-link" href="{{ route('admin.reporteMascotas') }}">
                                     <i class="material-icons">bar_chart</i>
                                     <p>Reporte de mascotas</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item {{ $pagActual == 'Reporte de Atencion' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('admin.reporteAtencion') }}">
+                                    <i class="material-icons">bar_chart</i>
+                                    <p>Reporte de Atenciones</p>
                                 </a>
                             </li>
                         </div>
@@ -126,7 +133,7 @@
                         </div>
                     </div>
                 </div>
-                
+
         </ul>
     </div>
 </div>
