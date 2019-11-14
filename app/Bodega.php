@@ -3,11 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bodega extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'bodega';
     protected $primaryKey = 'cod_bodega';
+    public $timestamps = false;
     protected $fillable = [
         'nombre',
     ];

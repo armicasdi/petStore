@@ -14,3 +14,11 @@
 
 @endsection
 
+@section('jsExtra')
+    @if(session()->has('error'))
+        <script>
+            Command: toastr["error"]("{{ session()->get('error') }}", "¡Error!")
+            @include('partials.message')
+        </script>
+    @endif
+@endsection

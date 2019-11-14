@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Mascota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
+
 
 class DashboardController extends Controller
 {

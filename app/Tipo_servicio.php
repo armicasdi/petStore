@@ -3,11 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tipo_servicio extends Model
 {
+
+    use SoftDeletes;
+
     protected $table = 'tipo_servicio';
     protected $primaryKey = 'cod_tipo_servicio';
+    public $timestamps = false;
     protected $fillable = [
         'servicio',
     ];

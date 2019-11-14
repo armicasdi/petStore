@@ -40,7 +40,7 @@ Route::get('/accesoNoAutorizado', 'NoAutorizadoController@index')->name('noAutor
  *  AUTENTICACION DE USUARIOS
  * */
 Auth::routes(['confirm' => false]);
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 /*
  *  ADMINISTRACION
@@ -57,6 +57,55 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
 
     Route::get('agregar', 'EmpleadosController@create')->name('admin.agregar');
     Route::post('agregar', 'EmpleadosController@store')->name('admin.gagregar');
+
+    // MANTENIMIENTO
+    Route::get('vacunas', 'Mantto\VacunasController@index')->name('vacunas');
+    Route::get('vacunasfagregar', 'Mantto\VacunasController@create')->name('vacuna.fagregar');
+    Route::post('vacunas', 'Mantto\VacunasController@store')->name('vacuna.agregar');
+    Route::get('vacunasfactuzaliar/{cod_vacuna}', 'Mantto\VacunasController@edit')->name('vacuna.factualizar');
+    Route::put('vacunas/{cod_vacuna}', 'Mantto\VacunasController@update')->name('vacuna.actualizar');
+    Route::delete('vacunas/{cod_vacuna}', 'Mantto\VacunasController@destroy')->name('vacuna.eliminar');
+    Route::put('vacunasBloquear/{cod_vacuna}', 'Mantto\VacunasController@bloquear')->name('vacuna.bloquear');
+
+    Route::get('servicios', 'Mantto\ServiciosPeluqueriaController@index')->name('servicios');
+    Route::get('serviciosfagregar', 'Mantto\ServiciosPeluqueriaController@create')->name('servicio.fagregar');
+    Route::post('servicios', 'Mantto\ServiciosPeluqueriaController@store')->name('servicio.agregar');
+    Route::get('serviciosfactuzaliar/{cod_tipo_servicio}', 'Mantto\ServiciosPeluqueriaController@edit')->name('servicio.factualizar');
+    Route::put('servicios/{cod_tipo_servicio}', 'Mantto\ServiciosPeluqueriaController@update')->name('servicio.actualizar');
+    Route::delete('servicios/{cod_tipo_servicio}', 'Mantto\ServiciosPeluqueriaController@destroy')->name('servicio.eliminar');
+    Route::put('serviciosBloquear/{cod_tipo_servicio}', 'Mantto\ServiciosPeluqueriaController@bloquear')->name('servicio.bloquear');
+
+    Route::get('especies', 'Mantto\EspecieController@index')->name('especies');
+    Route::get('especiefagregar', 'Mantto\EspecieController@create')->name('especie.fagregar');
+    Route::post('especie', 'Mantto\EspecieController@store')->name('especie.agregar');
+    Route::get('especiefactuzaliar/{cod_especie}', 'Mantto\EspecieController@edit')->name('especie.factualizar');
+    Route::put('especie/{cod_especie}', 'Mantto\EspecieController@update')->name('especie.actualizar');
+    Route::delete('especie/{cod_especie}', 'Mantto\EspecieController@destroy')->name('especie.eliminar');
+    Route::put('especieBloquear/{cod_especie}', 'Mantto\EspecieController@bloquear')->name('especie.bloquear');
+
+    Route::get('bodegas', 'Mantto\BodegaController@index')->name('bodegas');
+    Route::get('bodegafagregar', 'Mantto\BodegaController@create')->name('bodega.fagregar');
+    Route::post('bodega', 'Mantto\BodegaController@store')->name('bodega.agregar');
+    Route::get('bodegafactuzaliar/{cod_bodega}', 'Mantto\BodegaController@edit')->name('bodega.factualizar');
+    Route::put('bodega/{cod_bodega}', 'Mantto\BodegaController@update')->name('bodega.actualizar');
+    Route::delete('bodega/{cod_bodega}', 'Mantto\BodegaController@destroy')->name('bodega.eliminar');
+    Route::put('bodegaBloquear/{cod_bodega}', 'Mantto\BodegaController@bloquear')->name('bodega.bloquear');
+
+    Route::get('tiposProductos', 'Mantto\TipoProductoController@index')->name('tiposProductos');
+    Route::get('tipoProductofagregar', 'Mantto\TipoProductoController@create')->name('tipoProducto.fagregar');
+    Route::post('tipoProducto', 'Mantto\TipoProductoController@store')->name('tipoProducto.agregar');
+    Route::get('tipoProductofactuzaliar/{cod_tipo_producto}', 'Mantto\TipoProductoController@edit')->name('tipoProducto.factualizar');
+    Route::put('tipoProducto/{cod_tipo_producto}', 'Mantto\TipoProductoController@update')->name('tipoProducto.actualizar');
+    Route::delete('tipoProducto/{cod_tipo_producto}', 'Mantto\TipoProductoController@destroy')->name('tipoProducto.eliminar');
+    Route::put('tipoProductoBloquear/{cod_tipo_producto}', 'Mantto\TipoProductoController@bloquear')->name('tipoProducto.bloquear');
+
+    Route::get('razas', 'Mantto\RazaController@index')->name('razas');
+    Route::get('razafagregar', 'Mantto\RazaController@create')->name('raza.fagregar');
+    Route::post('raza', 'Mantto\RazaController@store')->name('raza.agregar');
+    Route::get('razafactuzaliar/{cod_raza}', 'Mantto\RazaController@edit')->name('raza.factualizar');
+    Route::put('raza/{cod_raza}', 'Mantto\RazaController@update')->name('raza.actualizar');
+    Route::delete('raza/{cod_raza}', 'Mantto\RazaController@destroy')->name('raza.eliminar');
+    Route::put('razaBloquear/{cod_raza}', 'Mantto\RazaController@bloquear')->name('raza.bloquear');
 });
 
 /*

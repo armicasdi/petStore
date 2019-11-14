@@ -5,11 +5,11 @@
 @endsection
 
 @section('contenido')
-    <form action="{{ route('vacuna.agregar') }}" method="POST">
+    <form action="{{ route('bodega.agregar') }}" method="POST">
         @csrf
-        @include('partials.vacuna')
+        @include('partials.bodega')
         <button type="submit" class="btn btn-primary mr-5">Guardar</button>
-        <a class="btn btn-primary" href="{{ route('vacunas') }}"> Cancelar</a>
+        <a class="btn btn-primary" href="{{ route('bodegas') }}"> Cancelar</a>
     </form>
 
 @endsection

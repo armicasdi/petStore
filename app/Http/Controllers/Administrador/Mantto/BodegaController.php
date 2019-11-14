@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Administrador\Mantto;
 
+use App\Bodega;
 use App\Http\Controllers\Controller;
+use App\vacunas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BodegaController extends Controller
 {
@@ -14,7 +17,9 @@ class BodegaController extends Controller
      */
     public function index()
     {
-        //
+        $pagActual = 'bodegas';
+        $bodegas = Bodega::all();
+        return view('administrador.mantto.bodegas', compact('bodegas','pagActual'));
     }
 
     /**
@@ -24,7 +29,8 @@ class BodegaController extends Controller
      */
     public function create()
     {
-        //
+        $pagActual = 'bodegas';
+        return view('administrador.mantto.bodegaAgregar', compact('pagActual'));
     }
 
     /**
@@ -35,19 +41,31 @@ class BodegaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nombre' => ['required','max:45','string'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('bodega.fagregar')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $bodega = new Bodega;
+        $bodega->fill([
+            'nombre' => $request->nombre,
+        ]);
+
+        $success = $bodega->save();
+
+        if(!$success){
+            return redirect()->route('bodegas')->with('error', 'Error al agrear al registro');
+        }
+
+        return redirect()->route('bodegas')->with('success', 'Registro agreado correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -55,9 +73,12 @@ class BodegaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($cod_bodega)
     {
-        //
+        $pagActual = 'bodegas';
+        $bodega = Bodega::findOrFail($cod_bodega);
+
+        return view('administrador.mantto.bodegaActualizar', compact('bodega','pagActual'));
     }
 
     /**
@@ -67,9 +88,35 @@ class BodegaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $cod_bodega)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nombre' => ['required','max:45','string'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('bodega.factualizar',compact('cod_bodega'))
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $bodega = Bodega::findOrFail($cod_bodega);
+
+        if($request->nombre != $bodega->nombre){
+            $bodega->nombre = $request->nombre;
+        }
+
+        if($bodega->isClean()){
+            return redirect()->route('bodega.factualizar',compact('cod_bodega'))->with('error','Debes especificar un valor diferente')->withInput();
+        }
+
+        $success = $bodega->save();
+
+        if(!$success){
+            return redirect()->route('bodega.factualizar')->with('error', 'Error al agrear al registro');
+        }
+
+        return redirect()->route('bodegas')->with('success', 'Registro agreado correctamente');
     }
 
     /**
@@ -78,8 +125,23 @@ class BodegaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($cod_bodega)
     {
-        //
+        $success = Bodega::findOrFail($cod_bodega)->delete();
+        if(!$success){
+            return redirect()->route('bodegas')->with('error', 'Error al eliminar el registro');
+        }
+        return redirect()->route('bodegas')->with('success', 'Reguistro eliminado correctamente');
+    }
+
+    public function bloquear($cod_bodega){
+
+        $bodega = Bodega::findOrFail($cod_bodega);
+        $bodega->is_active = ! $bodega->is_active;
+        $sucess = $bodega->save();
+        if(!$sucess){
+            return redirect()->route('bodegas')->with('error', 'Error al actulizar el registro de la bodega');
+        }
+        return redirect()->route('bodegas')->with('success', 'Reguistro actualizado correctamente');
     }
 }

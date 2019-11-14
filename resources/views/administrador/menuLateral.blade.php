@@ -55,45 +55,40 @@
                             </a>
                         </h5>
 
-                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">
-                                    <i class="material-icons">table_chart</i>
-                                    <p>Especialidades</p>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">
+                    <div id="collapseOne" class="collapse @if($pagActual == 'vacunas' || $pagActual == 'servicios' || $pagActual == 'especies' || $pagActual == 'bodegas' || $pagActual == 'tiposProductos'|| $pagActual == 'razas') show @endif" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                            <li class="nav-item {{ $pagActual == 'vacunas' ? 'active' : '' }} ">
+                                <a class="nav-link" href="{{ route('vacunas') }}">
                                     <i class="material-icons">table_chart</i>
                                     <p>Vacunas</p>
                                 </a>
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">
+                            <li class="nav-item {{ $pagActual == 'servicios' ? 'active' : '' }} ">
+                                <a class="nav-link" href="{{ route('servicios') }}">
                                     <i class="material-icons">table_chart</i>
                                     <p>Servicios peluqueria</p>
                                 </a>
-                            </li> <li class="nav-item ">
-                                <a class="nav-link" href="#">
+                            </li>
+                            <li class="nav-item {{ $pagActual == 'especies' ? 'active' : '' }} ">
+                                <a class="nav-link" href="{{ route('especies') }}">
                                     <i class="material-icons">table_chart</i>
                                     <p>Especies</p>
                                 </a>
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">
+                            <li class="nav-item {{ $pagActual == 'razas' ? 'active' : '' }} ">
+                                <a class="nav-link" href="{{ route('razas') }}">
                                     <i class="material-icons">table_chart</i>
                                     <p>Razas</p>
                                 </a>
                             </li>
 
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">
+                            <li class="nav-item {{ $pagActual == 'bodegas' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('bodegas') }}">
                                     <i class="material-icons">table_chart</i>
                                     <p>Bodega</p>
                                 </a>
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">
+                            <li class="nav-item {{ $pagActual == 'tiposProductos' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('tiposProductos') }}">
                                     <i class="material-icons">table_chart</i>
                                     <p>Tipo producto</p>
                                 </a>

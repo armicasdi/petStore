@@ -5,12 +5,12 @@
 @endsection
 
 @section('contenido')
-    <form action="{{ route('vacuna.actualizar', ['cod_vacuna' => $vacuna->cod_vacuna]) }}" method="POST">
+    <form action="{{ route('especie.actualizar', ['cod_especie' => $especie->cod_especie]) }}" method="POST">
         @csrf
         @method('PUT')
-        @include('partials.vacuna')
+        @include('partials.especie')
         <button type="submit" class="btn btn-primary mr-5">Guardar</button>
-        <a class="btn btn-primary" href="{{ route('vacunas') }}"> Cancelar</a>
+        <a class="btn btn-primary" href="{{ route('especies') }}"> Cancelar</a>
     </form>
 
 @endsection

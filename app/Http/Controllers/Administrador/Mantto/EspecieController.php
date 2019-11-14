@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Administrador\Mantto;
 
 use App\Http\Controllers\Controller;
+use App\Especie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class EspecieController extends Controller
 {
@@ -14,7 +16,9 @@ class EspecieController extends Controller
      */
     public function index()
     {
-        //
+        $pagActual = 'especies';
+        $especies = Especie::all();
+        return view('administrador.mantto.especies', compact('especies','pagActual'));
     }
 
     /**
@@ -24,7 +28,8 @@ class EspecieController extends Controller
      */
     public function create()
     {
-        //
+        $pagActual = 'especies';
+        return view('administrador.mantto.especieAgregar', compact('pagActual'));
     }
 
     /**
@@ -35,19 +40,30 @@ class EspecieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'especie' => ['required','max:50','string'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('especie.fagregar')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $especie = new Especie;
+        $especie->fill([
+            'especie' => $request->especie,
+        ]);
+
+        $success = $especie->save();
+
+        if(!$success){
+            return redirect()->route('especies')->with('error', 'Error al agrear al registro');
+        }
+
+        return redirect()->route('especies')->with('success', 'Registro agreado correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -55,9 +71,12 @@ class EspecieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($cod_especie)
     {
-        //
+        $pagActual = 'especies';
+        $especie = Especie::findOrFail($cod_especie);
+
+        return view('administrador.mantto.especieActualizar', compact('especie','pagActual'));
     }
 
     /**
@@ -67,9 +86,36 @@ class EspecieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $cod_especie)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'especie' => ['required','max:50','string'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('especie.factualizar',compact('cod_especie'))
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $especie = Especie::findOrFail($cod_especie);
+
+        if($request->especie != $especie->especie){
+            $especie->especie = $request->especie;
+        }
+
+        if($especie->isClean()){
+            return redirect()->route('especies.factualizar',compact('cod_especie'))->with('error','Debes especificar un valor diferente')->withInput();
+        }
+
+        $success = $especie->save();
+
+        if(!$success){
+            return redirect()->route('especies.factualizar')->with('error', 'Error al agrear al registro');
+        }
+
+        return redirect()->route('especies')->with('success', 'Registro agreado correctamente');
+
     }
 
     /**
@@ -78,8 +124,25 @@ class EspecieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($cod_especie)
     {
-        //
+        $success = Especie::findOrFail($cod_especie)->delete();
+        if(!$success){
+            return redirect()->route('especies')->with('error', 'Error al eliminar el registro');
+        }
+        return redirect()->route('especies')->with('success', 'Reguistro eliminado correctamente');
     }
+
+
+    public function bloquear($cod_especie){
+
+        $especie= Especie::findOrFail($cod_especie);
+        $especie->is_active = ! $especie->is_active;
+        $sucess = $especie->save();
+        if(!$sucess){
+            return redirect()->route('especies')->with('error', 'Error al actulizar el registro de la especies');
+        }
+        return redirect()->route('especies')->with('success', 'Reguistro actualizado correctamente');
+    }
+
 }

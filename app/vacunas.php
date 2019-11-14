@@ -3,11 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class vacunas extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'vacunas';
     protected $primaryKey = 'cod_vacuna';
+    public $timestamps = false;
+
     protected $fillable = [
         'vacuna',
     ];

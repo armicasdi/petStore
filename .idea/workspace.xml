@@ -2,34 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa6fa813-8e53-426e-b66a-2dec0b442ffc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/administrador/agregarUsuario.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/partials/usuario.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/actualizarMascota.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/actualizarPropietario.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/asignarMascota.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/editarMascota.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/editarPropietario.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaMascota.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/Mantto/BodegaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/Mantto/EspecieController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/Mantto/RazaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/Mantto/ServiciosPeluqueriaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/Mantto/TipoProductoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/Mantto/VacunasController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/bodegaActualizar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/bodegaAgregar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/bodegas.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/especieActualizar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/especieAgregar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/especies.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/razaActualizar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/razaAgregar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/razas.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/servicioActualizar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/servicioAgregar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/servicios.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/tipoProductoActualizar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/tipoProductoAgregar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/tiposProductos.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/vacunaActualizar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/vacunaAgregar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/administrador/mantto/vacunas.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/bodega.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/especie.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/raza.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/servicio.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/tipoProducto.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/vacuna.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Empleados.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Empleados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrador/EmpleadosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/EmpleadosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrador/RolController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/RolController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/ConsultaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/ConsultaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/ControlVacunasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/ControlVacunasController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/MascotasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/MascotasController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/PeluqueriaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/PeluqueriaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/PropietarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Secretaria/PropietarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Bodega.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Bodega.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Administrador/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Administrador/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tipo_producto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tipo_producto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tipo_servicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tipo_servicio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/vacunas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vacunas.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/administrador/menuLateral.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/mascota.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/mascota.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/propietario.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/propietario.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/agregarMascota.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/agregarMascota.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/consulta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/consulta.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/inicio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/inicio.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/menuLateral.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/menuLateral.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/nuevaConsulta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaConsulta.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/nuevaPeluqueria.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaPeluqueria.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/secretaria/nuevaVacuna.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/secretaria/nuevaVacuna.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -170,7 +180,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/partials" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/administrador/mantto" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -183,11 +193,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\administrador\mantto" />
       <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\partials" />
       <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\secretaria" />
       <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\administrador" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\resources\views\peluqueria" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\OSCAR MELGAR\Desktop\petfamily\public\css\material" />
@@ -250,6 +260,13 @@
       <workItem from="1571369909618" duration="7465000" />
       <workItem from="1571775433630" duration="405000" />
       <workItem from="1571805012235" duration="37867000" />
+      <workItem from="1572232768518" duration="90000" />
+      <workItem from="1572237495585" duration="520000" />
+      <workItem from="1572238117827" duration="613000" />
+      <workItem from="1573354072877" duration="2927000" />
+      <workItem from="1573617593333" duration="2219000" />
+      <workItem from="1573705290454" duration="28086000" />
+      <workItem from="1573741876938" duration="4416000" />
     </task>
     <task id="LOCAL-00001" summary="Modelos Creados">
       <created>1570604324861</created>
@@ -314,5 +331,16 @@
     <MESSAGE value="Login Correcto" />
     <MESSAGE value="Relaciones Listas" />
     <option name="LAST_COMMIT_MESSAGE" value="Relaciones Listas" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/Administrador/DashboardController.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

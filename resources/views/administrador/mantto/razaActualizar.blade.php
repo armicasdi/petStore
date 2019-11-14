@@ -5,20 +5,20 @@
 @endsection
 
 @section('contenido')
-    <form action="{{ route('vacuna.actualizar', ['cod_vacuna' => $vacuna->cod_vacuna]) }}" method="POST">
+    <form action="{{ route('raza.actualizar', ['cod_raza' => $raza->cod_raza]) }}" method="POST">
         @csrf
         @method('PUT')
-        @include('partials.vacuna')
+        @include('partials.raza')
         <button type="submit" class="btn btn-primary mr-5">Guardar</button>
-        <a class="btn btn-primary" href="{{ route('vacunas') }}"> Cancelar</a>
+        <a class="btn btn-primary" href="{{ route('razas') }}"> Cancelar</a>
     </form>
 
 @endsection
 
 @section('jsExtra')
-    @if(session()->has('error'))
+    @if(session()->has('info'))
         <script>
-            Command: toastr["error"]("{{ session()->get('error') }}", "¡Error!")
+            Command: toastr["info"]("{{ session()->get('info') }}", "¡Advertencia!")
             @include('partials.message')
         </script>
     @endif
