@@ -1,4 +1,4 @@
-<div class="card card-nav-tabs">
+  <div class="card card-nav-tabs">
     <div class="card-header card-header-primary">
         Aregar raza
     </div>
