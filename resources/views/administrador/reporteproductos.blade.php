@@ -7,16 +7,18 @@
 @section('contenido')
 
     <div class="container">
-     <h3 align="center">PetFamily</h3><br />
+     <div><img src=" {{ asset('img/logo.png') }}" alt="logo.png" style="height: 6rem; width:6rem;" class="logo_dashboard"></div>  <br />
      
      <div class="row">
-      <div class="col-md-7" align="right">
+      <div class="col-md-7" align="left">
        <h4>Productos más vendidos</h4>
        <h4>Generado: {{ date('d-m-Y h:i:s a') }}</h4>
        <h4>Creado por: {{ Auth::user()->empleados->nombres }} {{ Auth::user()->empleados->apellidos }}</h4>
       </div>
       <div class="col-md-5" align="right">
+         
        <a href="{{ route('pdf2') }}" class="btn btn-danger">Obtener Reporte</a>
+      
       </div>
      </div>
      <br />
