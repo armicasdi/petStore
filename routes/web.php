@@ -24,6 +24,7 @@ Route::get('/', function () {
  * */
 
 Route::get('razas/{id}', 'FuncionesComunesController@obtenerRazas');
+Route::get('informacion/{cod_usuario}', 'FuncionesComunesController@informacion')->middleware('auth')->name('informacion');
 
 /*
  * PERFIL BLOQUEADO
@@ -41,6 +42,13 @@ Route::get('/accesoNoAutorizado', 'NoAutorizadoController@index')->name('noAutor
  * */
 Auth::routes(['confirm' => false]);
 //Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+ *  PASSWORD RESET
+ */
+
+Route::post('passwordReset', 'Administrador\PasswordController@update')->name('passwordReset');
+
 
 /*
  *  ADMINISTRACION
@@ -116,11 +124,14 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
 
     Route::get('chartjs', 'GraficaController@chartjs')->name('grafica');
 
-
        //Historia 7
     Route::get('reporteAtencion', 'atencionMascotasReporte@index')->name('admin.reporteAtencion');
     Route::get('registroAtencion/{servicio}/{mes}/{year}/{semana?}', 'atencionMascotasReporte@registro');
     Route::get('registroAtencion/{servicio}/{mes}/{year}/{semana?}/pdf', 'atencionMascotasReporte@pdf')->name('admin.reporteAtenciones');
+
+    Route::get('passwordfsolicitudes','PasswordController@index')->name('password.fsolicitudes');
+    Route::put('passwordCancelar/{cod_usuario}','PasswordController@cancelar')->name('password.cancelar');
+    Route::put('password/{cod_usuario}','PasswordController@cambio')->name('password.cambio');
 
 });
 

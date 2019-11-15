@@ -12,7 +12,14 @@
             <div class="card">
 
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Usuarios registrados</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4 class="card-title ">Usuarios registrados</h4>
+                        </div>
+                        <div class="col-6 card-title text-right pr-5">
+                            <a href="{{ route('admin.agregar') }}"> <i class="fa fa-plus-square fa-lg mr-2"></i>Nuevo usuario</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body">

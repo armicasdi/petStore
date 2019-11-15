@@ -17,7 +17,8 @@ class Usuarios extends Authenticatable
         'password',
         'is_active',
         'isLogged',
-        'cod_tipo_usuario'
+        'cod_tipo_usuario',
+        'reset_pass'
     ];
 
     protected $hidden = [

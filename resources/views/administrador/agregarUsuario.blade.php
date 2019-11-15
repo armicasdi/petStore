@@ -39,7 +39,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary mr-5">Guardar</button>
-        <a  class="btn btn-primary" href="{{ route('admin.agregar') }}"> Cancelar</a>
+        <a  class="btn btn-primary" href="{{ route('admin.empleados') }}"> Cancelar</a>
     </form>
 
 @endsection

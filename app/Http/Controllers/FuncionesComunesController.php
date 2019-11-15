@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Especie;
 use App\Raza;
+use App\Usuarios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FuncionesComunesController extends Controller
 {
@@ -15,5 +17,13 @@ class FuncionesComunesController extends Controller
         }else{
             return '';
         }
+    }
+
+    public function informacion($cod_usuario){
+
+        $usuario = Usuarios::findOrFail($cod_usuario)->with('tipo_usuario','empleados');
+        dd($usuario);
+
+        return view('comun.informacion');
     }
 }

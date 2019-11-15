@@ -38,7 +38,7 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        $pagActual = 'agregar';
+        $pagActual = 'usuarios';
         $tipos_usuario = Tipo_usuario::all();
         $generos = Genero::all();
         return view('administrador.agregarUsuario',compact('tipos_usuario','generos','pagActual'));

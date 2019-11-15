@@ -21,31 +21,41 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item {{ $pagActual == 'usuarios' ? 'active' : '' }}">
-                <a class="nav-link" href=" {{ route('admin.empleados') }}">
-                    <i class="material-icons">security</i>
-                    <p>Usuarios</p>
-                </a>
-            </li>
-            <li class="nav-item {{ $pagActual == 'roles' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.roles') }}">
-                    <i class="material-icons">security</i>
-                    <p>Roles</p>
-                </a>
-            </li>
 
-            <li class="nav-item {{ $pagActual == 'agregar' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.agregar') }}">
-                    <i class="material-icons">add_box</i>
-                    <p>Agregar usuario</p>
-                </a>
-            </li>
-            <li class="nav-item {{ $pagActual == 'editar' ? 'active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">create</i>
-                    <p>Editar usuario</p>
-                </a>
-            </li>
+
+            <div id="accordion3" role="tablist" class="nav-item">
+                <div class="card card-collapse nav-link">
+                    <h5 class="mb-0">
+                        <a data-toggle="collapse" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                            Gestion de Usuarios
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </a>
+                    </h5>
+                    <div id="collapse3" class="collapse @if($pagActual == 'usuarios' || $pagActual == 'roles' || $pagActual == 'agregar' || $pagActual == 'editar' || $pagActual == 'password') show @endif" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+
+                        <li class="nav-item {{ $pagActual == 'usuarios' ? 'active' : '' }}">
+                            <a class="nav-link" href=" {{ route('admin.empleados') }}">
+                                <i class="material-icons">security</i>
+                                <p>Usuarios</p>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ $pagActual == 'roles' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.roles') }}">
+                                <i class="material-icons">security</i>
+                                <p>Roles</p>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ $pagActual == 'password' ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('password.fsolicitudes') }}">
+                                <i class="material-icons">vpn_key</i>
+                                <p>Resetear contraseña</p>
+                            </a>
+                        </li>
+
+                    </div>
+                </div>
+            </div>
+            {{-- end collapse3--}}
 
             <div id="accordion2" role="tablist" class="nav-item">
                 <div class="card card-collapse nav-link">
