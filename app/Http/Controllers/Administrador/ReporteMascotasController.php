@@ -33,9 +33,9 @@ class ReporteMascotasController extends Controller
     }
     function pdf()
     {
-     $pdf = \App::make('dompdf.wrapper');
-     $pdf->loadHTML($this->convert_customer_data_to_html());
-     return $pdf->stream();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($this->convert_customer_data_to_html());
+        return $pdf->stream();
     }
 
     function convert_customer_data_to_html()
@@ -47,9 +47,7 @@ class ReporteMascotasController extends Controller
 
 
         $customer_data = $this->get_customer_data();
-
-
-
+        
         $output = '
         <img src="../public/img/logo.png" width="75px align="left"><h2 align="center">Mascotas generadas en el mes de '. $monthName .' </h2>
         <p align="left">Generado: '.date('d-m-Y h:i:s a').' </p>

@@ -92,7 +92,7 @@
     var barChartData = {
         labels: year,
         datasets: [{
-            label: 'Consultas generadas por año',
+            label: 'Mascotas registradas por año',
             backgroundColor: "rgba(151,187,205,0.5)",
             data: data_viewer
         }]
@@ -115,7 +115,7 @@
                 responsive: true,
                 title: {
                     display: true,
-                    text: 'Gráfica consulta'
+                    text: 'Gráfica Mascotas'
                 }
             }
         });

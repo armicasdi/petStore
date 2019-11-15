@@ -22,10 +22,9 @@ class DashboardController extends Controller
     public function index()
     {
         //Consulta gráfica
-        $viewer = DB::table('consulta')
-        ->select(DB::raw('count(cod_consulta) as cod_count'))
-        ->where('estado','=',1)
-        ->groupBy(DB::raw('year(fecha)'))
+        $viewer = DB::table('mascotas')
+        ->select(DB::raw('count(cod_expediente) as cod_count'))
+        ->groupBy(DB::raw('year(fecha_creacion)'))
         ->get()->toArray();
         $viewer = array_column($viewer, 'cod_count');
 
