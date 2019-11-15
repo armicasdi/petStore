@@ -7,30 +7,30 @@
 @section('contenido')
 
     <div class="container">
-     <h3 align="center">PetFamily</h3><br />
+     <h3 align="center"><b>PetFamily</b></h3><br />
      
      <div class="row">
       <div class="col-md-7" align="right">
-       <h4>Mascotas registradas en el mes de {{ $nombre_mes }}</h4>
+       <h4><b>Mascotas registradas en el mes de {{ $nombre_mes }}</b></h4>
        <h4>Generado: {{ date('d-m-Y h:i:s a') }}</h4>
        <h4>Creado por: {{ Auth::user()->empleados->nombres }} {{ Auth::user()->empleados->apellidos }}</h4>
       </div>
       <div class="col-md-5" align="right">
-       <a href="{{ route('pdf') }}" class="btn btn-danger">Obtener Reporte</a>
+       <a href="{{ route('pdf') }}" class="btn btn-danger" target="_blank">Obtener Reporte</a>
       </div>
      </div>
      <br />
      <div class="table-responsive">
-      <table class="table table-striped table-bordered">
-       <thead>
+      <table class="table table-bordered table-hover">
+       <thead class="thead-dark bold">
         <tr>
-         <th>Cod Expediente</th>
-         <th>Nombre de la mascota</th>
-         <th>Color</th>
-         <th>Creado</th>
+         <th><b>Cod Expediente</b></th>
+         <th><b>Nombre de la mascota</b></th>
+         <th><b> Color </b></th>
+         <th><b> Fecha de Creacion</b></th>
         </tr>
        </thead>
-       <tbody>
+       <tbody class="">
        @foreach($customer_data as $customer)
         <tr>
          <td>{{ $customer->cod_expediente }}</td>

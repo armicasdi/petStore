@@ -34,9 +34,9 @@ class ReporteProductosController extends Controller
     {
      $customer_data = $this->get_customer_data();
      $output = '
-     <h3 align="center">Productos más vendidos</h3>
-     <h3 align="center">Generado: '.date('d-m-Y h:i:s a').' </h3>
-     <h3 align="center">Creado por: '.Auth::user()->empleados->nombres.' '.Auth::user()->empleados->apellidos.'</h3>
+     <img src="../public/img/logo.png" width="75px align="left"><h2 align="center">Productos más vendidos</h2>
+     <p align="left">Generado: '.date('d-m-Y h:i:s a').' </p>
+     <p align="left">Creado por: '.Auth::user()->empleados->nombres.' '.Auth::user()->empleados->apellidos.'</p>
      <table width="100%" style="border-collapse: collapse; border: 0px;">
       <tr>
     <th style="border: 1px solid; padding:12px;" width="40%">Nombre</th>

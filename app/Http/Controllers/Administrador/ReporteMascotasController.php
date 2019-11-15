@@ -51,15 +51,15 @@ class ReporteMascotasController extends Controller
 
 
         $output = '
-        <h3 align="center">Mascotas generadas en el mes de '. $monthName .' </h3>
-        <h3 align="center">Generado: '.date('d-m-Y h:i:s a').' </h3>
-        <h3 align="center">Creado por: '.Auth::user()->empleados->nombres.' '.Auth::user()->empleados->apellidos.'</h3>
+        <img src="../public/img/logo.png" width="75px align="left"><h2 align="center">Mascotas generadas en el mes de '. $monthName .' </h2>
+        <p align="left">Generado: '.date('d-m-Y h:i:s a').' </p>
+        <p align="rigth">Creado por: '.Auth::user()->empleados->nombres.' '.Auth::user()->empleados->apellidos.'</p>
         <table width="100%" style="border-collapse: collapse; border: 0px;">
         <tr>
-        <th style="border: 1px solid; padding:12px;" width="25%">Cod expediente</th>
+        <th style="border: 1px solid; padding:12px;" width="25%">Numero expediente</th>
         <th style="border: 1px solid; padding:12px;" width="25%">Nombre de la mascota</th>
         <th style="border: 1px solid; padding:12px;" width="25%">Color</th>
-        <th style="border: 1px solid; padding:12px;" width="25%">Creado</th>
+        <th style="border: 1px solid; padding:12px;" width="25%">Fecha de creacion</th>
         </tr>
         ';
         foreach($customer_data as $customer)
