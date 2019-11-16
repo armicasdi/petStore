@@ -128,9 +128,13 @@ class EmpleadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($cod_usuario)
     {
-        //
+        $pagActual = 'usuarios';
+        $usuario = Usuarios::findOrFail($cod_usuario);
+        $usuario->empleados->genero;
+        $usuario->tipo_usuario;
+        return view('administrador.informacionEmpleado', compact('usuario','pagActual'));
     }
 
     /**
@@ -139,9 +143,9 @@ class EmpleadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($cod_empleado)
     {
-        //
+
     }
 
     /**
@@ -151,9 +155,74 @@ class EmpleadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $cod_usuario)
     {
-        //
+        $usuario = Usuarios::findOrFail($cod_usuario);
+
+        $validator = Validator::make($request->all(), [
+            'nombres'           => ['required','max:50','string'],
+            'apellidos'         => ['required','max:50','string'],
+            'dui'               => ['required','max:10','min:9'],
+            'fech_nac'          => ['required','date'],
+            'telefono1'         => ['required','max:9'],
+            'telefono2'         => ['max:9'],
+            'correo'            => ['required','email'],
+            'direccion'         => ['required','max:200','string'],
+            'usuario'           => ['required','unique:usuarios,usuario,' . $usuario->cod_usuario . ',cod_usuario'],
+            'cod_tipo_usuario'  => ['required'],
+            'cod_genero'        => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('admin.empleadofactualizar',(['cod_usuario' => $cod_usuario]))
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+
+        DB::beginTransaction();
+        try{
+
+            $usuario->fill([
+                'usuario'    => $request['usuario'],
+                'cod_tipo_usuario' => $request['cod_tipo_usuario'],
+            ]);
+            $success = $usuario->save();
+
+            if($success){
+                $empleado = Empleados::findOrfail($cod_usuario);
+                $empleado->fill([
+                    'nombres'       => $request['nombres'],
+                    'apellidos'     => $request['apellidos'],
+                    'dui'           => $request['dui'],
+                    'fech_nac'      => $request['fech_nac'],
+                    'genero'        => $request['genero'],
+                    'telefono1'     => $request['telefono1'],
+                    'telefono2'     => $request['telefono2'],
+                    'correo'        => $request['correo'],
+                    'direccion'     => $request['direccion'],
+                    'cod_usuario'   => $usuario->cod_usuario,
+                    'cod_genero'    => $request['cod_genero'],
+                ]);
+
+                $success = $empleado->save();
+
+                if($success){
+                    DB::commit();
+                }else{
+                    DB::rollBack();
+                    return redirect()->route('admin.empleados')->with('error', 'Error al actualizar el registro del empleado');
+                }
+            }else{
+                DB::rollBack();
+                return redirect()->route('admin.empleados')->with('error', 'Error al actulizar el registro del usuario');
+            }
+        }catch (\Exception $e){
+            DB::rollBack();
+            return redirect()->route('admin.empleados')->with('error', 'Error al actualizar el registro');
+        }
+
+        return redirect()->route('admin.empleados')->with('success', 'Registro actualizado correctamente');
     }
 
     /**
@@ -162,11 +231,15 @@ class EmpleadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($cod_usuario)
     {
-        //
-    }
+        $success = Usuarios::findOrFail($cod_usuario)->delete();
 
+        if(!$success){
+            return redirect()->route('admin.empleados')->with('error', 'Error al eliminar el registro');
+        }
+        return redirect()->route('admin.empleados')->with('success', 'Reguistro eliminado correctamente');
+    }
     /**
      * @param $cod_usuario
      * @return \Illuminate\Http\RedirectResponse
@@ -180,6 +253,17 @@ class EmpleadosController extends Controller
             return redirect()->route('admin.empleados')->with('error', 'Error al actulizar el registro del usuario');
         }
         return redirect()->route('admin.empleados')->with('success', 'Reguistro actualizado correctamente');
+    }
+
+    public function fupdate($cod_usuario){
+        $pagActual = 'usuarios';
+        $empleado = Empleados::findOrFail($cod_usuario);
+        $empleado->genero;
+        $empleado->usuario->tipo_usuario;
+        $generos = Genero::all();
+        $tipos_usuarios = Tipo_usuario::where('isActive',1)->get();
+
+        return view('administrador.editarUsuario', compact('empleado','generos','tipos_usuarios','pagActual'));
     }
 
 }

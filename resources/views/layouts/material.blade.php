@@ -48,8 +48,8 @@
                                 <i class="material-icons">person</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                <a class="dropdown-item" href="#">Perfil</a>
-                                <a class="dropdown-item" href="#">Cambiar contraseña</a>
+                                <a class="dropdown-item" href="{{ route('informacion',(['cod_usuario'=>Auth::user()->cod_usuario])) }}">Perfil</a>
+                                <a class="dropdown-item" href="{{ route('cambio.fpass') }}">Cambiar contraseña</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href=" {{ route('logout') }}"
                                    onclick="event.preventDefault();

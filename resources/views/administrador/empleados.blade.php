@@ -104,15 +104,41 @@
                                                 </td>
                                         @endif
                                         <td>
-                                            <a href="#" title="Mostrar">
+                                            <a href="{{ route('admin.empleado',(['cod_usuario'=>$empleado->cod_usuario])) }}" title="Mostrar">
                                                 <i class="fa fa-eye fa-lg mr-2" aria-hidden="true"></i>
                                             </a>
-                                            <a href="#" title="Editar">
+                                            <a href="{{ route('admin.empleadofactualizar',(['cod_usuario'=>$empleado->cod_usuario])) }}" title="Editar">
                                                 <i class="fa fa-pencil-square fa-lg ml-2 mr-2" aria-hidden="true"></i>
                                             </a>
-                                            <a href="#" title="Eliminar">
+                                            <a href="#" title="Eliminar" data-toggle="modal" data-target="#eliminar{{ $empleado->cod_usuario }}">
                                                 <i class="fa fa-trash fa-lg ml-2" aria-hidden="true"></i>
                                             </a>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="eliminar{{ $empleado->cod_usuario }}" tabindex="-1" role="dialog" aria-labelledby="eliminarm{{ $empleado->cod_usuario }}" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header text-center">
+                                                            <h5 class="modal-title" id="eliminarm{{ $empleado->cod_usuario }}">Eliminar usuario</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Esta seguro de eliminar el registro del usuario, si lo hace ya no tendra acceso al sistema
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                            <form action="{{ route('admin.empleadoEliminar',['cod_usuario'=>$empleado->cod_usuario]) }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <input type="submit" class="btn btn-danger">
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- End modal--}}
                                         </td>
                                     </tr>
                                 @endforeach

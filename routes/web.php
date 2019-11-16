@@ -24,7 +24,13 @@ Route::get('/', function () {
  * */
 
 Route::get('razas/{id}', 'FuncionesComunesController@obtenerRazas');
-Route::get('informacion/{cod_usuario}', 'FuncionesComunesController@informacion')->middleware('auth')->name('informacion');
+Route::group(['middleware'=> 'auth'], function () {
+    Route::get('informacion/{cod_usuario}', 'FuncionesComunesController@informacion')->name('informacion');
+    Route::get('informacionfpass', 'FuncionesComunesController@cambioPass')->name('cambio.fpass');
+    Route::put('informacion', 'FuncionesComunesController@cambioPassUpdate')->name('cambio.update');
+});
+
+
 
 /*
  * PERFIL BLOQUEADO
@@ -59,6 +65,11 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
 
     Route::get('empleados', 'EmpleadosController@index')->name('admin.empleados');
     Route::put('bloquear/{cod_usuario}', 'EmpleadosController@bloquearEmpleado')->name('admin.bloquear');
+    Route::get('empleado/{cod_usuario}', 'EmpleadosController@show')->name('admin.empleado');
+    Route::get('empleadoActualizar/{cod_usuario}', 'EmpleadosController@fupdate')->name('admin.empleadofactualizar');
+    Route::put('empleadoActualizar/{cod_usuario}', 'EmpleadosController@update')->name('admin.empleadoActualizar');
+    Route::delete('empleadoEliminar/{cod_usuario}', 'EmpleadosController@destroy')->name('admin.empleadoEliminar');
+
 
     Route::get('roles', 'RolController@index')->name('admin.roles');
     Route::put('bloquearRol/{cod_tipo_usuario}', 'RolController@bloquearRol')->name('admin.bloquearRol');
