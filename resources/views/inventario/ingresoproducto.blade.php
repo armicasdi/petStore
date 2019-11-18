@@ -67,7 +67,7 @@
     mask: '$num',
     blocks: {
       num: {
-        // nested masks are available!
+        // Script para validar
         mask: Number,
         thousandsSeparator: ', '
         
