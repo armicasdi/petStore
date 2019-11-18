@@ -18,6 +18,7 @@
                     <div class="form-group">
                         <label for="Proveedor">Proveedor</label>
                         <select class="form-control" id="Proveedor">
+                            <option selected="selected">Seleccione Proveedor</option>
                         @foreach($proveedor as $proveedores)
                         <option value="{{ $proveedores->cod_proveedor }}">{{ $proveedores->nombre_comercial }}</option>
                         @endforeach
