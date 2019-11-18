@@ -9,6 +9,7 @@
 @endsection
 
 @section('contenido')
+
 <div class="containter">
     <div class="row">
         <div class="col-12 text-center">
@@ -44,10 +45,10 @@
       </div>
       <div class="modal-body">
        
-            <input type="number" class="form-control" placeholder="cantidad">
-            <input type="text" class="form-control" placeholder="producto">
-            <input type="number" class="form-control" placeholder="precio">
-            <input type="date" class="form-control" placeholder="fecha vencimiento">
+            <input type="number" class="form-control" placeholder="Cantidad">
+            <input type="text" class="form-control" placeholder="Producto">
+             <input type="text" class="form-control" name="currency-field" id="currency-field" placeholder="Precio">
+            <input type="date" class="form-control" placeholder="Fecha vencimiento">
           
       </div>
       <div class="modal-footer">
@@ -58,4 +59,21 @@
   </div>
 </div>
 </form>
+<script src="https://unpkg.com/imask"></script>
+<script>
+ var currencyMask = IMask(
+  document.getElementById('currency-field'),
+  {
+    mask: '$num',
+    blocks: {
+      num: {
+        // nested masks are available!
+        mask: Number,
+        thousandsSeparator: ', '
+        
+      }
+    }
+  });
+
+</script>
 @endsection
