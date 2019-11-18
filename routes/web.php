@@ -187,7 +187,10 @@ Route::group(['prefix'=>'veterinario', 'namespace' =>'Veterinario', 'middleware'
  * */
 Route::group(['prefix'=>'inventario', 'namespace' =>'Inventario'],function (){
     Route::get('dashboard', 'DashboardController@index')->name('inventario.dashboard')->middleware('auth','inventario');
+
+    Route::get('ingresoproducto','IngresoProductoController@index')->name('inventario.ingreso')->middleware('auth', 'inventario');
 });
+
 
 
 

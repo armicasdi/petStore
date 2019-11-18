@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Inventario;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-class DashboardController extends Controller
+use Illuminate\Support\Facades\DB;
+class IngresoProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,22 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $pagActual = 'dashboard';
-        return view('inventario.inicio', compact('pagActual'));
+        $pagActual= 'ingreso';
+        $proveedor = $this->traer_proveedor();
+        return view('inventario.ingresoproducto', compact('pagActual', 'proveedor'));
+
+
+    }
+    public function traer_proveedor(){
+          $proveedor = DB::table('proveedores')
+        ->select('*')
+        ->orderBy('cod_proveedor', 'asc')
+        ->where('is_active','=',0)
+        ->get();
+        return $proveedor;
+    }
+    public function ingresar_producto(){
+        $ingreso = DB::table('')
     }
 
     /**
