@@ -29,7 +29,7 @@ class IngresoProductoController extends Controller
         return $proveedor;
     }
     public function ingresar_producto(){
-
+        return 'hola';
     }
 
     /**

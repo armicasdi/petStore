@@ -189,6 +189,7 @@ Route::group(['prefix'=>'inventario', 'namespace' =>'Inventario'],function (){
     Route::get('dashboard', 'DashboardController@index')->name('inventario.dashboard')->middleware('auth','inventario');
 
     Route::get('ingresoproducto','IngresoProductoController@index')->name('inventario.ingreso')->middleware('auth', 'inventario');
+    Route::post('ingresoproducto', 'IngresoProductoController@ingresar_producto')->name('inventario.crear')->middleware('auth', 'inventario');
 });
 
 
