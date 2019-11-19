@@ -28,8 +28,17 @@ class IngresoProductoController extends Controller
         ->get();
         return $proveedor;
     }
-    public function ingresar_producto(){
-        return 'hola';
+    public function ingresar_producto(Request $request){
+        $datos=array(
+        array('cantida'=> $request->get('cantidad'), 'valor'=> $request->get('precio'), 'fecha_vencimiento'=> $request->get('fechav'))      
+
+        );
+        $query_insert = DB::table('detalles_entrada')->insert($datos);
+    return redirect('inventario.ingreso');
+
+
+    Model::insert($datos); 
+    DB::table('detalles_entrada')->insert($datos); 
     }
 
     /**

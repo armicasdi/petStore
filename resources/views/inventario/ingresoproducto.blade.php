@@ -26,10 +26,10 @@
                                     @endforeach
                                     </select>
                                 </div>
-                                <input type="number" name="cantidad" id="cantidad"  class="form-control" placeholder="Cantidad">
-                                <input type="text" name="producto" id="producto" class="form-control" placeholder="Producto">
-                                <input type="text"  class="form-control" name="currency-field" id="currency-field" placeholder="Precio">
-                                <input type="date" name="fechav" id="fechav" class="form-control" placeholder="Fecha vencimiento">
+                                <input type="number" name="cantidad[]" id="cantidad[]"  class="form-control" placeholder="Cantidad">
+                                <input type="text" name="producto[]" id="producto[]" class="form-control" placeholder="Producto">
+                                <input type="text"  class="form-control" name="precio[]" id="precio[]" placeholder="Precio">
+                                <input type="date" name="fechav[]" id="fechav[]" class="form-control" placeholder="Fecha vencimiento">
                             </div>
                             <button type="submit" class="btn btn-primary" >Agregar</button>
                         </form>
@@ -41,7 +41,7 @@
             <script src="https://unpkg.com/imask"></script>
             <script>
             var currencyMask = IMask(
-            document.getElementById('currency-field'),
+            document.getElementById('precio'),
             {
                 mask: '$num',
                 blocks: {
@@ -49,7 +49,6 @@
                     // Script para validar
                     mask: Number,
                     thousandsSeparator: ', '
-
                 }
                 }
             });
