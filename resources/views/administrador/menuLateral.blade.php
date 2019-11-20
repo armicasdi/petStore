@@ -125,6 +125,15 @@
                                     <p>Tipo producto</p>
                                 </a>
                             </li>
+
+                            <li class="nav-item {{ $pagActual == 'proveedores' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('proveedores') }}">
+                                    <i class="material-icons">table_chart</i>
+                                    <p>Proveedores</p>
+                                </a>
+                            </li>
+
+
                         </div>
                     </div>
             </div>

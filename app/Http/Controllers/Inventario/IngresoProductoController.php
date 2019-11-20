@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Inventario;
 
 use App\Http\Controllers\Controller;
+use App\Tipo_producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class IngresoProductoController extends Controller
@@ -16,7 +17,8 @@ class IngresoProductoController extends Controller
     {
         $pagActual= 'ingreso';
         $proveedor = $this->traer_proveedor();
-        return view('inventario.ingresoproducto', compact('pagActual', 'proveedor'));
+        $tipo = $this->traer_tipo_producto();
+        return view('inventario.ingresoproducto', compact('pagActual', 'proveedor', 'tipo'));
 
 
     }
@@ -28,17 +30,25 @@ class IngresoProductoController extends Controller
         ->get();
         return $proveedor;
     }
+
+    public function traer_tipo_producto(){
+        $tipoProducto = Tipo_producto::all();
+        return $tipoProducto;
+
+
+    }
+
     public function ingresar_producto(Request $request){
         $datos=array(
-        array('cantida'=> $request->get('cantidad'), 'valor'=> $request->get('precio'), 'fecha_vencimiento'=> $request->get('fechav'))      
+        array('cantida'=> $request->get('cantidad'), 'valor'=> $request->get('precio'), 'fecha_vencimiento'=> $request->get('fechav'))
 
         );
         $query_insert = DB::table('detalles_entrada')->insert($datos);
     return redirect('inventario.ingreso');
 
 
-    Model::insert($datos); 
-    DB::table('detalles_entrada')->insert($datos); 
+    Model::insert($datos);
+    DB::table('detalles_entrada')->insert($datos);
     }
 
     /**

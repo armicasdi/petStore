@@ -94,6 +94,8 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
     Route::delete('bodega/{cod_bodega}', 'Mantto\BodegaController@destroy')->name('bodega.eliminar');
     Route::put('bodegaBloquear/{cod_bodega}', 'Mantto\BodegaController@bloquear')->name('bodega.bloquear');
 
+    //Tipo Producto
+
     Route::get('tiposProductos', 'Mantto\TipoProductoController@index')->name('tiposProductos');
     Route::get('tipoProductofagregar', 'Mantto\TipoProductoController@create')->name('tipoProducto.fagregar');
     Route::post('tipoProducto', 'Mantto\TipoProductoController@store')->name('tipoProducto.agregar');
@@ -101,6 +103,20 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
     Route::put('tipoProducto/{cod_tipo_producto}', 'Mantto\TipoProductoController@update')->name('tipoProducto.actualizar');
     Route::delete('tipoProducto/{cod_tipo_producto}', 'Mantto\TipoProductoController@destroy')->name('tipoProducto.eliminar');
     Route::put('tipoProductoBloquear/{cod_tipo_producto}', 'Mantto\TipoProductoController@bloquear')->name('tipoProducto.bloquear');
+
+
+    //Proveedores
+
+
+    Route::get('proveedores', 'Mantto\proveedores@index')->name('proveedores');
+    Route::get('proveedoresAgregar', 'Mantto\proveedores@create')->name('proveedores.agregar');
+    Route::post('tipoProducto', 'Mantto\TipoProductoController@store')->name('proveedorpost.agregar');
+    /*Route::get('tipoProductofactuzaliar/{cod_tipo_producto}', 'Mantto\TipoProductoController@edit')->name('tipoProducto.factualizar');
+    Route::put('tipoProducto/{cod_tipo_producto}', 'Mantto\TipoProductoController@update')->name('tipoProducto.actualizar');
+    Route::delete('tipoProducto/{cod_tipo_producto}', 'Mantto\TipoProductoController@destroy')->name('tipoProducto.eliminar');
+    Route::put('tipoProductoBloquear/{cod_tipo_producto}', 'Mantto\TipoProductoController@bloquear')->name('tipoProducto.bloquear');*/
+
+    //Fin Proveedores
 
     Route::get('razas', 'Mantto\RazaController@index')->name('razas');
     Route::get('razafagregar', 'Mantto\RazaController@create')->name('raza.fagregar');

@@ -26,6 +26,21 @@
                                     @endforeach
                                     </select>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="tipoProducto">Tipo de Producto</label>
+                                    <select class="form-control" id="tipoProducto">
+                                        <option selected="selected">Seleccione Tipo de Producto</option>
+                                        @foreach($tipo as $tipo)
+                                            @if($tipo->is_active == 1){
+                                            <option value="{{ $tipo->cod_tipo_producto }}">{{ $tipo->tipo_producto }}</option>
+                                            }
+                                        @endif
+
+                                        @endforeach
+                                    </select>
+                                </div>
+
                                 <input type="number" name="cantidad[]" id="cantidad[]"  class="form-control" placeholder="Cantidad">
                                 <input type="text" name="producto[]" id="producto[]" class="form-control" placeholder="Producto">
                                 <input type="text"  class="form-control" name="precio[]" id="precio[]" placeholder="Precio">
