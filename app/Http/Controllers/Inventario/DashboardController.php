@@ -14,7 +14,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('inventario.inicio');
+        $pagActual = "dashboard";
+        return view('inventario.inicio', compact('pagActual'));
     }
 
     /**

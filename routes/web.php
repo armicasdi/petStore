@@ -207,8 +207,10 @@ Route::group(['prefix'=>'veterinario', 'namespace' =>'Veterinario', 'middleware'
 /*
  *  INVENTARIO
  * */
-Route::group(['prefix'=>'inventario', 'namespace' =>'Inventario'],function (){
-    Route::get('dashboard', 'DashboardController@index')->name('inventario.dashboard')->middleware('auth','inventario');
+Route::group(['prefix'=>'inventario', 'namespace' =>'Inventario','middleware'=> ['auth','inventario']],function (){
+    Route::get('dashboard', 'DashboardController@index')->name('inventario.dashboard');
+    Route::get('entrada', 'EntradaController@index')->name('entrada');
+    Route::post('entrada', 'EntradaController@store')->name('entrada');
 });
 
 

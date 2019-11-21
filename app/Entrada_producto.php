@@ -8,6 +8,7 @@ class Entrada_producto extends Model
 {
     protected $table = 'entrada_producto';
     protected $primaryKey = 'cod_entrada';
+    public $timestamps = false;
     protected $fillable = [
         'descripcion',
         'fecha',

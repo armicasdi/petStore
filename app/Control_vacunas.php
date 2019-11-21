@@ -27,6 +27,6 @@ class Control_vacunas extends Model
     }
 
     public function vacunas(){
-        return  $this->belongsTo('App\Vacunas', 'cod_vacuna', 'cod_vacuna');
+        return  $this->belongsTo('App\vacunas', 'cod_vacuna', 'cod_vacuna');
     }
 }

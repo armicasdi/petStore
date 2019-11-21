@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Detalle_entrada extends Model
 {
-    protected $table = 'detalle_entrada';
+    protected $table = 'detalles_entrada';
     protected $primaryKey = 'cod_detalle';
+    public $timestamps = false;
     protected $fillable = [
         'cantidad',
         'valor',

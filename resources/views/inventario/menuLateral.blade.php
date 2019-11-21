@@ -14,10 +14,17 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item active  ">
+
+            <li class="nav-item {{ $pagActual == 'dashboard' ? 'active' : 'null' }}">
                 <a class="nav-link" href=" {{ route('inventario.dashboard') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Dashboard</p>
+                </a>
+            </li>
+            <li class="nav-item {{ $pagActual == 'entrada' ? 'active' : 'null' }}">
+                <a class="nav-link" href="{{ route('entrada') }}">
+                    <i class="material-icons">unarchive</i>
+                    <p>Entrada producto</p>
                 </a>
             </li>
 
