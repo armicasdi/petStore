@@ -146,7 +146,6 @@ class ConsultaController extends Controller
 
         $validator = Validator::make($request->all(), [
             'peso'         => ['required'],
-            'temperatura'  => ['required'],
             'cod_expediente'  => ['required'],
             'cod_usuario'  => ['required']
         ]);
@@ -161,8 +160,8 @@ class ConsultaController extends Controller
 
         $consulta->fill([
             'peso'    => $request['peso'],
-            'temperatura'  => $request['temperatura'],
-            'fr_cardiaca'  => $request['fr_cardiaca'],
+            'temperatura'  => $request['temperatura'] ?? 0,
+            'fr_cardiaca'  => $request['fr_cardiaca'] ?? 0,
             'referido'  => $request['referido'] ? 1 : 0,
             'cod_usuario'  => Auth::user()->cod_usuario,
             'cod_expediente'  => $request['cod_expediente'],

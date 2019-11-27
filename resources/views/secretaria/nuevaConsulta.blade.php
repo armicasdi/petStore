@@ -32,7 +32,7 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="temperatura">Temperatura</label>
+            <label for="temperatura">Temperatura (Campo opcional)</label>
             <input type="text" class="form-control @error('temperatura') is-invalid @enderror" id="temperatura" name="temperatura" value="{{ old('temperarurta') }}">
             @error('temperatura')
                 <span class="invalid-feedback" role="alert">
