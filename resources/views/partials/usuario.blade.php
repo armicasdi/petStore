@@ -1,3 +1,4 @@
+<script src="{{ asset('js/imask.js') }}"></script>
 <div class="card card-nav-tabs">
     <div class="card-header card-header-primary">
         Información del Empleado
@@ -5,7 +6,7 @@
     <div class="card-body">
         <div class="form-group">
             <label for="exampleFormControlInput1">Nombres</label>
-            <input type="text" class="form-control @error('nombres') is-invalid @enderror" id="exampleFormControlInput1" name="nombres"  value="{{ isset($empleado) ? $empleado->nombres : old('nombres') }}">
+            <input type="text" class="form-control @error('nombres') is-invalid @enderror" id="nombres" name="nombres"  value="{{ isset($empleado) ? $empleado->nombres : old('nombres') }}">
             @error('nombres')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -14,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Apellidos</label>
-            <input type="text" class="form-control @error('apellidos') is-invalid @enderror" id="exampleFormControlInput1" name="apellidos" value="{{  isset($empleado->apellidos) ? $empleado->apellidos : old('apellidos') }}">
+            <input type="text" class="form-control @error('apellidos') is-invalid @enderror" id="apellidos" name="apellidos" value="{{  isset($empleado->apellidos) ? $empleado->apellidos : old('apellidos') }}">
             @error('apellidos')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -22,8 +23,8 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">DUI</label>
-            <input type="text" class="form-control @error('dui') is-invalid @enderror" id="exampleFormControlInput1" name="dui" value="{{  isset($empleado->dui) ? $empleado->dui : old('dui') }}">
+            <label for="exampleFormControlInput1">DUIs</label>
+            <input type="number" class="form-control @error('dui') is-invalid @enderror" id="dui" maxlength="9"  name="dui" value="{{  isset($empleado->dui) ? $empleado->dui : old('dui') }}">
             @error('dui')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -91,3 +92,32 @@
         </div>
     </div>
 </div>
+<script>
+var rangeMask = IMask(document.getElementById('dui'), {
+  mask: IMask.MaskedRange,
+  from: 9,
+  to: 999999999,
+  maxLength: 9,
+
+});
+var patternMask = IMask(document.getElementById('nombres'), {
+  mask: '[aaaaaaaaaaaaaaaa] [aaaaaaaaaaaaaaaaaaaaa] [aaaaaaaaaa]'
+});
+var patternMask = IMask(document.getElementById('apellidos'), {
+  mask: '[aaaaaaaaaaaaaaaa] [aaaaaaaaaaaaaaaaaaaaa] [aaaaaaaaaa]'
+});
+var rangeMask = IMask(document.getElementById('telefono1'), {
+  mask: IMask.MaskedRange,
+  from: 9,
+  to: 99999999,
+  maxLength: 8,
+
+});
+var rangeMask = IMask(document.getElementById('telefono2'), {
+  mask: IMask.MaskedRange,
+  from: 9,
+  to: 99999999,
+  maxLength: 8,
+
+});
+  </script>
