@@ -18,6 +18,11 @@
                     <form action="#" method="POST" id="formDetalle">
                         @csrf
                         <div class="form-group">
+                            <label for="descripcion">Número factura</label>
+                            <input type="text" class="form-control" id="nfactura" name="nfactura">
+                        </div>
+
+                        <div class="form-group">
                             <label for="descripcion">Descripción de compra</label>
                             <input type="text" class="form-control" id="descripcion" name="descripcion">
                         </div>
@@ -94,6 +99,7 @@
                                             <th>Cantidad</th>
                                             <th>Producto</th>
                                             <th>Precio unitario</th>
+                                            <th>Subtotal</th>
                                             <th>Fecha de vencimiento</th>
                                             <th class="text-right">Acciones</th>
                                         </tr>
@@ -102,6 +108,14 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="text-gray h4">
+                                    <span>Total: $</span>
+                                    <span id="total">0.00</span>
+                                </div>
+                            </div>
+
 
                         </div>
                         {{-- ENN DETALLE --}}
@@ -132,7 +146,9 @@
             }
 
             var data = [];
+            var total = 0;
             var detalles = $("#detalles");
+            var mostrarTotal = $("#total");
 
             $("#agregarProducto").click(function (event) {
                 jQuery.validator.addMethod("formato", function (value, element) {
@@ -141,6 +157,12 @@
 
                 $( "#formDetalle").validate({
                     rules: {
+                        nfactura:{
+                            required: true,
+                            minlength: 1,
+                            maxlength: 8,
+                            number: true
+                        },
                         descripcion: {
                             required: true,
                             minlength: 1,
@@ -168,8 +190,7 @@
                             dateISO: true
                         }
                     },
-                    submitHandler: function (form) {
-
+                    submitHandler: function () {
                         let cantidad = $("#cantidad").val();
                         let cod_producto = $("#producto").val();
                         let producto = $("#producto option:selected").text();
@@ -185,6 +206,7 @@
                                         <td>${detalle.cantidad}</td>
                                         <td>${producto}</td>
                                         <td>&dollar; ${detalle.valor}</td>
+                                        <td>&dollar; ${(detalle.valor * detalle.cantidad).toFixed(2)}</td>
                                         <td>${detalle.fecha_vencimiento}</td>
                                         <td class="td-actions text-right">
                                             <button type="button" rel="tooltip" class="btn btn-danger eliminar" value="${indice}">
@@ -195,6 +217,8 @@
                                 `;
 
                         detalles.append(html);
+                        total += parseFloat((detalle.valor * detalle.cantidad).toFixed(2));
+                        mostrarTotal.empty().append(total);
                         $("#cantidad").val('');
                         $("#producto").val(1);
                         $("#precio").val('');
@@ -220,13 +244,14 @@
                     return(valor);
                 });
 
+                let nfactura = $("#nfactura").val();
                 let descripcion = $("#descripcion").val();
                 let cod_proveedor  = $("#proveedor").val();
 
                 $.ajax({
                     type: "POST",
                     url: "{{ route('entrada') }}",
-                    data: { descripcion: descripcion,cod_proveedor: cod_proveedor, data: data} ,
+                    data: { nfactura: nfactura, descripcion: descripcion,cod_proveedor: cod_proveedor, data: data} ,
                     success: function (respuesta) {
                         Command: toastr["success"](respuesta.data);
                         toastr.options = {
@@ -248,8 +273,11 @@
                         }
 
                         $("#detalles").empty();
+                        $("#nfactura").val('');
                         $("#descripcion").val('');
-                        $("#proveedor").val(0);
+                        $("#proveedor").val(1);
+                        $("#total").empty().append('0.00');
+                        total=0;
                     },
                     error: function (error) {
                         Command: toastr["error"](error.responseJSON.data);
@@ -277,11 +305,14 @@
             // CANCELAR
             $("#cancelar").click(function (event) {
                 event.preventDefault();
-                var confirmar = confirm("Esta seguro de cancelar el ingreso producto al formulario,\n Se perdera toda la información iongresada hasta ahora");
+                var confirmar = confirm("Esta seguro de cancelar el ingreso producto al formulario,\n Se perdera toda la información ingresada hasta ahora");
                 if(confirmar){
                     $("#detalles").empty();
+                    $("#nfactura").val('');
                     $("#descripcion").val('');
-                    $("#proveedor").val(0);
+                    $("#proveedor").val(1);
+                    $("#total").empty().append('0.00');
+                    total=0;
                 }
             });
 

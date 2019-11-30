@@ -20,4 +20,5 @@ class Detalle_entrada extends Model
     public function productos(){
         return $this->belongsTo('App\Productos', 'cod_producto','cod_producto');
     }
+
 }

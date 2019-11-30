@@ -15,6 +15,7 @@ class Tipo_producto extends Model
 
     protected $fillable = [
         'tipo_producto',
+        'is_active'
     ];
 
     public function productos(){

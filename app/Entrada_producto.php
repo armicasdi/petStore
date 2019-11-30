@@ -13,7 +13,8 @@ class Entrada_producto extends Model
         'descripcion',
         'fecha',
         'cod_proveedor',
-        'cod_usuario'
+        'cod_usuario',
+        'nfactura',
     ];
 
     public function empleados(){
@@ -21,7 +22,7 @@ class Entrada_producto extends Model
     }
 
     public function proveedores(){
-        return $this->belongsTo('App\Proveedores','cod_preveedor','cod_proveedor');
+        return $this->belongsTo('App\Proveedor','cod_proveedor','cod_proveedor');
     }
 
     public function detalle_entrada(){

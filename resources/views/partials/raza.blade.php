@@ -1,6 +1,6 @@
   <div class="card card-nav-tabs">
     <div class="card-header card-header-primary">
-        Aregar raza
+        Agregar raza
     </div>
     <div class="card-body">
         <div class="form-group">

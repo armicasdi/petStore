@@ -211,6 +211,42 @@ Route::group(['prefix'=>'inventario', 'namespace' =>'Inventario','middleware'=> 
     Route::get('dashboard', 'DashboardController@index')->name('inventario.dashboard');
     Route::get('entrada', 'EntradaController@index')->name('entrada');
     Route::post('entrada', 'EntradaController@store')->name('entrada');
+    Route::get('entradaDetalles/{cod_entrada}', 'EntradaController@show')->name('entrada.detalle');
+
+    // MANTTO
+    Route::get('tiposProductos', 'Mantto\TipoProductoController@index')->name('tipos.productos');
+    Route::get('tproductofagregar', 'Mantto\TipoProductoController@create')->name('tproducto.fagregar');
+    Route::post('tproducto', 'Mantto\TipoProductoController@store')->name('tproducto.agregar');
+    Route::get('tproductofactualizar/{cod_tipo_producto}', 'Mantto\TipoProductoController@edit')->name('tproducto.factualizar');
+    Route::put('tipoProducto/{cod_tipo_producto}', 'Mantto\TipoProductoController@update')->name('tproducto.actualizar');
+    Route::delete('tipoProducto/{cod_tipo_producto}', 'Mantto\TipoProductoController@destroy')->name('tproducto.eliminar');
+    Route::put('tipoBloquear/{cod_tipo_producto}', 'Mantto\TipoProductoController@bloquear')->name('tproducto.bloquear');
+
+    Route::get('ubicaciones', 'Mantto\UbicacionController@index')->name('ubicaciones');
+    Route::get('ubicacionfagregar', 'Mantto\UbicacionController@create')->name('ubicacion.fagregar');
+    Route::post('ubicacion', 'Mantto\UbicacionController@store')->name('ubicacion.agregar');
+    Route::get('ubicacionfactualizar/{cod_bodega}', 'Mantto\UbicacionController@edit')->name('ubicacion.factualizar');
+    Route::put('ubicacion/{cod_bodega}', 'Mantto\UbicacionController@update')->name('ubicacion.actualizar');
+    Route::delete('ubicacion/{cod_bodega}', 'Mantto\UbicacionController@destroy')->name('ubicacion.eliminar');
+    Route::put('ubicacionBloquear/{cod_bodega}', 'Mantto\UbicacionController@bloquear')->name('ubicacion.bloquear');
+
+    Route::get('productos', 'Mantto\ProductoController@index')->name('productos');
+    Route::get('productofagregar', 'Mantto\ProductoController@create')->name('producto.fagregar');
+    Route::post('producto', 'Mantto\ProductoController@store')->name('producto.agregar');
+    Route::get('productofactualizar/{cod_producto}', 'Mantto\ProductoController@edit')->name('producto.factualizar');
+    Route::put('producto/{cod_producto}', 'Mantto\ProductoController@update')->name('producto.actualizar');
+    Route::delete('producto/{cod_producto}', 'Mantto\ProductoController@destroy')->name('producto.eliminar');
+    Route::put('productoBloquear/{cod_producto}', 'Mantto\ProductoController@bloquear')->name('producto.bloquear');
+
+    Route::get('proveedores', 'Mantto\ProveedorController@index')->name('proveedores');
+    Route::get('proveedorfagregar', 'Mantto\ProveedorController@create')->name('proveedor.fagregar');
+    Route::post('proveedor', 'Mantto\ProveedorController@store')->name('proveedor.agregar');
+    Route::get('proveedorfactualizar/{cod_proveedor}', 'Mantto\ProveedorController@edit')->name('proveedor.factualizar');
+    Route::put('proveedor/{cod_proveedor}', 'Mantto\ProveedorController@update')->name('proveedor.actualizar');
+    Route::delete('proveedor/{cod_proveedor}', 'Mantto\ProveedorController@destroy')->name('proveedor.eliminar');
+    Route::put('proveedorBloquear/{cod_proveedor}', 'Mantto\ProveedorController@bloquear')->name('proveedor.bloquear');
+    Route::get('proveedorDetalle/{cod_proveedor}', 'Mantto\ProveedorController@show')->name('proveedor.detalle');
+
 });
 
 

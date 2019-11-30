@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Inventario;
 
+use App\Entrada_producto;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class DashboardController extends Controller
     public function index()
     {
         $pagActual = "dashboard";
-        return view('inventario.inicio', compact('pagActual'));
+        $productos = Entrada_producto::with('empleados')->orderBy('fecha','desc')->limit(10)->get();
+        return view('inventario.inicio', compact('productos','pagActual'));
     }
 
     /**
@@ -47,7 +49,6 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**

@@ -27,6 +27,46 @@
                     <p>Entrada producto</p>
                 </a>
             </li>
+            <li class="nav-item {{ $pagActual == 'producto' ? 'active' : 'null' }}">
+                <a class="nav-link" href="{{ route('productos') }}">
+                    <i class="material-icons">storage</i>
+                    <p>Existencias</p>
+                </a>
+            </li>
+            <li class="nav-item {{ $pagActual == 'proveedor' ? 'active' : 'null' }}">
+                <a class="nav-link" href="{{ route('proveedores') }}">
+                    <i class="material-icons">local_shipping</i>
+                    <p>Proveedores</p>
+                </a>
+            </li>
+
+            <div id="acordeon1" role="tablist" class="nav-item">
+                <div class="card card-collapse nav-link pt-3 pb-3">
+                    <h5 class="mb-0">
+                        <a data-toggle="collapse" href="#mostra1" aria-expanded="true" aria-controls="mostra1" class="text-gray">
+                            Opciones
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </a>
+                    </h5>
+
+                    <div id="mostra1" class="collapse @if( $pagActual == 'tipoProducto' || $pagActual == 'ubicacion') show @endif" role="tabpanel" aria-labelledby="headingOne" data-parent="#acordeon1">
+                        <ul class="nav">
+                            <li class="nav-item {{ $pagActual == 'tipoProducto' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('tipos.productos') }}">
+                                    <i class="material-icons">create_new_folder</i>
+                                    <p>Nueva Categoria</p>
+                                </a>
+                            </li>
+                            <li class="nav-item {{ $pagActual == 'ubicacion' ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('ubicaciones') }}">
+                                    <i class="material-icons">create_new_folder</i>
+                                    <p>Nueva ubicación</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
         </ul>
     </div>

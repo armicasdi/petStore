@@ -6,6 +6,7 @@ use App\Detalle_entrada;
 use App\Entrada_producto;
 use App\Http\Controllers\Controller;
 use App\Productos;
+use App\Proveedor;
 use App\Proveedores;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class EntradaController extends Controller
     public function index()
     {
         $pagActual = 'entrada';
-        $proveedores = Proveedores::where('is_active',1)->get();
+        $proveedores = Proveedor::where('is_active',1)->get();
         $productos = Productos::where('is_active',1)->get();
         return view('inventario.entradaProducto', compact('proveedores','productos','pagActual'));
     }
@@ -46,6 +47,7 @@ class EntradaController extends Controller
     public function store(Request $request)
     {
         $entrada = [
+            'nfactura' => ['required','min:1','max:8','string'],
             'descripcion' => ['required','min:1','max:150','string'],
             'cod_proveedor' => ['required'],
             'data' => ['required'],
@@ -64,6 +66,7 @@ class EntradaController extends Controller
                 'descripcion' => $request->descripcion,
                 'cod_proveedor' => $request->cod_proveedor,
                 'cod_usuario' => Auth::user()->cod_usuario,
+                'nfactura' => $request->nfactura,
             ]);
 
             $success = $entrada_producto->save();
@@ -107,9 +110,17 @@ class EntradaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($cod_entrada)
     {
-        //
+        $pagActual = "dashboard";
+        $detalles = Detalle_entrada::where('cod_entrada',$cod_entrada)->with(['productos'=>function($consulta){
+            $consulta->withTrashed()->get();
+        }])->get();
+        if($detalles->isEmpty()){
+            return redirect()->back();
+        }
+        $entrada = Entrada_producto::findOrFail($detalles->first()->cod_entrada);
+        return view('inventario.detalle', compact('detalles','entrada','pagActual'));
     }
 
     /**

@@ -3,11 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Proveedores extends Model
+class Proveedor extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'proveedores';
     protected $primaryKey = 'cod_proveedor';
+    public $timestamps = false;
     protected $fillable = [
         'nombre_juridico',
         'nombre_comercial',
@@ -21,5 +25,4 @@ class Proveedores extends Model
     public function entrada_producto(){
         return $this->hasMany('App\Entrada_producto');
     }
-
 }
