@@ -7,7 +7,6 @@
 @section('contenido')
 
     <div class="row">
-
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
@@ -79,7 +78,50 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title ">Últimas consultas atendidas</h4>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-danger">
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Raza</th>
+                            <th>sexo</th>
+                            <th>Nombre propietario</th>
+                            <th>Acciones</th>
+                            </thead>
+                            <tbody>
+                            @foreach($consultas as $consulta)
+                                <tr>
+                                    <td>{{ $consulta->cod_expediente }}</td>
+                                    <td>{{ $consulta->mascota->nombre }}</td>
+                                    <td>{{ $consulta->mascota->raza->raza }}</td>
+                                    <td>{{ $consulta->mascota->sexo->sexo }}</td>
+                                    <td>{{ $consulta->mascota->propietario->nombres}} {{ $consulta->mascota->propietario->apellidos  }}</td>
+                                    <td>
+                                        <a href="{{ route('veterinario.feditar',['cod_consulta'=>$consulta->cod_consulta]) }}" title="Editar">
+                                            <i class="fa fa-pencil-square fa-2x mr-2" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 @endsection

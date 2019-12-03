@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <form action="{{ route('secretaria.gconsulta') }}" method="POST">
+    <form action="{{ route('secretaria.gconsulta') }}" method="POST" id="formConsulta">
         @csrf
         <div class="form-group">
             <label for="peso">Peso</label>
@@ -67,7 +67,49 @@
         </select>
         <input type="hidden" name="cod_expediente" value="{{ $mascota->cod_expediente }}">
         <br>
-        <button class="btn btn-info mr-5">Agregar consulta</button>
+        <button class="btn btn-info mr-5" id="guardar">Agregar consulta</button>
         <a  class="btn btn-info" href="{{ route('secretaria.consulta') }}"> Cancelar</a>
     </form>
+@endsection
+
+@section('jsExtra')
+    <script src="{{ asset('js/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/validation/jquery.validate.additional-methods.min.js') }}"></script>
+    <script src="{{ asset('js/validation/messages_es.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            // VALIDACIÓN
+            $("#guardar").click(function (event) {
+
+                jQuery.validator.addMethod("formato", function (value, element) {
+                    return this.optional(element) || /^(\d+|\d+.\d{1,2})$/.test(value);
+                }, "La cantidad ingresada no es valida");
+
+
+                $("#formConsulta").validate({
+                    rules: {
+                        peso: {
+                            required: true,
+                            number: true,
+                            formato: true,
+                            range: [0.01,150]
+                        },
+                        temperatura:{
+                            formato: true,
+                            range: [36,43]
+                        },
+                        fr_cardiaca:{
+                            formato: true,
+                            number: true,
+                            range: [60,130]
+                        },
+                        cod_usuario: {
+                            required: true,
+                            number: true,
+                        }
+                    },
+                });
+            });
+        });
+    </script>
 @endsection

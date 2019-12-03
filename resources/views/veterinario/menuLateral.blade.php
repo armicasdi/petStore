@@ -32,6 +32,12 @@
                     <p>Vacunas</p>
                 </a>
             </li>
+            <li class="nav-item {{ $pagActual == 'mascota' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('veterinario.mascota') }}">
+                    <i class="material-icons">pets</i>
+                    <p>Mascotas</p>
+                </a>
+            </li>
 
         </ul>
     </div>

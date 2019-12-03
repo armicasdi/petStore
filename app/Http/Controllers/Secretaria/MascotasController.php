@@ -54,7 +54,7 @@ class MascotasController extends Controller
             'apellidosPropietario'  => ['required','max:50','string'],
             'direccion'             => ['required','max:200','string'],
             'telefono'              => ['required','max:9','string'],
-            'correo'                => ['required','email'],
+            'correo'                => ['nullable','email'],
             'nombreMascota'         => ['required','max:30','string'],
             'fechaNacimiento'       => ['required','date'],
             'color'                 => ['required','max:40','string'],
@@ -78,7 +78,7 @@ class MascotasController extends Controller
                'apellidos'  => $request['apellidosPropietario'],
                'direccion'  => $request['direccion'],
                'telefono'   => $request['telefono'],
-               'correo'     => $request['correo']
+               'correo'     => $request['correo'] ?? null,
            ]);
            $success = $propietario->save();
 

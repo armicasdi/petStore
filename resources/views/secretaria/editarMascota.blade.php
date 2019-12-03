@@ -6,18 +6,20 @@
 
 @section('contenido')
 
-    <form action="{{ route('secretaria.gactualizarMascota',['cod_expediente' => $mascota->cod_expediente]) }}" method="POST">
+    <form action="{{ route('secretaria.gactualizarMascota',['cod_expediente' => $mascota->cod_expediente]) }}" method="POST" id="formEditarMascota">
         @csrf
         @method('PUT')
         @include('partials.mascota')
-        <button type="submit" class="btn btn-info mr-5">Actualizar</button>
+        <button type="submit" class="btn btn-info mr-5" id="actualizar">Actualizar</button>
         <a  class="btn btn-info" href="{{ route('secretaria.actualizarMascota') }}"> Cancelar</a>
-
     </form>
 
 @endsection
 
 @section('jsExtra')
+    <script src="{{ asset('js/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/validation/jquery.validate.additional-methods.min.js') }}"></script>
+    <script src="{{ asset('js/validation/messages_es.js') }}"></script>
     <script>
         $(document).ready(function (){
             // Agregar el token en la solicitud ajax
@@ -61,6 +63,48 @@
                     mestizo.fadeOut(1000);
                 }
 
+            });
+
+            // VALIDACIÓN
+            $("#actualizar").click(function (event) {
+                jQuery.validator.addMethod("formato", function (value, element) {
+                    return this.optional(element) || /^[a-zA-Z áéíóúñÁÉÍÓÚÑ \s]+$/.test(value);
+                }, "Carácter no valido en el campo");
+
+                $("#formEditarMascota").validate({
+                    rules: {
+                        nombreMascota:{
+                            required: true,
+                            maxlength: 30,
+                            formato: true,
+
+                        },
+                        fechaNacimiento:{
+                            required: true,
+                            dateISO: true,
+                        },
+                        color:{
+                            required: true,
+                            maxlength: 40
+                        },
+                        sexo:{
+                            required: true,
+                            number: true,
+                        },
+                        especie:{
+                            required: true,
+                            number: true,
+                        },
+                        raza:{
+                            required: true,
+                            number: true,
+                        },
+                        tipo:{
+                            formato: true,
+                            maxlength: 100,
+                        }
+                    },
+                });
             });
 
         });

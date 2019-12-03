@@ -202,6 +202,11 @@ Route::group(['prefix'=>'veterinario', 'namespace' =>'Veterinario', 'middleware'
 
     Route::get('atenderVacuna/{cod_expediente}/{cod_control_vacunas}', 'VacunasController@create')->name('veterinario.atenderVacuna');
     Route::put('atenderVacuna/{cod_control_vacunas}', 'VacunasController@update')->name('veterinario.gvacuna');
+
+    Route::get('mascotas', 'MascotaController@index')->name('veterinario.mascota');
+    Route::get('busqueda/{metodo}/{busqueda}', 'MascotaController@busqueda')->name('veterinario.busqueda');
+    Route::get('historal/{cod_expediente?}', 'MascotaController@show')->name('veterinario.historial');
+    Route::get('editar/{cod_consulta}', 'ConsultaController@edit')->name('veterinario.feditar');
 });
 
 /*

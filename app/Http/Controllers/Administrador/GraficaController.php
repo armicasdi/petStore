@@ -13,15 +13,15 @@ class GraficaController extends Controller
     {
 
         $viewer = DB::table('consulta')
-        ->select(DB::raw('count(cod_consulta) as cod_count')) 
+        ->select(DB::raw('count(cod_consulta) as cod_count'))
         ->where('estado','=',1)
-        ->groupBy(DB::raw('year(fecha)')) 
+        ->groupBy(DB::raw('year(fecha)'))
         ->get()->toArray();
         $viewer = array_column($viewer, 'cod_count');
-        
-            return view('administrador.grafica')
+
+        return view('administrador.grafica')
             ->with('viewer',json_encode($viewer,JSON_NUMERIC_CHECK));
-           
+
     }
 
 }

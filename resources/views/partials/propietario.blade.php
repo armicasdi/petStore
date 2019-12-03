@@ -4,8 +4,8 @@
     </div>
     <div class="card-body">
         <div class="form-group">
-            <label for="exampleFormControlInput1">Nombres</label>
-            <input type="text" class="form-control @error('nombresPropietario') is-invalid @enderror" id="exampleFormControlInput1" name="nombresPropietario"  value="{{ isset($propietario->nombres) ? $propietario->nombres : old('nombresPropietario') }}">
+            <label for="nombrePropietario">Nombres</label>
+            <input type="text" class="form-control @error('nombresPropietario') is-invalid @enderror" id="nombrePropietario" name="nombresPropietario"  value="{{ isset($propietario->nombres) ? $propietario->nombres : old('nombresPropietario') }}">
             @error('nombresPropietario')
             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -13,8 +13,8 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Apellidos</label>
-            <input type="text" class="form-control @error('apellidosPropietario') is-invalid @enderror" id="exampleFormControlInput1" name="apellidosPropietario" value="{{  isset($propietario->apellidos) ? $propietario->apellidos : old('apellidosPropietario') }}">
+            <label for="apellidoPropietario">Apellidos</label>
+            <input type="text" class="form-control @error('apellidosPropietario') is-invalid @enderror" id="apellidoPropietario" name="apellidosPropietario" value="{{  isset($propietario->apellidos) ? $propietario->apellidos : old('apellidosPropietario') }}">
             @error('apellidosPropietario')
             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -22,8 +22,8 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Dirección</label>
-            <input type="text" class="form-control @error('direccion') is-invalid @enderror" id="exampleFormControlInput1" name="direccion" value="{{ isset($propietario->direccion) ? $propietario->direccion :  old('direccion') }}" >
+            <label for="direccion">Dirección</label>
+            <input type="text" class="form-control @error('direccion') is-invalid @enderror" id="direccion" name="direccion" value="{{ isset($propietario->direccion) ? $propietario->direccion :  old('direccion') }}" >
             @error('direccion')
             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -40,8 +40,8 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Correo</label>
-            <input type="email" class="form-control @error('correo') is-invalid @enderror" id="exampleFormControlInput1" name="correo" value="{{ isset($propietario->correo) ? $propietario->correo : old('correo') }}">
+            <label for="correo">Correo (opcional)</label>
+            <input type="email" class="form-control @error('correo') is-invalid @enderror" id="correo" name="correo" value="{{ isset($propietario->correo) ? $propietario->correo : old('correo') }}">
             @error('direccion')
             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

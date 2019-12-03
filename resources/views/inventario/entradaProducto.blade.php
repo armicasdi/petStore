@@ -145,6 +145,12 @@
                 }
             }
 
+            function dosDecimales(n) {
+                let t = n.toString();
+                let regex = /(\d*.\d{0,2})/;
+                return t.match(regex)[0];
+            }
+
             var data = [];
             var total = 0;
             var detalles = $("#detalles");
@@ -176,6 +182,7 @@
                             number: true,
                             min: 1,
                             max: 100,
+                            step: 1
                         },
                         cod_producto: {
                             required: true,
@@ -217,8 +224,9 @@
                                 `;
 
                         detalles.append(html);
-                        total += parseFloat((detalle.valor * detalle.cantidad).toFixed(2));
-                        mostrarTotal.empty().append(total);
+                        total += detalle.cantidad * Math.floor(detalle.valor * 100);
+                        mostrarTotal.empty().append(total/100);
+                        console.log(data);
                         $("#cantidad").val('');
                         $("#producto").val(1);
                         $("#precio").val('');
@@ -227,13 +235,16 @@
                 });
             });
 
+
             // eliminar
             $("#detalles").click(function (event) {
                 var elemento = $(event.target).parents("td");
                 if(elemento.length){
-                    indice = elemento.find("button")[0].value;
+                    let indice = elemento.find("button")[0].value;
+                    total -= data[indice].cantidad * Math.floor(data[indice].valor * 100);
                     delete data[indice];
                     elemento.parent().remove();
+                    $("#total").empty().append(total/100);
                 }
             });
 

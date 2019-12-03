@@ -22,12 +22,7 @@ class EmpleadosController extends Controller
     public function index()
     {
         $pagActual = 'usuarios';
-        $empleados =  Empleados::where('cod_usuario','<>',Auth::user()->cod_usuario)->get();
-
-        foreach ($empleados as $empleado){
-            $empleado->usuario->tipo_usuario;
-        }
-
+        $empleados =  Empleados::where('cod_usuario','<>',Auth::user()->cod_usuario)->has('usuario.tipo_usuario')->get();
         return view('administrador.empleados', compact('empleados','pagActual'));
     }
 
@@ -55,12 +50,13 @@ class EmpleadosController extends Controller
         $validator = Validator::make($request->all(), [
             'nombres'           => ['required','max:50','string'],
             'apellidos'         => ['required','max:50','string'],
-            'dui'               => ['required','max:10','min:9'],
+            'dui'               => ['required','max:10','min:9','unique:empleados,dui'],
             'fech_nac'          => ['required','date'],
             'telefono1'         => ['required','max:9','string'],
-            'correo'            => ['required','email'],
+            'telefono2'         => ['nullable','max:9','string'],
+            'correo'            => ['nullable','email'],
             'direccion'         => ['required','max:200','string'],
-            'usuario'           => ['required'],
+            'usuario'           => ['required','unique:usuarios,usuario'],
             'cod_tipo_usuario'  => ['required'],
             'cod_genero'        => ['required'],
         ]);
@@ -81,7 +77,7 @@ class EmpleadosController extends Controller
             $usuario = new Usuarios;
             $usuario->fill([
                 'usuario'    => $request['usuario'],
-                'password'   => bcrypt('pass1234'),
+                'password'   => bcrypt('petfamily'),
                 'cod_tipo_usuario' => $request['cod_tipo_usuario'],
             ]);
             $success = $usuario->save();

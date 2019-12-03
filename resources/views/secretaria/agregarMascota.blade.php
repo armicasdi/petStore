@@ -6,12 +6,12 @@
 
 @section('contenido')
 
-    <form action="{{ route('secretaria.gmascota') }}" method="POST">
+    <form action="{{ route('secretaria.gmascota') }}" method="POST" id="formAgregarMascota">
         @csrf
         @include('partials.propietario')
         <br>
        @include('partials.mascota')
-        <button type="submit" class="btn btn-info mr-5">Guardar</button>
+        <button type="submit" class="btn btn-info mr-5" id="guardar">Guardar</button>
         <a  class="btn btn-info" href="{{ route('secretaria.crear') }}"> Cancelar</a>
 
     </form>
@@ -19,7 +19,10 @@
 @endsection
 
 @section('jsExtra')
-    <scrip src="{{ asset('js/mask/inputmask.bundle.min.js') }}"></scrip>
+    <script src="{{ asset('js/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/validation/jquery.validate.additional-methods.min.js') }}"></script>
+    <script src="{{ asset('js/validation/messages_es.js') }}"></script>
+    <script src="{{ asset('js/mask/jquery.mask.min.js') }}"></script>
     <script>
         $(document).ready(function (){
             // Agregar el token en la solicitud ajax
@@ -64,6 +67,76 @@
                 }
 
             });
+
+            // VALIDACIÓN
+            $("#guardar").click(function (event) {
+                jQuery.validator.addMethod("formato", function (value, element) {
+                    return this.optional(element) || /^[a-zA-Z áéíóúñÁÉÍÓÚÑ \s]+$/.test(value);
+                }, "Carácter no valido en el campo");
+
+                $("#formAgregarMascota").validate({
+                    rules: {
+                        nombresPropietario: {
+                            required: true,
+                            maxlength: 50,
+                            formato: true
+                        },
+                        apellidosPropietario:{
+                            required: true,
+                            maxlength: 50,
+                            formato: true
+                        },
+                        direccion:{
+                            required: true,
+                            minlength: 1,
+                            maxlength: 200,
+                        },
+                        telefono:{
+                            required: true,
+                            minlength: 9,
+                            maxlength: 9,
+
+                        },
+                        correo:{
+                            email: true,
+                            maxlength: 40
+                        },
+                        nombreMascota:{
+                            required: true,
+                            maxlength: 30,
+                            formato: true,
+
+                        },
+                        fechaNacimiento:{
+                            required: true,
+                            dateISO: true,
+                        },
+                        color:{
+                            required: true,
+                            maxlength: 40
+                        },
+                        sexo:{
+                            required: true,
+                            number: true,
+                        },
+                        especie:{
+                            required: true,
+                            number: true,
+                        },
+                        raza:{
+                            required: true,
+                            number: true,
+                        },
+                        tipo:{
+                            formato: true,
+                            maxlength: 100,
+                        }
+                    },
+                });
+            });
+
+            // Mascara
+            $('#telefono').mask('0000-0000');
 
         });
     </script>

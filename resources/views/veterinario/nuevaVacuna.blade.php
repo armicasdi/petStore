@@ -7,7 +7,7 @@
 @section('contenido')
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header card-header-text card-header-warning">
+            <div class="card-header card-header-text card-header-danger">
                 <div class="card-text">
                     <h4 class="card-title"> {{ $mascota->nombre }}</h4>
                 </div>
@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-text card-header-warning">
+                    <div class="card-header card-header-text card-header-danger">
                         <div class="card-text">
                             <h4 class="card-title">Vacuna</h4>
                         </div>
@@ -49,7 +49,7 @@
         </div>
         <input type="hidden" name="cod_vacuna" value="{{ $vacuna->vacunas->cod_vacuna}}">
         <br>
-        <button class="btn btn-info btn-warning">Guardar vacuna</button>
+        <button class="btn btn-info btn-danger">Guardar vacuna</button>
     </form>
 
 

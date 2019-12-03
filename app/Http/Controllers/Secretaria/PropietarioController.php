@@ -82,7 +82,7 @@ class PropietarioController extends Controller
             'apellidosPropietario'  => ['required','max:50','string'],
             'direccion'             => ['required','max:200','string'],
             'telefono'              => ['required','min:8','max:9','string'],
-            'correo'                => ['required','email'],
+            'correo'                => ['nullable','email'],
         ]);
 
         if ($validator->fails()) {
@@ -97,7 +97,7 @@ class PropietarioController extends Controller
                 'apellidos'  => $request['apellidosPropietario'],
                 'direccion'  => $request['direccion'],
                 'telefono'   => $request['telefono'],
-                'correo'     => $request['correo']
+                'correo'     => $request['correo'] ?? null,
             ]);
             $success = $propietario->save();
 

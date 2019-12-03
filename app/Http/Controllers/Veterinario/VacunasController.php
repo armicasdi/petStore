@@ -35,7 +35,7 @@ class VacunasController extends Controller
     public function create($cod_expediente, $cod_control_vacunas)
     {
 
-        $pagActual = 'consulta';
+        $pagActual = 'vacuna';
         $mascota = Mascota::findOrFail($cod_expediente);
         $vacuna = Control_vacunas::findOrFail($cod_control_vacunas);
         $vacuna->vacunas;

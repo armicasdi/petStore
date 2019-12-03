@@ -10,9 +10,9 @@
         <div class="form-group">
             <label for="metodo">Método de busqueda</label>
             <select class="form-control" id="metodo" name="metodo">
-                <option value="1">Código</option>
                 <option value="2">Nombre</option>
                 <option value="3">Propietario</option>
+                <option value="1">Código</option>
             </select>
         </div>
         <br>
@@ -20,7 +20,6 @@
             <input type="text" class="form-control" id="busqueda" name="busqueda" aria-describedby="emailHelp" required>
             <div><label id="mensaje"></label></div>
         </div>
-        <button class="btn btn-info" id="buscar">Buscar</button>
     </form>
 
     <div class="row">
@@ -71,80 +70,90 @@
                 $('#busqueda').val('');
             });
 
+
+            $("#busqueda").keypress(function(event) {
+                if(event.which == 13) {
+                    event.preventDefault();
+                }
+            });
+
             // Traer la raza la especie seleccionada
-            $('#buscar').click( function (event) {
+            $('#busqueda').change( function (event) {
                 event.preventDefault();
-                let metodo = $('#metodo').val();
-                let busqueda = $.trim($('#busqueda').val());
-                let data = $('#data');
-                if(busqueda != ''){
-                    $('#mensaje').html('');
-                    $.ajax({
-                        type: 'GET',
-                        url: "{{ url('secretaria/busqueda') }}/" + metodo + "/" + busqueda,
-                        async: false,
-                        success:function(respuesta){
-                            let html = "";
-                            if(respuesta.tipo == 1 || respuesta.tipo == 2){
-                                $(respuesta.data).each(function(k,v){
-                                    html +=`
-                                        <tr>
-                                            <td>${v.cod_expediente}</td>
-                                            <td>${v.nombre}</td>
-                                            <td>${v.raza.raza}</td>
-                                            <td>${v.propietario.nombres} ${v.propietario.apellidos }</td>
-                                            <td>${v.propietario.telefono}</td>
-                                            <td>
-                                                <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta">
-                                                    <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
-                                                </a>
-                                                <a href="{{ route('secretaria.nuevaVacuna') }}/${v.cod_expediente}" title="Vacuna" id="vacuna" >
-                                                    <i class="fa fa-suitcase fa-2x mr-2" aria-hidden="true"></i>
-                                                </a>
-                                                <a href="{{ route('secretaria.nuevaPeluqueria') }}/${v.cod_expediente}" title="Peluqueria" id="peluqueria" >
-                                                    <i class="fa fa-paw fa-2x" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    `;
-                                });
-                                data.empty().html(html);
-                            }else if(respuesta.tipo == 3) {
-                                console.dir('si');
-                                $(respuesta.data).each(function(k,a) {
-                                    $(a.mascota).each(function(k,v) {
-                                        html += `<tr>
-                                                    <td>${v.cod_expediente}</td>
-                                                    <td>${v.nombre}</td>
-                                                    <td>${v.raza.raza}</td>
-                                                    <td>${a.nombres} ${a.apellidos}</td>
-                                                    <td>${a.telefono}</td>
-                                                    <td>
-                                                        <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta" >
-                                                            <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
-                                                        </a>
-                                                        <a href="{{ route('secretaria.nuevaVacuna') }}/${v.cod_expediente}" title="Vacuna" id="vacuna" >
-                                                            <i class="fa fa-suitcase fa-2x mr-2" aria-hidden="true"></i>
-                                                        </a>
-                                                        <a href="{{ route('secretaria.nuevaPeluqueria') }}/${v.cod_expediente}" title="Peluqueria" id="peluqueria" >
-                                                            <i class="fa fa-paw fa-2x" aria-hidden="true"></i>
-                                                        </a>
-                                                    </td>
-                                            </tr>`
+                if($('#busqueda').val().length > 2) {
+                    let metodo = $('#metodo').val();
+                    let busqueda = $.trim($('#busqueda').val());
+                    let data = $('#data');
+                    if (busqueda != '') {
+                        $('#mensaje').html('');
+                        $.ajax({
+                            type: 'GET',
+                            url: "{{ url('secretaria/busqueda') }}/" + metodo + "/" + busqueda,
+                            async: false,
+                            success: function (respuesta) {
+                                let html = "";
+                                if (respuesta.tipo == 1 || respuesta.tipo == 2) {
+                                    $(respuesta.data).each(function (k, v) {
+                                        html += `
+                                            <tr>
+                                                <td>${v.cod_expediente}</td>
+                                                <td>${v.nombre}</td>
+                                                <td>${v.raza.raza}</td>
+                                                <td>${v.propietario.nombres} ${v.propietario.apellidos}</td>
+                                                <td>${v.propietario.telefono}</td>
+                                                <td>
+                                                    <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta">
+                                                        <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
+                                                    </a>
+                                                    <a href="{{ route('secretaria.nuevaVacuna') }}/${v.cod_expediente}" title="Vacuna" id="vacuna" >
+                                                        <i class="fa fa-suitcase fa-2x mr-2" aria-hidden="true"></i>
+                                                    </a>
+                                                    <a href="{{ route('secretaria.nuevaPeluqueria') }}/${v.cod_expediente}" title="Peluqueria" id="peluqueria" >
+                                                        <i class="fa fa-paw fa-2x" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        `;
                                     });
-                                 });
-                                data.empty().html(html);
-                            }else{
-                                data.empty().html('<p class="h3">No hay resultados</p>');
+                                    data.empty().html(html);
+                                } else if (respuesta.tipo == 3) {
+                                    $(respuesta.data).each(function (k, a) {
+                                        $(a.mascota).each(function (k, v) {
+                                            html += `<tr>
+                                                        <td>${v.cod_expediente}</td>
+                                                        <td>${v.nombre}</td>
+                                                        <td>${v.raza.raza}</td>
+                                                        <td>${a.nombres} ${a.apellidos}</td>
+                                                        <td>${a.telefono}</td>
+                                                        <td>
+                                                            <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta" >
+                                                                <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
+                                                            </a>
+                                                            <a href="{{ route('secretaria.nuevaVacuna') }}/${v.cod_expediente}" title="Vacuna" id="vacuna" >
+                                                                <i class="fa fa-suitcase fa-2x mr-2" aria-hidden="true"></i>
+                                                            </a>
+                                                            <a href="{{ route('secretaria.nuevaPeluqueria') }}/${v.cod_expediente}" title="Peluqueria" id="peluqueria" >
+                                                                <i class="fa fa-paw fa-2x" aria-hidden="true"></i>
+                                                            </a>
+                                                        </td>
+                                                </tr>`
+                                        });
+                                    });
+                                    data.empty().html(html);
+                                } else {
+                                    data.empty().html('<p class="h3">No hay resultados</p>');
+                                }
+                            },
+                            error: function (respuesta) {
+                                console.dir(respuesta);
                             }
-                        },
-                        error: function(respuesta){
-                            console.dir(respuesta);
-                        }
-                    });
+                        });
+                    } else {
+                        data.empty().html('<p class="h3">No hay resultados</p>');
+                        $('#mensaje').html('<p class="text-danger">Compo requerido</p>')
+                    }
                 }else{
-                    data.empty().html('<p class="h3">No hay resultados</p>');
-                    $('#mensaje').html('<p class="text-danger">Compo requerido</p>')
+                    $("#data").empty().html('<p class="h3">No hay resultados</p>');
                 }
             });
 

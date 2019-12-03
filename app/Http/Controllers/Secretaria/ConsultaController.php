@@ -163,10 +163,10 @@ class ConsultaController extends Controller
             'temperatura'  => $request['temperatura'] ?? 0,
             'fr_cardiaca'  => $request['fr_cardiaca'] ?? 0,
             'referido'  => $request['referido'] ? 1 : 0,
-            'cod_usuario'  => Auth::user()->cod_usuario,
             'cod_expediente'  => $request['cod_expediente'],
             'cod_usuario'  => $request['cod_usuario'],
         ]);
+
         $success = $consulta->save();
 
         if(!$success){

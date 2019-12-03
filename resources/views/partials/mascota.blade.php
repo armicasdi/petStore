@@ -4,8 +4,8 @@
     </div>
     <div class="card-body">
         <div class="form-group">
-            <label for="exampleFormControlInput1">Nombre</label>
-            <input type="text" class="form-control @error('nombreMascota') is-invalid @enderror" id="exampleFormControlInput1" name="nombreMascota" value="{{ isset($mascota) ? $mascota->nombre : old('nombreMascota') }}">
+            <label for="nombreMascota">Nombre</label>
+            <input type="text" class="form-control @error('nombreMascota') is-invalid @enderror" id="nombreMascota" name="nombreMascota" value="{{ isset($mascota) ? $mascota->nombre : old('nombreMascota') }}">
             @error('nombreMascota')
             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -13,8 +13,8 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput2">Fecha nacimiento</label>
-            <input type="date" class="form-control @error('fechaNacimiento') is-invalid @enderror" id="exampleFormControlInput2" name="fechaNacimiento" value="{{ isset($mascota) ? $mascota->fecha_nac : old('fechaNacimiento') }}">
+            <label for="fechaNacimiento">Fecha nacimiento</label>
+            <input type="date" class="form-control @error('fechaNacimiento') is-invalid @enderror" id="fechaNacimiento" name="fechaNacimiento" value="{{ isset($mascota) ? $mascota->fecha_nac : old('fechaNacimiento') }}">
             @error('fechaNacimiento')
             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -22,8 +22,8 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput3">Color</label>
-            <input type="text" class="form-control @error('color') is-invalid @enderror" id="exampleFormControlInput3" name="color" value="{{ isset($mascota) ? $mascota->Color :  old('color') }}">
+            <label for="color">Color</label>
+            <input type="text" class="form-control @error('color') is-invalid @enderror" id="color" name="color" value="{{ isset($mascota) ? $mascota->Color :  old('color') }}">
             @error('color')
             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

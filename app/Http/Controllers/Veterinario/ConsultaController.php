@@ -65,9 +65,13 @@ class ConsultaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($cod_consulta)
     {
-        //
+        $pagActual = 'consulta';
+        $consulta = Consulta::findOrFail($cod_consulta);
+        $mascota = Mascota::findOrFail($consulta->cod_expediente);
+
+        return view('veterinario.editarConsulta', compact('consulta', 'mascota','pagActual'));
     }
 
     /**

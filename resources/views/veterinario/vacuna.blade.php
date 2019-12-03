@@ -9,14 +9,14 @@
         <div class="col-md-12">
             <div class="card">
 
-                <div class="card-header card-header-warning">
+                <div class="card-header card-header-danger">
                     <h4 class="card-title ">Vacunas</h4>
                 </div>
 
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead class=" text-warning">
+                            <thead class=" text-danger">
                             <th>Expediente</th>
                             <th>Nombre</th>
                             <th>Raza</th>

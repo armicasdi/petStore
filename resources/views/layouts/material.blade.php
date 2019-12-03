@@ -108,11 +108,11 @@
 <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 <script src="{{ asset('js/material/plugins/nouislider.min.js') }}"></script>
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>--}}
 <!-- Library for adding dinamically elements -->
 <script src="{{ asset('js/material/plugins/arrive.min.js') }}"></script>
 <!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+{{--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>--}}
 <!-- Chartist JS -->
 <script src="{{ asset('js/material/plugins/chartist.min.js') }}"></script>
 
@@ -128,7 +128,7 @@
 <script src="{{ asset('js/message/toastr.min.js') }}"></script>
 
 
-{{-- seccion paa agregar JS extra --}}
+{{-- seccion para agregar JS extra --}}
 @yield('jsExtra')
 
 </body>
