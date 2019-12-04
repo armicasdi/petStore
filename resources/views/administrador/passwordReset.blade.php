@@ -51,7 +51,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                           Si realiza esta acción, la contraseña del usuario serea reseteada a: <strong>petfamily</strong>
+                                                           Si realiza esta acción, la contraseña del usuario será reseteada a: <strong>petfamily</strong>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

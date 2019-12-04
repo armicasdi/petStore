@@ -12,17 +12,17 @@ class FuncionesComunesController extends Controller
 {
     public function obtenerRazas($id){
         if($id != 0){
-            $razas = Especie::findOrFail($id)->razas;
+            $razas = Especie::findOrFail($id)->razas()->where('is_active',1)->get();
             return response()->json($razas);
         }else{
             return '';
         }
     }
 
-    public function informacion($cod_usuario){
+    public function informacion(Request $request){
 
         $pagActual = 'dashboard';
-        $usuario = Usuarios::findOrFail($cod_usuario);
+        $usuario = Usuarios::findOrFail($request->cod_usuario);
         $usuario->empleados->genero;
         $usuario->tipo_usuario;
 
@@ -83,5 +83,6 @@ class FuncionesComunesController extends Controller
         }
 
         Auth::logout();
+        return redirect()->route('login')->with('success', 'Contraseña cambiada correctamente');
     }
 }

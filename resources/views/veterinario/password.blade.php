@@ -19,7 +19,7 @@
                         @method('PUT')
                         @include('partials.password');
                         <button type="submit" class="btn btn-danger">Guardar</button>
-                        <a href="{{ route('login') }}" class="btn btn-danger">Cancelar</a>
+                        <a href="{{ route('veterinario.dashboard') }}" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
 

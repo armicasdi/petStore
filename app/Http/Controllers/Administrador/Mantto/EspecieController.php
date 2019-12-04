@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Administrador\Mantto;
 
 use App\Http\Controllers\Controller;
 use App\Especie;
+use App\Raza;
+use App\Tipo_usuario;
+use App\Usuarios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class EspecieController extends Controller
@@ -105,13 +109,13 @@ class EspecieController extends Controller
         }
 
         if($especie->isClean()){
-            return redirect()->route('especies.factualizar',compact('cod_especie'))->with('error','Debes especificar un valor diferente')->withInput();
+            return redirect()->route('especie.factualizar',compact('cod_especie'))->with('info','Debes especificar un valor diferente')->withInput();
         }
 
         $success = $especie->save();
 
         if(!$success){
-            return redirect()->route('especies.factualizar')->with('error', 'Error al agrear al registro');
+            return redirect()->route('especie.factualizar', compact('cod_especie'))->with('error', 'Error al agrear al registro');
         }
 
         return redirect()->route('especies')->with('success', 'Registro agreado correctamente');
@@ -136,12 +140,56 @@ class EspecieController extends Controller
 
     public function bloquear($cod_especie){
 
-        $especie= Especie::findOrFail($cod_especie);
-        $especie->is_active = ! $especie->is_active;
-        $sucess = $especie->save();
-        if(!$sucess){
-            return redirect()->route('especies')->with('error', 'Error al actulizar el registro de la especies');
+        $especie = Especie::findOrfail($cod_especie);
+
+        if(!$especie){
+            return redirect()->route('especies')->with('error', 'La especie especificado no existe');
         }
+
+        $razas = Raza::where('cod_especie',$cod_especie)->get();
+
+        DB::beginTransaction();
+        try{
+            if($especie->is_active){
+                $especie->is_active = ! $especie->is_active;
+                $success = $especie->save();
+                if(!$success){
+                    DB::rollBack();
+                    return redirect()->route('especies')->with('error', 'Error al actualizar el estado de la especie');
+                }
+                foreach ($razas as $raza){
+                    $raza->temp = $raza->is_active;
+                    $raza->is_active = 0;
+                    $success = $raza->save();
+                    if(!$success){
+                        DB::rollBack();
+                        return redirect()->route('especies')->with('error', 'Error al actulizar las razas asignadas a la especie');
+                    }
+                }
+            }else {
+                $especie->is_active = ! $especie->is_active;
+                $success = $especie->save();
+                if(!$success){
+                    DB::rollBack();
+                    return redirect()->route('especies')->with('error', 'Error al actualizar el estado de la especie');
+                }
+
+                foreach ($razas as $raza){
+                    $raza->is_active = $raza->temp;
+                    $raza->temp = 0;
+                    $success = $raza->save();
+                    if(!$success){
+                        DB::rollBack();
+                        return redirect()->route('especies')->with('error', 'Error al actulizar las razas asignados a la especie');
+                    }
+                }
+            }
+        }catch (\Exception $e){
+            DB::rollBack();
+            return redirect()->route('especies')->with('error', 'Error al actulizar el registro');
+        }
+
+        DB::commit();
         return redirect()->route('especies')->with('success', 'Reguistro actualizado correctamente');
     }
 

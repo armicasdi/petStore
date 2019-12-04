@@ -94,7 +94,7 @@
                                                 </td>
                                         @endif
                                         <td>
-                                            <a href="#" title="Editar">
+                                            <a href="{{ route('admin.feditarRol',['cod_tipo_usuario'=> $rol->cod_tipo_usuario]) }}" title="Editar">
                                                 <i class="fa fa-pencil-square fa-2x ml-2 mr-2" aria-hidden="true"></i>
                                             </a>
                                         </td>

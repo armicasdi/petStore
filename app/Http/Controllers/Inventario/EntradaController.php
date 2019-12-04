@@ -98,6 +98,9 @@ class EntradaController extends Controller
                     return response()->json(["data"=>"No se puede actualizar el stock de un producto", "code"=>409],409);
                 }
                 $producto->cantidad += $detalle['cantidad'];
+                if(!$producto->disponible){
+                    $producto->disponible = 1;
+                }
                 $producto->save();
             }
             DB::commit();

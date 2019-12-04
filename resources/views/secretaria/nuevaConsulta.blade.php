@@ -61,14 +61,18 @@
         <br>
         <label for="metodo">Veterinario que atendera la mascota</label>
         <select class="form-control" name="cod_usuario">
-            @foreach($veterinarios as $veterinario)
-                <option value="{{ $veterinario->cod_usuario }}">{{$veterinario->nombres}} {{ $veterinario->apellidos }}</option>
-            @endforeach
+            @if(!$veterinarios->isEmpty())
+                @foreach($veterinarios as $veterinario)
+                    <option value="{{ $veterinario->cod_usuario }}">{{$veterinario->nombres}} {{ $veterinario->apellidos }}</option>
+                @endforeach
+            @else
+                <option value="a">No hay vaterinarios habilitados o registrados</option>
+            @endif
         </select>
         <input type="hidden" name="cod_expediente" value="{{ $mascota->cod_expediente }}">
         <br>
         <button class="btn btn-info mr-5" id="guardar">Agregar consulta</button>
-        <a  class="btn btn-info" href="{{ route('secretaria.consulta') }}"> Cancelar</a>
+        <a  class="btn btn-default" href="{{ route('secretaria.consulta') }}"> Cancelar</a>
     </form>
 @endsection
 
@@ -84,6 +88,10 @@
                 jQuery.validator.addMethod("formato", function (value, element) {
                     return this.optional(element) || /^(\d+|\d+.\d{1,2})$/.test(value);
                 }, "La cantidad ingresada no es valida");
+
+                jQuery.validator.addMethod("snumeros", function (value, element) {
+                    return this.optional(element) || /^\d+$/.test(value);
+                }, "Selecciona una opción de la lista");
 
 
                 $("#formConsulta").validate({
@@ -105,7 +113,7 @@
                         },
                         cod_usuario: {
                             required: true,
-                            number: true,
+                            snumeros: true,
                         }
                     },
                 });

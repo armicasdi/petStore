@@ -46,9 +46,12 @@ class PeluqueriaController extends Controller
         if($cod_expediente){
             $pagActual = 'consulta';
             $mascota = Mascota::findOrFail($cod_expediente);
-            $servicios = Tipo_servicio::all();
-            $peluqueros = Empleados::with('usuario.tipo_usuario')->whereHas('usuario.tipo_usuario', function ($query){
-                $query->where('cod_tipo_usuario', '=', 5);
+            $servicios = Tipo_servicio::where('is_active',1)->get();
+
+            $peluqueros = Empleados::whereHas('usuario',function ($consulta){
+                $consulta->where('is_active',1);
+            })->whereHas('usuario.tipo_usuario',function ($consulta){
+                $consulta->where('cod_tipo_usuario','=',5);
             })->get();
             return view('secretaria.nuevaPeluqueria',compact('mascota','pagActual','servicios','peluqueros'));
         }
@@ -87,6 +90,10 @@ class PeluqueriaController extends Controller
 
             if($success){
                 $servicios = Arr::except($request, ['cod_expediente','cod_usuario','_token'])->toArray();
+
+                if(!$servicios){
+                    return redirect()->back()->with('error', 'No hay servicios de peluqueria en la solicitud');
+                }
                 foreach ($servicios as $servicio){
                     $detalle = new Detalle_peluqueria;
                     $detalle->fill([

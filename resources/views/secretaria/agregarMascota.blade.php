@@ -12,7 +12,7 @@
         <br>
        @include('partials.mascota')
         <button type="submit" class="btn btn-info mr-5" id="guardar">Guardar</button>
-        <a  class="btn btn-info" href="{{ route('secretaria.crear') }}"> Cancelar</a>
+        <a  class="btn btn-default" href="{{ route('secretaria.crear') }}"> Cancelar</a>
 
     </form>
 
@@ -40,13 +40,18 @@
                     url: "{{ url('razas') }}/" + especie,
                     async: false,
                     success:function(respuesta){
-                        let html = "";
-                        $(respuesta).each(function(k,v){
-                            html += `
-                                <option value="${v.cod_raza}">${v.raza}</option>
-                                `;
-                        })
-                        $('#raza').empty().append(html);
+                        console.log(respuesta);
+                        if(respuesta.length){
+                            let html = "";
+                            $(respuesta).each(function(k,v){
+                                html += `
+                                    <option value="${v.cod_raza}">${v.raza}</option>
+                                    `;
+                            })
+                            $('#raza').empty().append(html);
+                        }else{
+                            $("#raza").empty().append('<option value="a" selected>No hay razas habilitadas o registradas</option>');
+                        }
                     },
                     error: function(respuesta){
                         console.log(respuesta);
@@ -73,6 +78,10 @@
                 jQuery.validator.addMethod("formato", function (value, element) {
                     return this.optional(element) || /^[a-zA-Z áéíóúñÁÉÍÓÚÑ \s]+$/.test(value);
                 }, "Carácter no valido en el campo");
+
+                jQuery.validator.addMethod("snumeros", function (value, element) {
+                    return this.optional(element) || /^\d+$/.test(value);
+                }, "Selecciona una opción de la lista");
 
                 $("#formAgregarMascota").validate({
                     rules: {
@@ -113,6 +122,7 @@
                         },
                         color:{
                             required: true,
+                            formato: true,
                             maxlength: 40
                         },
                         sexo:{
@@ -121,11 +131,11 @@
                         },
                         especie:{
                             required: true,
-                            number: true,
+                            snumeros: true,
                         },
                         raza:{
                             required: true,
-                            number: true,
+                            snumeros: true,
                         },
                         tipo:{
                             formato: true,

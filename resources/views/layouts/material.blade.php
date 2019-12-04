@@ -48,7 +48,14 @@
                                 <i class="material-icons">person</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                <a class="dropdown-item" href="{{ route('informacion',(['cod_usuario'=>Auth::user()->cod_usuario])) }}">Perfil</a>
+{{--                                <a class="dropdown-item" href="{{ route('informacion',(['cod_usuario'=>Auth::user()->cod_usuario])) }}">Perfil</a>--}}
+                                <a class="dropdown-item" href=" {{ route('informacion') }}"
+                                   onclick="event.preventDefault();
+                                            document.getElementById('info-form').submit();">Perfil</a>
+                                <form id="info-form" action="{{ route('informacion') }}" method="POST" style="display: none;">
+                                    @csrf
+                                    <input type="hidden" name="cod_usuario" value="{{ Auth::user()->cod_usuario }}">
+                                </form>
                                 <a class="dropdown-item" href="{{ route('cambio.fpass') }}">Cambiar contraseña</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href=" {{ route('logout') }}"

@@ -34,7 +34,7 @@ class PeluqueriaController extends Controller
     public function create($cod_expediente, $cod_peluqueria)
     {
         $pagActual = 'servicio';
-        $servicios = Detalle_peluqueria::where('estado','=',0)->where('cod_peluqueria','=',$cod_peluqueria)->with('peluqueria','tipo_servicio')->get();
+        $servicios = Detalle_peluqueria::where('estado',0)->where('cod_peluqueria',$cod_peluqueria)->with('peluqueria','tipo_servicio')->get();
         return view('peluqueria.atenderMascota',compact('servicios','cod_peluqueria','pagActual'));
     }
 

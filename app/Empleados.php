@@ -54,4 +54,8 @@ class Empleados extends Model
         return $this->hasOne('App\Usuarios', 'cod_usuario', 'cod_usuario');
     }
 
+    public function ventas(){
+        return $this->hasMany('App\Venata','cod_usuario', 'cod_usuario');
+    }
+
 }

@@ -15,8 +15,8 @@
                 </div>
                 @include('partials.informacion')
                 <div class="ml-3 mb-3">
-                    <a href="{{ route('admin.empleadoActualizar',(['cod_usuario'=> $usuario->cod_usuario])) }}" class="btn btn-primary">Editar</a>
-                    <a href="{{ route('admin.empleados') }}" class="btn btn-primary">Regresar</a>
+                    <a href="{{ route('admin.empleadoActualizar',(['cod_usuario'=> $usuario->cod_usuario])) }}" class="btn btn-primary mr-5">Editar</a>
+                    <a href="{{ route('admin.empleados') }}" class="btn btn-default">Regresar</a>
                 </div>
             </div>
         </div>

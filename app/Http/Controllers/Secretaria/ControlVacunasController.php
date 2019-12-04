@@ -7,6 +7,7 @@ use App\Empleados;
 use App\Http\Controllers\Controller;
 use App\Mascota;
 use App\Peluqueria;
+use App\Usuarios;
 use App\vacunas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -40,9 +41,11 @@ class ControlVacunasController extends Controller
         if($cod_expediente){
             $pagActual = 'consulta';
             $mascota = Mascota::findOrFail($cod_expediente);
-            $vacunas = vacunas::all();
-            $veterinarios = Empleados::with('usuario.tipo_usuario')->whereHas('usuario.tipo_usuario', function ($query){
-                $query->where('cod_tipo_usuario', '=', 2);
+            $vacunas = vacunas::where('is_active', 1)->get();
+            $veterinarios = Empleados::whereHas('usuario',function ($consulta){
+                $consulta->where('is_active',1);
+            })->whereHas('usuario.tipo_usuario',function ($consulta){
+                $consulta->where('cod_tipo_usuario','=',2);
             })->get();
             return view('secretaria.nuevaVacuna',compact('mascota','pagActual','vacunas','veterinarios'));
         }

@@ -17,31 +17,35 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-warning">
-                            <th>Expediente</th>
-                            <th>Nombre</th>
-                            <th>Raza</th>
-                            <th>sexo</th>
-                            <th>Nombre propietario</th>
-                            <th>Acciones</th>
+                                <th>Expediente</th>
+                                <th>Nombre</th>
+                                <th>Raza</th>
+                                <th>sexo</th>
+                                <th>Nombre propietario</th>
+                                <th>Acciones</th>
                             </thead>
                             <tbody>
-                            @foreach($peluquerias as $peluqueria)
-                                <tr>
-                                    <td>{{ $peluqueria->cod_expediente }}</td>
-                                    <td>{{ $peluqueria->mascota->nombre }}</td>
-                                    <td>{{ $peluqueria->mascota->raza->raza }}</td>
-                                    <td>{{ $peluqueria->mascota->sexo->sexo }}</td>
-                                    <td>{{ $peluqueria->mascota->propietario->nombres}} {{ $peluqueria->mascota->propietario->apellidos  }}</td>
-                                    <td>
-                                        <a href="{{ route('peluqueria.atenderMascota',['cod_expediente'=>$peluqueria->cod_expediente,'cod_peluqueria'=>$peluqueria->cod_peluqueria]) }}" title="Atender">
-                                            <i class="fa fa-files-o fa-2x mr-2" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-
+                            @if(!$peluquerias->isEmpty())
+                                    @foreach($peluquerias as $peluqueria)
+                                        <tr>
+                                            <td>{{ $peluqueria->cod_expediente }}</td>
+                                            <td>{{ $peluqueria->mascota->nombre }}</td>
+                                            <td>{{ $peluqueria->mascota->raza->raza }}</td>
+                                            <td>{{ $peluqueria->mascota->sexo->sexo }}</td>
+                                            <td>{{ $peluqueria->mascota->propietario->nombres}} {{ $peluqueria->mascota->propietario->apellidos  }}</td>
+                                            <td>
+                                                <a href="{{ route('peluqueria.atenderMascota',['cod_expediente'=>$peluqueria->cod_expediente,'cod_peluqueria'=>$peluqueria->cod_peluqueria]) }}" title="Atender">
+                                                    <i class="fa fa-files-o fa-2x mr-2" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
+                        @if($peluquerias->isEmpty())
+                            <p class="h3">No hay mascotas por atender :)</p>
+                        @endif
                     </div>
                 </div>
 

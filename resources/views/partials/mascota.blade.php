@@ -46,19 +46,21 @@
         <div class="form-group">
             <label for="exampleFormControlSelect2">Especie</label>
             <select class="form-control @error('especie') aria-invalid @enderror" id="especie" name="especie" >
-                <option value="0" selected>Seleccione una opción</option>
-                @foreach($especies as $especie)
-                    @if(isset($mascota) && $especie->cod_especie == $mascota->raza->cod_especie)
-                        <option value="{{ $especie->cod_especie }}" selected>{{ $especie->especie }}</option>
-                        @continue
-                    @endif
-                        <option value="{{ $especie->cod_especie }}">{{ $especie->especie }}</option>
-                @endforeach
+                <option value="a" selected>Seleccione una opción</option>
+                  @if(!$especies->isEmpty())
+                        @foreach($especies as $especie)
+                            @if(isset($mascota) && $especie->cod_especie == $mascota->raza->cod_especie)
+                                <option value="{{ $especie->cod_especie }}" selected>{{ $especie->especie }}</option>
+                                @continue
+                            @endif
+                                <option value="{{ $especie->cod_especie }}">{{ $especie->especie }}</option>
+                        @endforeach
+                  @endif
             </select>
             @error('especie')
-            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
             @enderror
         </div>
         <div class="form-group">

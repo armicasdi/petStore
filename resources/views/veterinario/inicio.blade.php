@@ -92,31 +92,35 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead class="text-danger">
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Raza</th>
-                            <th>sexo</th>
-                            <th>Nombre propietario</th>
-                            <th>Acciones</th>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Raza</th>
+                                <th>sexo</th>
+                                <th>Nombre propietario</th>
+                                <th>Acciones</th>
                             </thead>
                             <tbody>
-                            @foreach($consultas as $consulta)
-                                <tr>
-                                    <td>{{ $consulta->cod_expediente }}</td>
-                                    <td>{{ $consulta->mascota->nombre }}</td>
-                                    <td>{{ $consulta->mascota->raza->raza }}</td>
-                                    <td>{{ $consulta->mascota->sexo->sexo }}</td>
-                                    <td>{{ $consulta->mascota->propietario->nombres}} {{ $consulta->mascota->propietario->apellidos  }}</td>
-                                    <td>
-                                        <a href="{{ route('veterinario.feditar',['cod_consulta'=>$consulta->cod_consulta]) }}" title="Editar">
-                                            <i class="fa fa-pencil-square fa-2x mr-2" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-
+                                @if(!$consultas->isEmpty())
+                                    @foreach($consultas as $consulta)
+                                        <tr>
+                                            <td>{{ $consulta->cod_expediente }}</td>
+                                            <td>{{ $consulta->mascota->nombre }}</td>
+                                            <td>{{ $consulta->mascota->raza->raza }}</td>
+                                            <td>{{ $consulta->mascota->sexo->sexo }}</td>
+                                            <td>{{ $consulta->mascota->propietario->nombres}} {{ $consulta->mascota->propietario->apellidos  }}</td>
+                                            <td>
+                                                <a href="{{ route('veterinario.feditar',['cod_consulta'=>$consulta->cod_consulta]) }}" title="Editar">
+                                                    <i class="fa fa-pencil-square fa-2x mr-2" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
+                        @if($consultas->isEmpty())
+                            <p class="h3">No hay registros</p>
+                        @endif
                     </div>
                 </div>
 

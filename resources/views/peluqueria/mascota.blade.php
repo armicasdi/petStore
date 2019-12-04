@@ -1,7 +1,7 @@
 @extends('layouts.material')
 
 @section('menuLateral')
-    @include('secretaria.menuLateral')
+    @include('peluqueria.menuLateral')
 @endsection
 @section('contenido')
 
@@ -26,20 +26,20 @@
         <div class="col-md-12">
             <div class="card">
 
-                <div class="card-header card-header-info">
+                <div class="card-header card-header-warning">
                     <h4 class="card-title ">Resultados</h4>
                 </div>
 
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead class="text-info">
-                            <th>Código</th>
-                            <th>Nombre</th>
-                            <th>Raza</th>
-                            <th>Propietario</th>
-                            <th>Teléfono</th>
-                            <th>Accion</th>
+                            <thead class="text-warning">
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Raza</th>
+                                <th>Propietario</th>
+                                <th>Teléfono</th>
+                                <th>Accion</th>
                             </thead>
                             <tbody id="data">
                             </tbody>
@@ -55,9 +55,6 @@
 
 @section('jsExtra')
     <script>
-
-
-
         $(document).ready(function (){
             // Agregar el token en la solicitud ajax
             $.ajaxSetup({
@@ -69,7 +66,6 @@
             $('#metodo').change(function () {
                 $('#busqueda').val('');
             });
-
 
             $("#busqueda").keypress(function(event) {
                 if(event.which == 13) {
@@ -88,7 +84,7 @@
                         $('#mensaje').html('');
                         $.ajax({
                             type: 'GET',
-                            url: "{{ url('secretaria/busqueda') }}/" + metodo + "/" + busqueda,
+                            url: "{{ url('peluqueria/busqueda') }}/" + metodo + "/" + busqueda,
                             async: false,
                             success: function (respuesta) {
                                 let html = "";
@@ -102,14 +98,8 @@
                                                 <td>${v.propietario.nombres} ${v.propietario.apellidos}</td>
                                                 <td>${v.propietario.telefono}</td>
                                                 <td>
-                                                    <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta">
-                                                        <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a href="{{ route('secretaria.nuevaVacuna') }}/${v.cod_expediente}" title="Vacuna" id="vacuna" >
-                                                        <i class="fa fa-suitcase fa-2x mr-2" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a href="{{ route('secretaria.nuevaPeluqueria') }}/${v.cod_expediente}" title="Peluqueria" id="peluqueria" >
-                                                        <i class="fa fa-paw fa-2x" aria-hidden="true"></i>
+                                                    <a href="{{ route('peluqueria.historial') }}/${v.cod_expediente}" title="Historial" id="consulta">
+                                                        <i class="fa fa-eye fa-2x mr-2" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -126,14 +116,8 @@
                                                         <td>${a.nombres} ${a.apellidos}</td>
                                                         <td>${a.telefono}</td>
                                                         <td>
-                                                            <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta" >
-                                                                <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
-                                                            </a>
-                                                            <a href="{{ route('secretaria.nuevaVacuna') }}/${v.cod_expediente}" title="Vacuna" id="vacuna" >
-                                                                <i class="fa fa-suitcase fa-2x mr-2" aria-hidden="true"></i>
-                                                            </a>
-                                                            <a href="{{ route('secretaria.nuevaPeluqueria') }}/${v.cod_expediente}" title="Peluqueria" id="peluqueria" >
-                                                                <i class="fa fa-paw fa-2x" aria-hidden="true"></i>
+                                                            <a href="{{ route('peluqueria.historial') }}/${v.cod_expediente}" title="Historial" id="consulta" >
+                                                                <i class="fa fa-eye fa-2x mr-2" aria-hidden="true"></i>
                                                             </a>
                                                         </td>
                                                 </tr>`
@@ -159,23 +143,6 @@
 
         });
     </script>
-
-    @if(session()->has('success'))
-        <script>
-            Command: toastr["success"]("{{ session()->get('success') }}", "¡Éxito!")
-            @include('partials.message')
-        </script>
-    @elseif(session()->has('error'))
-        <script>
-            Command: toastr["error"]("{{ session()->get('error') }}", "¡Error!")
-            @include('partials.message')
-        </script>
-    @elseif(session()->has('warning'))
-        <script>
-            Command: toastr["info"]("{{ session()->get('warning') }}", "¡Información!")
-            @include('partials.message')
-        </script>
-    @endif
 
 @endsection
 

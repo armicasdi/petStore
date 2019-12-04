@@ -49,7 +49,6 @@
                             maxlength: 9,
                         },
                         correo:{
-                            required: true,
                             email: true,
                             maxlength: 30,
                         },

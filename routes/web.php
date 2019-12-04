@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::get('razas/{id}', 'FuncionesComunesController@obtenerRazas');
 Route::group(['middleware'=> 'auth'], function () {
-    Route::get('informacion/{cod_usuario}', 'FuncionesComunesController@informacion')->name('informacion');
+    Route::post('informacion', 'FuncionesComunesController@informacion')->name('informacion');
     Route::get('informacionfpass', 'FuncionesComunesController@cambioPass')->name('cambio.fpass');
     Route::put('informacion', 'FuncionesComunesController@cambioPassUpdate')->name('cambio.update');
 });
@@ -113,14 +113,6 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
     Route::delete('bodega/{cod_bodega}', 'Mantto\BodegaController@destroy')->name('bodega.eliminar');
     Route::put('bodegaBloquear/{cod_bodega}', 'Mantto\BodegaController@bloquear')->name('bodega.bloquear');
 
-    Route::get('tiposProductos', 'Mantto\TipoProductoController@index')->name('tiposProductos');
-    Route::get('tipoProductofagregar', 'Mantto\TipoProductoController@create')->name('tipoProducto.fagregar');
-    Route::post('tipoProducto', 'Mantto\TipoProductoController@store')->name('tipoProducto.agregar');
-    Route::get('tipoProductofactuzaliar/{cod_tipo_producto}', 'Mantto\TipoProductoController@edit')->name('tipoProducto.factualizar');
-    Route::put('tipoProducto/{cod_tipo_producto}', 'Mantto\TipoProductoController@update')->name('tipoProducto.actualizar');
-    Route::delete('tipoProducto/{cod_tipo_producto}', 'Mantto\TipoProductoController@destroy')->name('tipoProducto.eliminar');
-    Route::put('tipoProductoBloquear/{cod_tipo_producto}', 'Mantto\TipoProductoController@bloquear')->name('tipoProducto.bloquear');
-
     Route::get('razas', 'Mantto\RazaController@index')->name('razas');
     Route::get('razafagregar', 'Mantto\RazaController@create')->name('raza.fagregar');
     Route::post('raza', 'Mantto\RazaController@store')->name('raza.agregar');
@@ -144,6 +136,12 @@ Route::group(['prefix'=>'administracion', 'namespace'=>'Administrador', 'middlew
     Route::put('passwordCancelar/{cod_usuario}','PasswordController@cancelar')->name('password.cancelar');
     Route::put('password/{cod_usuario}','PasswordController@cambio')->name('password.cambio');
 
+    Route::get('ventas','VentaController@index')->name('admin.ventas');
+    Route::get('ventaDetalle/{cod_venta}','VentaController@show')->name('admin.ventaDetalle');
+
+    Route::get('editarRol/{cod_tipo_usuario}','RolController@edit')->name('admin.feditarRol');
+    Route::put('editarRol/{cod_tipo_usuario}','RolController@update')->name('admin.urol');
+
 });
 
 /*
@@ -154,6 +152,10 @@ Route::group(['prefix'=>'peluqueria', 'namespace' =>'Peluqueria','middleware'=>[
     Route::get('atender', 'PeluqueriaController@index')->name('peluqueria.atender');
     Route::get('atenderMascota/{cod_expediente}/{cod_peluqueria}', 'PeluqueriaController@create')->name('peluqueria.atenderMascota');
     Route::put('atenderMascota/{cod_peluqueria}', 'PeluqueriaController@update')->name('peluqueria.gservicio');
+
+    Route::get('mascotas', 'MascotaController@index')->name('peluqueria.mascota');
+    Route::get('busqueda/{metodo}/{busqueda}', 'MascotaController@busqueda')->name('peluqueria.busqueda');
+    Route::get('historial/{cod_expediente?}', 'MascotaController@show')->name('peluqueria.historial');
 });
 
 /*
@@ -187,6 +189,10 @@ Route::group(['prefix'=>'secretaria', 'namespace' =>'Secretaria', 'middleware'=>
     Route::get('actualizarPropietario/{cod_propietario?}', 'PropietarioController@editar')->name('secretaria.actualizarPropietario');
     Route::put('actualizarPropietario/{cod_propietario?}', 'PropietarioController@update')->name('secretaria.gactualizarPropietario');
 
+    Route::get('venta', 'VentaController@index')->name('secretaria.venta');
+    Route::post('venta', 'VentaController@store')->name('secretaria.gventa');
+    Route::get('precio/{cod_producto?}', 'VentaController@precio');
+
 });
 
 /*
@@ -205,7 +211,7 @@ Route::group(['prefix'=>'veterinario', 'namespace' =>'Veterinario', 'middleware'
 
     Route::get('mascotas', 'MascotaController@index')->name('veterinario.mascota');
     Route::get('busqueda/{metodo}/{busqueda}', 'MascotaController@busqueda')->name('veterinario.busqueda');
-    Route::get('historal/{cod_expediente?}', 'MascotaController@show')->name('veterinario.historial');
+    Route::get('historial/{cod_expediente?}', 'MascotaController@show')->name('veterinario.historial');
     Route::get('editar/{cod_consulta}', 'ConsultaController@edit')->name('veterinario.feditar');
 });
 

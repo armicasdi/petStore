@@ -41,7 +41,7 @@
                                     <div class="row">
                                         <div class="col-10">
                                             <h5 class="mb-0">
-                                                <a data-toggle="collapse" class="text-info" href="#collapseOne{{ $consulta->cod_consulta }}" aria-expanded="true" aria-controls="collapseOne">
+                                                <a data-toggle="collapse" class="text-info" href="#collapseOne{{ $consulta->cod_consulta }}" aria-expanded="true" aria-controls="collapse">
                                                     Fecha: {{ date("d/m/Y h:i:s a", strtotime($consulta->fecha)) }} &nbsp;&nbsp;&nbsp; Peso: {{ $consulta->peso }} libras&nbsp;&nbsp;&nbsp; Temperatura: {{ $consulta->temperatura }} c &nbsp;&nbsp;&nbsp; Fr cardiaca: {{ $consulta->fr_cardiaca }} &nbsp;&nbsp;&nbsp;
                                                     <i class="material-icons">keyboard_arrow_down</i>
                                                 </a>
@@ -56,7 +56,7 @@
 
                                 </div>
 
-                                <div id="collapseOne{{ $consulta->cod_consulta }}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div id="collapseOne{{ $consulta->cod_consulta }}" class="collapse" role="tabpanel" aria-labelledby="headingOne{{ $consulta->cod_consulta }}" data-parent="#accordion">
                                     <div class="card-body">
                                         <div>
                                             <div class="text-info">Veterinario</div>
@@ -110,14 +110,14 @@
                                 <div class="card card-collapse">
                                     <div class="card-header" role="tab" id="headingOne">
                                         <h5 class="mb-0">
-                                            <a data-toggle="collapse" class="text-info" href="#collapseOne{{ $vacuna->cod_control_vacunas }}" aria-expanded="true" aria-controls="collapseOne">
+                                            <a data-toggle="collapse" class="text-info" href="#collapseTwo{{ $vacuna->cod_control_vacunas }}" aria-expanded="true" aria-controls="collapseTwo">
                                                 Fecha: {{ date("d/m/Y h:i:s a", strtotime($vacuna->fecha)) }} &nbsp;&nbsp;&nbsp; Vacuna: {{ $vacuna->vacunas->vacuna }}  &nbsp;&nbsp;&nbsp;
                                                 <i class="material-icons">keyboard_arrow_down</i>
                                             </a>
                                         </h5>
                                     </div>
 
-                                    <div id="collapseOne{{ $vacuna->cod_control_vacunas }}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion2">
+                                    <div id="collapseTwo{{ $vacuna->cod_control_vacunas }}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion2">
                                         <div class="card-body">
                                             <div>
                                                 <div class="text-info">Veterinario</div>
@@ -154,18 +154,18 @@
                                 <div class="card card-collapse">
                                     <div class="card-header" role="tab" id="headingOne">
                                         <h5 class="mb-0">
-                                            <a data-toggle="collapse" class="text-info" href="#collapseOne{{ $servicio->cod_peluqueria }}" aria-expanded="true" aria-controls="collapseOne">
+                                            <a data-toggle="collapse" class="text-info" href="#collapseThree{{ $servicio->cod_peluqueria }}" aria-expanded="true" aria-controls="collapseThree">
                                                 Fecha: {{ date("d/m/Y h:i:s a", strtotime($servicio->fecha)) }} &nbsp;&nbsp;&nbsp;
                                                 <i class="material-icons">keyboard_arrow_down</i>
                                             </a>
                                         </h5>
                                     </div>
 
-                                    <div id="collapseOne{{ $servicio->cod_peluqueria }}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion3">
+                                    <div id="collapseThree{{ $servicio->cod_peluqueria }}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion3">
                                         <div class="card-body">
                                             <div>
                                                 <div class="text-info">Peluquero:</div>
-                                                <p>{{ $servicio->empleados->nombres }} {{ $vacuna->empleados->apellidos }}</p>
+                                                <p>{{ $servicio->empleados->nombres }} {{ $servicio->empleados->apellidos }}</p>
                                             </div>
                                             <div>
                                                 <div class="text-info">Servicios:</div>

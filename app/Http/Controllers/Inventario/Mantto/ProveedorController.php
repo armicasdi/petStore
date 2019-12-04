@@ -47,7 +47,7 @@ class ProveedorController extends Controller
             'direccion' => ['required','max:200','string'],
             'telefono1' => ['required','max:15','string'],
             'telefono2' => ['max:15'],
-            'correo' => ['required','unique:proveedores,correo','max:30','email'],
+            'correo' => ['nullable','unique:proveedores,correo','max:30','email'],
             'descripcion' => ['required','max:300','string'],
         ]);
 
@@ -121,7 +121,7 @@ class ProveedorController extends Controller
             'direccion' => ['required','max:200','string'],
             'telefono1' => ['required','max:15','string'],
             'telefono2' => ['max:15'],
-            'correo' => ['required','unique:proveedores,correo,'. $cod_proveedor.',cod_proveedor','max:30','email'],
+            'correo' => ['nullable','unique:proveedores,correo,'. $cod_proveedor.',cod_proveedor','max:30','email'],
             'descripcion' => ['required','max:300','string'],
         ]);
 

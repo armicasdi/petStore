@@ -42,7 +42,7 @@
         </div>
         <input type="hidden" name="cod_expediente" value="{{ $consulta->cod_expediente }}">
         <br>
-        <button class="btn btn-info btn-danger">Guardar consulta</button>
+        <button class="btn btn-info btn-danger mr-5">Guardar consulta</button>
     </form>
 
 

@@ -6,7 +6,7 @@
     <p class="card-text">Género: {{ $usuario->empleados->genero->genero }}</p>
     <p class="card-text">Telefono 1: {{ $usuario->empleados->telefono1 }}</p>
     <p class="card-text">Telefono 2: {{ $usuario->empleados->telefono2 ?? '---- ----' }}</p>
-    <p class="card-text">Correo: {{ $usuario->empleados->correo }}</p>
+    <p class="card-text">Correo: {{ $usuario->empleados->correo ?? 'No especificado' }}</p>
     <p class="card-text">Dirección: {{ $usuario->empleados->direccion }}</p>
 </div>
 

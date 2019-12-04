@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Peluqueria;
+namespace App\Http\Controllers\Administrador;
 
+use App\Detalle_entrada;
+use App\Detalle_venta;
+use App\Entrada_producto;
 use App\Http\Controllers\Controller;
+use App\Venta;
 use Illuminate\Http\Request;
 
-class DetallePeluqueriaController extends Controller
+class VentaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +18,9 @@ class DetallePeluqueriaController extends Controller
      */
     public function index()
     {
-        //
+        $pagActual = 'venta';
+        $ventas = Venta::orderBy('fecha','desc')->with('empleado')->paginate(10);
+        return view('administrador.venta', compact('ventas','pagActual'));
     }
 
     /**
@@ -44,9 +50,18 @@ class DetallePeluqueriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($cod_venta)
     {
-        //
+
+        $pagActual = 'venta';
+        $detalles = Detalle_venta::where('cod_venta',$cod_venta)->with(['producto'=>function($consulta){
+            $consulta->withTrashed()->get();
+        }])->get();
+        if($detalles->isEmpty()){
+            return redirect()->back();
+        }
+        return view('administrador.detalleVenta', compact('detalles','pagActual'));
+
     }
 
     /**

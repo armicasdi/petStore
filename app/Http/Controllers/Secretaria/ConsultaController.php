@@ -134,8 +134,10 @@ class ConsultaController extends Controller
        if($cod_expediente){
            $pagActual = 'consulta';
            $mascota = Mascota::findOrFail($cod_expediente);
-           $veterinarios = Empleados::with('usuario.tipo_usuario')->whereHas('usuario.tipo_usuario', function ($query){
-               $query->where('cod_tipo_usuario', '=', 2);
+           $veterinarios = Empleados::whereHas('usuario',function ($consulta){
+               $consulta->where('is_active',1);
+           })->whereHas('usuario.tipo_usuario',function ($consulta){
+               $consulta->where('cod_tipo_usuario','=',2);
            })->get();
            return view('secretaria.nuevaConsulta',compact('mascota','pagActual','veterinarios'));
        }

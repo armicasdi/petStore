@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead class=" text-primary">
+                            <thead class=" text-success">
                                 <th>Nombre juridico</th>
                                 <th>Nombre comercial</th>
                                 <th>Telefono</th>
@@ -34,6 +34,7 @@
                                 <th>Acciones</th>
                                 </thead>
                             <tbody>
+                            @if(!$proveedores->isEmpty())
                                 @foreach($proveedores as $proveedor)
                                     <tr>
                                         <td>{{ $proveedor->nombre_juridico }}</td>
@@ -144,9 +145,12 @@
                                         </td>
                                     </tr>
                                 @endforeach
-
+                            @endif
                             </tbody>
                         </table>
+                        @if($proveedores->isEmpty())
+                            <p class="h3">No hay registros</p>
+                        @endif
                     </div>
                 </div>
 

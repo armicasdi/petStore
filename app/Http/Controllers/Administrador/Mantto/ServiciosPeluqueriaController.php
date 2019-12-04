@@ -105,13 +105,13 @@ class ServiciosPeluqueriaController extends Controller
         }
 
         if($servicio->isClean()){
-            return redirect()->route('servicio.factualizar',compact('cod_tipo_servicio'))->with('error','Debes especificar un valor diferente')->withInput();
+            return redirect()->route('servicio.factualizar',compact('cod_tipo_servicio'))->with('info','Debes especificar un valor diferente')->withInput();
         }
 
         $success = $servicio->save();
 
         if(!$success){
-            return redirect()->route('servicio.factualizar')->with('error', 'Error al agrear al registro');
+            return redirect()->route('servicio.factualizar', compact('cod_tipo_servicio'))->with('error', 'Error al agrear al registro');
         }
 
         return redirect()->route('servicios')->with('success', 'Registro agreado correctamente');

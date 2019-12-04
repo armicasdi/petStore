@@ -46,7 +46,8 @@
                 </div>
             </div>
 
-            <button class="btn btn-warning">Guardar servicios</button>
+            <button class="btn btn-warning mr-5">Guardar servicios</button>
+            <a href="{{ route('peluqueria.atender') }}" class="btn btn-default">Cancelar</a>
         </form>
 
 @endsection

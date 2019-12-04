@@ -9,7 +9,7 @@
                     <h4>Perfil bloqueado</h4>
                 </div>
                 <div class="card-body text-center">
-                    <img src="{{ asset('img/img_app/lock.png') }}" alt="404.png" width="45%">
+                    <img src="{{ asset('img/img_app/lock.png') }}" alt="lock.png" width="25%">
                     <h4 class="card-title">Esto no es una falla, tu perfil ha sido bloqueado por seguridad</h4>
                     <h4 class="card-title">Contacta al administrador para habilitarlo</h4>
                 </div>

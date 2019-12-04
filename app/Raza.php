@@ -12,6 +12,7 @@ class Raza extends Model
     protected $fillable = [
         'raza',
         'cod_especie',
+        'temp',
     ];
 
     public function mascota(){

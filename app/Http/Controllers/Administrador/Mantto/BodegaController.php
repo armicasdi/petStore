@@ -107,13 +107,13 @@ class BodegaController extends Controller
         }
 
         if($bodega->isClean()){
-            return redirect()->route('bodega.factualizar',compact('cod_bodega'))->with('error','Debes especificar un valor diferente')->withInput();
+            return redirect()->route('bodega.factualizar',compact('cod_bodega'))->with('info','Debes especificar un valor diferente')->withInput();
         }
 
         $success = $bodega->save();
 
         if(!$success){
-            return redirect()->route('bodega.factualizar')->with('error', 'Error al agrear al registro');
+            return redirect()->route('bodegas.factualizar', compact('cod_bodega'))->with('error', 'Error al agrear al registro');
         }
 
         return redirect()->route('bodegas')->with('success', 'Registro agreado correctamente');

@@ -11,7 +11,7 @@
         @method('PUT')
         @include('partials.mascota')
         <button type="submit" class="btn btn-info mr-5" id="actualizar">Actualizar</button>
-        <a  class="btn btn-info" href="{{ route('secretaria.actualizarMascota') }}"> Cancelar</a>
+        <a  class="btn btn-default" href="{{ route('secretaria.actualizarMascota') }}"> Cancelar</a>
     </form>
 
 @endsection
@@ -85,6 +85,7 @@
                         },
                         color:{
                             required: true,
+                            formato: true,
                             maxlength: 40
                         },
                         sexo:{

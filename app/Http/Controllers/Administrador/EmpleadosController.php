@@ -162,7 +162,7 @@ class EmpleadosController extends Controller
             'fech_nac'          => ['required','date'],
             'telefono1'         => ['required','max:9'],
             'telefono2'         => ['max:9'],
-            'correo'            => ['required','email'],
+            'correo'            => ['nullable','email'],
             'direccion'         => ['required','max:200','string'],
             'usuario'           => ['required','unique:usuarios,usuario,' . $usuario->cod_usuario . ',cod_usuario'],
             'cod_tipo_usuario'  => ['required'],

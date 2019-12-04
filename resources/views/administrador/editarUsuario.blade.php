@@ -5,7 +5,7 @@
 @endsection
 
 @section('contenido')
-    <form action="{{ route('admin.empleadoActualizar',(['cod_usuario'=> $empleado->cod_usuario])) }}" method="POST">
+    <form action="{{ route('admin.empleadoActualizar',(['cod_usuario'=> $empleado->cod_usuario])) }}" method="POST" id="formEmpleado">
         @csrf
         @method('PUT')
         @include('partials.usuario')
@@ -39,13 +39,86 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary mr-5">Guardar</button>
-        <a  class="btn btn-primary" href="{{ route('admin.empleados') }}"> Cancelar</a>
+        <button type="submit" class="btn btn-primary mr-5" id="guardar">Guardar</button>
+        <a  class="btn btn-default" href="{{ route('admin.empleados') }}"> Cancelar</a>
     </form>
 
 @endsection
 
 @section('jsExtra')
+    <script src="{{ asset('js/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/validation/jquery.validate.additional-methods.min.js') }}"></script>
+    <script src="{{ asset('js/validation/messages_es.js') }}"></script>
+    <script src="{{ asset('js/mask/jquery.mask.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            // VALIDACIÓN
+            $("#guardar").click(function (event) {
+                jQuery.validator.addMethod("formato", function (value, element) {
+                    return this.optional(element) || /^[a-zA-Z áéíóúñÁÉÍÓÚÑ \s]+$/.test(value);
+                }, "Carácter no valido en el campo");
+
+                $("#formEmpleado").validate({
+                    rules: {
+                        nombres: {
+                            required: true,
+                            maxlength: 50,
+                            formato: true
+                        },
+                        apellidos:{
+                            required: true,
+                            maxlength: 50,
+                            formato: true
+                        },
+                        dui:{
+                            required: true,
+                            minlength: 10,
+                            maxlength: 10,
+                        },
+                        fech_nac:{
+                            required: true,
+                            dateISO: true
+                        },
+                        cod_genero:{
+                            required: true,
+                            number: true
+                        },
+                        telefono1:{
+                            required: true,
+                            minlength: 9,
+                            maxlength: 9,
+                        },
+                        telefono2:{
+                            minlength: 9,
+                            maxlength: 9,
+                        },
+                        correo:{
+                            email: true,
+                            maxlength: 40
+                        },
+                        direccion:{
+                            required: true,
+                            maxlength: 200,
+                        },
+                        usuario:{
+                            required: true,
+                            formato: true,
+                        },
+                        cod_tipo_usuario:{
+                            required: true,
+                            number: true,
+                        },
+                    },
+                });
+            });
+
+            // Mascara
+            $('#dui').mask('00000000-0');
+            $('#telefono1').mask('0000-0000');
+            $('#telefono2').mask('0000-0000');
+        });
+    </script>
+
     @if(session()->has('success'))
         <script>
             Command: toastr["success"]("{{ session()->get('success') }}", "¡Éxito!")

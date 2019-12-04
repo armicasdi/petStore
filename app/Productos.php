@@ -21,7 +21,7 @@ class Productos extends Model
     ];
 
     public function detalle_entrada(){
-        return $this->hasMany('App\Detalle_entrada', 'cod_producto','cod_producto');
+        return $this->hasMany('App\Detalle_entrada', 'cod_producto', 'cod_producto');
     }
 
     public function bodega(){
@@ -32,4 +32,7 @@ class Productos extends Model
         return $this->belongsTo('App\Tipo_producto', 'cod_tipo_producto','cod_tipo_producto');
     }
 
+    public function detalle_venta(){
+        return $this->hasMany('App\Detalle_venta', 'cod_producto','cod_producto');
+    }
 }

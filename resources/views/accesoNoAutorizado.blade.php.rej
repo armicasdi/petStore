@@ -1,8 +1,0 @@
-diff a/resources/views/accesoNoAutorizado.blade.php b/resources/views/accesoNoAutorizado.blade.php	(rejected hunks)
-@@ -17,5 +17,6 @@
-         </div>
-     </div>
- 
-+
-     
- @endsection

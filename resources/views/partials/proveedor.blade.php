@@ -50,7 +50,7 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Correo</label>
+            <label for="exampleFormControlInput1">Correo (opcional)</label>
             <input type="email" class="form-control @error('correo') is-invalid @enderror" id="exampleFormControlInput1" name="correo" value="{{ isset($proveedor->correo) ? $proveedor->correo : old('correo') }}">
             @error('correo')
                 <span class="invalid-feedback" role="alert">

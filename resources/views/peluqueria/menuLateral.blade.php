@@ -22,8 +22,14 @@
             </li>
             <li class="nav-item   {{ $pagActual == 'servicio' ? 'active' : '' }} ">
                 <a class="nav-link" href=" {{ route('peluqueria.atender') }}">
-                    <i class="material-icons">pets</i>
+                    <i class="material-icons">chrome_reader_mode</i>
                     <p>Servicio</p>
+                </a>
+            </li>
+            <li class="nav-item   {{ $pagActual == 'mascota' ? 'active' : '' }} ">
+                <a class="nav-link" href=" {{ route('peluqueria.mascota') }}">
+                    <i class="material-icons">pets</i>
+                    <p>Mascotas</p>
                 </a>
             </li>
 

@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $mAtendidas = Consulta::where('fecha','like',"$year-$mes-%")->where('estado','=',true)->where('cod_usuario','=',Auth::user()->cod_usuario)->count();
         $vAtender = Control_vacunas::where('estado','=',0)->where('cod_usuario','=',Auth::user()->cod_usuario)->count();
         $vAtendidas = Control_vacunas::where('fecha','like',"$year-$mes-%")->where('estado','=',1)->where('cod_usuario','=',Auth::user()->cod_usuario)->count();
-        $consultas = Consulta::where('estado',1)->orderBy('fecha','desc')->limit(10)->with('mascota.raza','mascota.propietario','empleados')->get();
+        $consultas = Consulta::where('estado',1)->where('cod_usuario','=',Auth::user()->cod_usuario)->orderBy('fecha','desc')->limit(10)->with('mascota.raza','mascota.propietario','empleados')->get();
 
         return view('veterinario.inicio', compact('pagActual','mAtender','mAtendidas','vAtender','vAtendidas','consultas'));
     }

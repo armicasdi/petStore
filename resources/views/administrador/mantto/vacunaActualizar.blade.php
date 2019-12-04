@@ -5,20 +5,50 @@
 @endsection
 
 @section('contenido')
-    <form action="{{ route('vacuna.actualizar', ['cod_vacuna' => $vacuna->cod_vacuna]) }}" method="POST">
+    <form action="{{ route('vacuna.actualizar', ['cod_vacuna' => $vacuna->cod_vacuna]) }}" method="POST" id="formVacuna">
         @csrf
         @method('PUT')
         @include('partials.vacuna')
-        <button type="submit" class="btn btn-primary mr-5">Guardar</button>
-        <a class="btn btn-primary" href="{{ route('vacunas') }}"> Cancelar</a>
+        <button type="submit" class="btn btn-primary mr-5" id="guardar">Guardar</button>
+        <a class="btn btn-default" href="{{ route('vacunas') }}"> Cancelar</a>
     </form>
 
 @endsection
 
 @section('jsExtra')
+    <script src="{{ asset('js/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/validation/jquery.validate.additional-methods.min.js') }}"></script>
+    <script src="{{ asset('js/validation/messages_es.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#guardar").click(function (event) {
+                jQuery.validator.addMethod("formato", function (value, element) {
+                    return this.optional(element) || /^[a-zA-Z áéíóúñÁÉÍÓÚÑ \s]+$/.test(value);
+                }, "Carácter no valido en el campo");
+
+                $("#formVacuna").validate({
+                    rules: {
+                        vacuna: {
+                            required: true,
+                            maxlength: 70,
+                            formato: true
+                        },
+                    },
+                });
+            });
+
+        });
+    </script>
+
     @if(session()->has('error'))
         <script>
             Command: toastr["error"]("{{ session()->get('error') }}", "¡Error!")
+            @include('partials.message')
+        </script>
+    @elseif(session()->has('info'))
+        <script>
+            Command: toastr["info"]("{{ session()->get('info') }}", "¡Información!")
             @include('partials.message')
         </script>
     @endif

@@ -21,14 +21,21 @@
 
         <label for="servicio">Servicios</label>
         <select class="form-control" id="servicio">
-            @foreach($servicios as $servicio)
-                <option value="{{ $servicio->cod_tipo_servicio }}">{{$servicio->servicio}}</option>
-            @endforeach
+            @if(!$servicios->isEmpty())
+                @foreach($servicios as $servicio)
+                    <option value="{{ $servicio->cod_tipo_servicio }}">{{$servicio->servicio}}</option>
+                @endforeach
+            @endif
         </select>
+        @if($servicios->isEmpty())
+            <span class="text-danger">
+                <strong>No hay servicios de peluqueria habilitados o registrados</strong>
+            </span>
+        @endif
         <br>
         <button class="btn btn-info" id="agregar">Agregar</button>
 
-        <form action="{{ route('secretaria.gpeluqueria') }}" method="POST">
+        <form action="{{ route('secretaria.gpeluqueria') }}" method="POST" id="formPeluqueria">
             @csrf
             <div class="row">
                 <div class="col-md-6">
@@ -45,23 +52,31 @@
             <br>
             <label for="metodo">Peluquero que atendera la mascota</label>
             <select class="form-control" name="cod_usuario">
-                @foreach($peluqueros as $peluquero)
-                    <option value="{{ $peluquero->cod_usuario }}">{{$peluquero->nombres}} {{ $peluquero->apellidos }}</option>
-                @endforeach
+                @if(!$peluqueros->isEmpty())
+                    @foreach($peluqueros as $peluquero)
+                        <option value="{{ $peluquero->cod_usuario }}">{{$peluquero->nombres}} {{ $peluquero->apellidos }}</option>
+                    @endforeach
+                @else
+                    <option value="a">No hay peluqueros habilitados o registrados</option>
+                @endif
             </select>
             <br>
-            <button class="btn btn-info mr-5">Guardar</button>
-            <a  class="btn btn-info" href="{{ route('secretaria.consulta') }}"> Cancelar</a>
+            <button class="btn btn-info mr-5" id="guardar">Guardar</button>
+            <a  class="btn btn-default" href="{{ route('secretaria.consulta') }}"> Cancelar</a>
         </form>
 @endsection
 
 @section('jsExtra')
+    <script src="{{ asset('js/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/validation/jquery.validate.additional-methods.min.js') }}"></script>
+    <script src="{{ asset('js/validation/messages_es.js') }}"></script>
     <script>
     $(document).ready(function (){
 
         $('#agregar').click(function (e) {
            e.preventDefault();
            let servicio = $('#servicio').val();
+           console.log(servicio);
            if(servicio){
                let objSevicio = $("#servicio [value="+servicio+"]");
                let html = `
@@ -93,20 +108,34 @@
             }
         });
 
+        // VALIDACIÓN
+        $("#guardar").click(function (event) {
+
+            jQuery.validator.addMethod("snumeros", function (value, element) {
+                return this.optional(element) || /^\d+$/.test(value);
+            }, "Selecciona una opción de la lista");
+
+
+            $("#formPeluqueria").validate({
+                rules: {
+                    cod_usuario: {
+                        required: true,
+                        snumeros: true,
+                    }
+                },
+            });
+        });
+
     });
     </script>
 
-    @if(session()->has('success'))
-        <script>
-            Command: toastr["success"]("{{ session()->get('success') }}", "¡Éxito!")
-            @include('partials.message')
-        </script>
-    @elseif(session()->has('error'))
+    @if(session()->has('error'))
         <script>
             Command: toastr["error"]("{{ session()->get('error') }}", "¡Error!")
             @include('partials.message')
         </script>
-    @elseif(session()->has('info'))
+    @endif
+    @if(session()->has('info'))
         <script>
             Command: toastr["info"]("{{ session()->get('info') }}", "¡Información!")
             @include('partials.message')

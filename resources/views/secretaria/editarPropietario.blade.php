@@ -11,7 +11,7 @@
         @method('PUT')
         @include('partials.propietario')
         <button type="submit" class="btn btn-info mr-5" id="actualizar">Actualizar</button>
-        <a  class="btn btn-info" href="{{ route('secretaria.actualizarPropietario') }}"> Cancelar</a>
+        <a  class="btn btn-default" href="{{ route('secretaria.actualizarPropietario') }}"> Cancelar</a>
     </form>
 
 @endsection

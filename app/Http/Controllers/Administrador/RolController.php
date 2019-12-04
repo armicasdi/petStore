@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Administrador;
 
+use App\Bodega;
 use App\Http\Controllers\Controller;
 use App\Mascota;
 use App\Propietario;
@@ -9,6 +10,7 @@ use App\Tipo_usuario;
 use App\Usuarios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class RolController extends Controller
 {
@@ -63,9 +65,12 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($cod_tipo_usuario)
     {
-        //
+        $pagActual = 'rol';
+        $rol = Tipo_usuario::findOrFail($cod_tipo_usuario);
+        return view('administrador.editarRol', compact('rol','pagActual'));
+
     }
 
     /**
@@ -75,9 +80,35 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $cod_tipo_usuario )
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'tipo' => ['required','max:30','string'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('admin.feditarRol',compact('cod_tipo_usuario'))
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $rol = Tipo_usuario::findOrFail($cod_tipo_usuario);
+
+        if($request->tipo != $rol->tipo){
+            $rol->tipo = $request->tipo;
+        }
+
+        if($rol->isClean()){
+            return redirect()->route('admin.feditarRol',compact('cod_tipo_usuario'))->with('info','Debes especificar un valor diferente')->withInput();
+        }
+
+        $success = $rol->save();
+
+        if(!$success){
+            return redirect()->route('admin.feditarRol')->with('error', 'Error al actualizar al registro');
+        }
+
+        return redirect()->route('admin.roles')->with('success', 'Registro actualizado correctamente');
     }
 
     /**

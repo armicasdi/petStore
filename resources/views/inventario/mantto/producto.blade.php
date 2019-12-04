@@ -31,6 +31,7 @@
                             <th>Tipo</th>
                             <th>Ubicación</th>
                             <th>Estado</th>
+                            <th>Disponible</th>
                             <th>Acciones</th>
                             </thead>
                             <tbody>
@@ -106,6 +107,7 @@
                                             {{-- End modal--}}
                                         </td>
                                     @endif
+                                    <td>{{ $producto->disponible ? 'SI' : 'NO' }}</td>
                                     <td>
                                         <a href="{{ route('producto.factualizar',['cod_producto' => $producto->cod_producto]) }}" title="Editar">
                                             <i class="fa fa-pencil-square fa-lg ml-2 mr-2" aria-hidden="true"></i>

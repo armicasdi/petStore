@@ -28,7 +28,7 @@
                         <table class="table">
                             <thead class="text-info">
                             <th>Nombre propietario</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th>Direccion</th>
                             <th>Accion</th>
                             </thead>

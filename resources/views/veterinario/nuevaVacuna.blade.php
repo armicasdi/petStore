@@ -49,7 +49,8 @@
         </div>
         <input type="hidden" name="cod_vacuna" value="{{ $vacuna->vacunas->cod_vacuna}}">
         <br>
-        <button class="btn btn-info btn-danger">Guardar vacuna</button>
+        <button class="btn btn-danger mr-5">Guardar vacuna</button>
+        <a  href="{{ route('veterinario.vacunas') }}" class="btn btn-default">Cancelar</a>
     </form>
 
 

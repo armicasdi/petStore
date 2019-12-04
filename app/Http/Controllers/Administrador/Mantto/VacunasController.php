@@ -41,7 +41,7 @@ class VacunasController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'vacuna' => ['required','max:70','string'],
+            'vacuna' => ['required','unique:vacunas,vacuna','max:70','string'],
         ]);
 
         if ($validator->fails()) {
@@ -89,7 +89,7 @@ class VacunasController extends Controller
     public function update(Request $request, $cod_vacuna)
     {
         $validator = Validator::make($request->all(), [
-            'vacuna' => ['required','max:70','string'],
+            'vacuna' => ['required','unique:vacunas,vacuna,'. $cod_vacuna .',cod_vacuna','max:70','string'],
         ]);
 
         if ($validator->fails()) {
@@ -105,13 +105,13 @@ class VacunasController extends Controller
         }
 
         if($vacuna->isClean()){
-            return redirect()->route('vacuna.factualizar',compact('cod_vacuna'))->with('error','Debes especificar un valor diferente')->withInput();
+            return redirect()->route('vacuna.factualizar',compact('cod_vacuna'))->with('info','Debes especificar un valor diferente')->withInput();
         }
 
         $success = $vacuna->save();
 
         if(!$success){
-            return redirect()->route('vacuna.factualizar')->with('error', 'Error al agrear al registro');
+            return redirect()->route('vacuna.factualizar', compact('cod_vacuna'))->with('error', 'Error al agrear al registro');
         }
 
         return redirect()->route('vacunas')->with('success', 'Registro agreado correctamente');

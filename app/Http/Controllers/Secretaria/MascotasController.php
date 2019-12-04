@@ -34,9 +34,9 @@ class MascotasController extends Controller
      */
     public function create()
     {
-        $sexos = Sexo::all();
-        $especies = Especie::all();
         $pagActual = 'agregar';
+        $sexos = Sexo::all();
+        $especies = Especie::where('is_active',1)->get();
 
         return view('secretaria.agregarMascota', compact('sexos','especies','pagActual'));
     }
@@ -85,10 +85,13 @@ class MascotasController extends Controller
            if($success){
                $mascota = new Mascota;
                // Generando una clave de 8 digitos
-               $prefijo = strtoupper(substr($request['nombreMascota'],0,2));
-               $aleatorio = substr(mt_rand(),0,4);
-               $postfijo = date("y");
-               $clave = $prefijo.$aleatorio.$postfijo;
+               $clave = $this->generarCodigo($request);
+               $busqueda = Mascota::find($clave);
+
+               while($busqueda != null){
+                   $clave = $this->generarCodigo($request);
+                   $busqueda = Mascota::find($clave);
+               }
 
                $mascota->cod_expediente = $clave;
                $mascota->nombre     = $request['nombreMascota'];
@@ -219,7 +222,7 @@ class MascotasController extends Controller
         $pagActual = 'actualizar';
         $propietario = Propietario::findOrFail($cod_propietario);
         $sexos = Sexo::all();
-        $especies = Especie::all();
+        $especies = Especie::where('is_active',1)->get();
         return view('secretaria.asignarMascota',compact('propietario','sexos','especies','pagActual'));
 
     }
@@ -267,6 +270,14 @@ class MascotasController extends Controller
 
         return redirect()->route('secretaria.actualizar')->with('success', 'Registro agreado correctamente');
 
+    }
+
+    public function generarCodigo(Request $request){
+        $prefijo = strtoupper(substr($request['nombreMascota'],0,2));
+        $aleatorio = substr(mt_rand(),0,4);
+        $postfijo = date("y");
+        $clave = $prefijo.$aleatorio.$postfijo;
+        return $clave;
     }
 
 

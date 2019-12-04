@@ -122,7 +122,7 @@ class RazaController extends Controller
         $success = $raza->save();
 
         if(!$success){
-            return redirect()->route('razas')->with('error', 'Error al agrear al registro');
+            return redirect()->route('raza.factualizar', compact('cod_raza'))->with('error', 'Error al agrear al registro');
         }
 
         return redirect()->route('razas')->with('success', 'Registro actualizado correctamente');

@@ -16,7 +16,7 @@
                 <div>Fecha de nacimiento: {{ date("d/m/Y", strtotime($mascota->fecha_nac)) }}</div>
                 <div>Color: {{ $mascota->Color }}</div>
                 <div>Peso: {{ $consulta->peso }} libras</div>
-                <div>Temperatura: {{ $consulta->temperatura ? $consulta->temperatura : 'No aplica' }} c</div>
+                <div>Temperatura: {{ $consulta->temperatura ? $consulta->temperatura : 'No aplica' }} &#8451;</div>
                 <div>Frecuencia Cardiaca: {{ $consulta->fr_cardiaca ? $consulta->fr_cardiaca : 'No aplica' }}</div>
                 <div>Referido: {{ $consulta->referido ? 'SI ha sido referido' : 'NO ha sido refedido' }}</div>
             </div>
@@ -42,7 +42,8 @@
         </div>
         <input type="hidden" name="cod_expediente" value="{{ $consulta->cod_expediente }}">
         <br>
-        <button class="btn btn-info btn-danger">Guardar consulta</button>
+        <button class="btn btn-danger mr-5">Guardar consulta</button>
+        <a href="{{ route('veterinario.consulta') }}" class="btn btn-default">Cancelar</a>
     </form>
 
         {{-- MOSTRAR EL HISTORIAL DE CONSULTAS --}}

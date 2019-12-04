@@ -21,25 +21,33 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover">
-                            <thead class="">
-                                <td>Cantidad</td>
-                                <th>Producto</th>
-                                <th>Precio compra</th>
-                                <th>Fecha vencimieto</th>
+                            <thead class="text-success">
+                            <th>Cantidad</th>
+                            <th>Producto</th>
+                            <th>Fecha vencimieto</th>
+                            <th>Precio compra</th>
+                            <th>Subtotal</th>
                             </thead>
-                            <tbody>
+                            @php
+                                $total = 0;
+                            @endphp
                             @foreach($detalles as $detalle)
                                 <tr>
                                     <td>{{ $detalle->cantidad }}</td>
                                     <td>{{ $detalle->productos->nombre }}</td>
-                                    <td>$ {{ $detalle->valor }}</td>
                                     <td>{{ date('d/m/Y', strtotime($detalle->fecha_vencimiento)) }}</td>
-                                    <td></td>
+                                    <td>$ {{ $detalle->valor }}</td>
+                                    <td>$ {{ $detalle->cantidad * $detalle->valor }}</td>
+                                    @php
+                                        $total +=  $detalle->cantidad * floor($detalle->valor * 100)
+                                    @endphp
                                 </tr>
                             @endforeach
-                            </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="card-header card-header-success w-25">
+                    <h4 class="card-title mt-0">Total: $<?php echo($total/100); ?></h4>
                 </div>
 
             </div>
