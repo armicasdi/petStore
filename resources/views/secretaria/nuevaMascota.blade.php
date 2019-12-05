@@ -59,50 +59,53 @@
                 }
             });
 
+            var anterior = '';
             // Traer la raza la especie seleccionada
             $('#busqueda').change( function (event) {
-                event.preventDefault();
-                if($("#busqueda").val().length > 2){
-                    let busqueda = $.trim($('#busqueda').val());
-                    let data = $('#data');
-                    if(busqueda != ''){
-                        console.log('si');
-                        $('#mensaje').html('');
-                        $.ajax({
-                            type: 'GET',
-                            url: "{{ url('secretaria/busqueda') }}/3/" + busqueda,
-                            async: false,
-                            success:function(respuesta){
-                                console.log(respuesta);
-                                let html = "";
-                                if(respuesta.tipo == 3) {
-                                    $(respuesta.data).each(function(k,a) {
+                if(anterior != $(this).val()) {
+                    anterior = $(this).val();
+                    if ($(this).val().length > 2) {
+                        let busqueda = $.trim($(this).val());
+                        let data = $('#data');
+                        if (busqueda != '') {
+                            console.log('si');
+                            $('#mensaje').html('');
+                            $.ajax({
+                                type: 'GET',
+                                url: "{{ url('secretaria/busqueda') }}/3/" + busqueda,
+                                async: false,
+                                success: function (respuesta) {
+                                    console.log(respuesta);
+                                    let html = "";
+                                    if (respuesta.tipo == 3) {
+                                        $(respuesta.data).each(function (k, a) {
                                             html += `<tr>
-                                                        <td>${a.nombres} ${a.apellidos}</td>
-                                                        <td>${a.telefono}</td>
-                                                        <td>${a.direccion}</td>
-                                                        <td>
-                                                            <a href="{{ route('secretaria.asignar') }}/${a.cod_propietario }" title="AgregarMascota" id="consulta" >
-                                                                <i class="fa fa-plus-square fa-2x mr-2" aria-hidden="true"></i>
-                                                            </a>
-                                                        </td>
-                                                </tr>`
-                                    });
-                                    data.empty().html(html);
-                                }else{
-                                    data.empty().html('<p class="h3">No hay resultados</p>');
+                                                            <td>${a.nombres} ${a.apellidos}</td>
+                                                            <td>${a.telefono}</td>
+                                                            <td>${a.direccion}</td>
+                                                            <td>
+                                                                <a href="{{ route('secretaria.asignar') }}/${a.cod_propietario}" title="AgregarMascota" id="consulta" >
+                                                                    <i class="fa fa-plus-square fa-2x mr-2" aria-hidden="true"></i>
+                                                                </a>
+                                                            </td>
+                                                    </tr>`
+                                        });
+                                        data.empty().html(html);
+                                    } else {
+                                        data.empty().html('<p class="h3">No hay resultados</p>');
+                                    }
+                                },
+                                error: function (respuesta) {
+                                    console.dir(respuesta);
                                 }
-                            },
-                            error: function(respuesta){
-                                console.dir(respuesta);
-                            }
-                        });
-                    }else{
-                        data.empty().html('<p class="h3">No hay resultados</p>');
-                        $('#mensaje').html('<p class="text-danger">Compo requerido</p>')
+                            });
+                        } else {
+                            data.empty().html('<p class="h3">No hay resultados</p>');
+                            $('#mensaje').html('<p class="text-danger">Compo requerido</p>')
+                        }
+                    } else {
+                        $("#data").empty().html('<p class="h3">No hay resultados</p>');
                     }
-                }else{
-                    $("#data").empty().html('<p class="h3">No hay resultados</p>');
                 }
             });
 

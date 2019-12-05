@@ -50,7 +50,7 @@
                             })
                             $('#raza').empty().append(html);
                         }else{
-                            $("#raza").empty().append('<option value="a" selected>No hay razas habilitadas o registradas</option>');
+                            $("#raza").empty().append('<option value="" selected>No hay razas registradas o no han sido habilitadas </option>');
                         }
                     },
                     error: function(respuesta){

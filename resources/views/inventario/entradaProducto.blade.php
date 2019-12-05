@@ -30,9 +30,13 @@
                         <div class="form-group">
                             <label for="proveedor">Proveedor</label>
                             <select class="form-control" id="proveedor" name="cod_proveedor">
-                                @foreach($proveedores as $proveedor)
-                                    <option value="{{ $proveedor->cod_proveedor }}"> {{ $proveedor->nombre_comercial }}</option>
-                                @endforeach
+                                @if(!$proveedores->isEmpty())
+                                    @foreach($proveedores as $proveedor)
+                                        <option value="{{ $proveedor->cod_proveedor }}"> {{ $proveedor->nombre_comercial }}</option>
+                                    @endforeach
+                                @else
+                                    <option value="">No hay proveedores registrados o no han sido habilitados</option>
+                                @endif
                             </select>
                         </div>
 
@@ -70,9 +74,14 @@
                                                 <div class="form-group">
                                                     <label for="producto">Producto</label>
                                                     <select class="form-control" id="producto" name="cod_producto">
-                                                        @foreach($productos as $producto)
-                                                            <option value="{{ $producto->cod_producto }}"> {{ $producto->nombre }}</option>
-                                                        @endforeach
+                                                        @if(!$productos->isEmpty())
+                                                            <option value="">Seleccione un producto</option>
+                                                            @foreach($productos as $producto)
+                                                                <option value="{{ $producto->cod_producto }}"> {{ $producto->nombre }}</option>
+                                                            @endforeach
+                                                        @else
+                                                            <option value="">No hay productos registrados o no han sido habilitados</option>
+                                                        @endif
                                                     </select>
                                                 </div>
                                                 <div class="form-group">

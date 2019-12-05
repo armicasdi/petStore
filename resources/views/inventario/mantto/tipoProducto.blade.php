@@ -25,7 +25,7 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
-                            <th>Correlativo</th>
+                            <th>Identificador</th>
                             <th>Tipo producto</th>
                             <th>Estado</th>
                             <th>Acciones</th>

@@ -82,7 +82,7 @@
                                     <div id="collapseOne{{ $vacuna->cod_control_vacunas }}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                                         <div class="card-body">
                                                 <div>Tipo: {{ $vacuna->vacunas->vacuna}}</div>
-                                                <div>Fecha proxima vacuna: {{ $vacuna->proxima ?? 'No definida'}}</div>
+                                                <div>Fecha próxima vacuna: {{ $vacuna->proxima ? date('d/m/Y',strtotime($vacuna->proxima)) : 'No definida'}}</div>
                                         </div>
                                     </div>
                                 </div>

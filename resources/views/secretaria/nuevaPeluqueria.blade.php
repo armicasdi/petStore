@@ -29,7 +29,7 @@
         </select>
         @if($servicios->isEmpty())
             <span class="text-danger">
-                <strong>No hay servicios de peluqueria habilitados o registrados</strong>
+                <strong>No hay servicios de peluqueria registrados o no han sido habilitados</strong>
             </span>
         @endif
         <br>
@@ -57,7 +57,7 @@
                         <option value="{{ $peluquero->cod_usuario }}">{{$peluquero->nombres}} {{ $peluquero->apellidos }}</option>
                     @endforeach
                 @else
-                    <option value="a">No hay peluqueros habilitados o registrados</option>
+                    <option value="">No hay peluqueros registrados o no han sido habilitados</option>
                 @endif
             </select>
             <br>

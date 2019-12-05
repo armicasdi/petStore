@@ -156,6 +156,7 @@ class TipoProductoController extends Controller
         }
 
         $productos = Productos::where('cod_tipo_producto',$cod_tipo_producto)->get();
+//        dd($productos);
 
         DB::beginTransaction();
         try{

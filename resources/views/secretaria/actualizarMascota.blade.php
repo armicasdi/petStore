@@ -74,78 +74,81 @@
                 }
             });
 
+            var anterior = '';
             // Traer la raza la especie seleccionada
             $('#busqueda').change( function (event) {
-                event.preventDefault();
-                if($('#busqueda').val().length > 2){
-                    let metodo = $('#metodo').val();
-                    let busqueda = $.trim($('#busqueda').val());
-                    let data = $('#data');
-                    if(busqueda != ''){
-                        $('#mensaje').html('');
-                        $.ajax({
-                            type: 'GET',
-                            url: "{{ url('secretaria/busqueda') }}/" + metodo + "/" + busqueda,
-                            async: false,
-                            success:function(respuesta){
-                                let html = "";
-                                if(respuesta.tipo == 1 || respuesta.tipo == 2){
-                                    $(respuesta.data).each(function(k,v){
-                                        html +=`
-                                            <tr>
-                                                <td>${v.cod_expediente}</td>
-                                                <td>${v.nombre}</td>
-                                                <td>${v.raza.raza}</td>
-                                                <td>${v.propietario.nombres} ${v.propietario.apellidos }</td>
-                                                <td>${v.propietario.telefono}</td>
-                                                <td>
-                                                    <a href="{{ route('secretaria.actualizarMascota') }}/${v.cod_expediente}" title="Editar Expediente" id="consulta">
-                                                        <i class="fa  fa-pencil-square fa-2x" aria-hidden="true"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        `;
-                                    });
-                                    data.empty().html(html);
-                                }else if(respuesta.tipo == 3) {
-                                    console.dir('si');
-                                    $(respuesta.data).each(function(k,a) {
-                                        $(a.mascota).each(function(k,v) {
-                                            html += `<tr>
-                                                        <td>${v.cod_expediente}</td>
-                                                        <td>${v.nombre}</td>
-                                                        <td>${v.raza.raza}</td>
-                                                        <td>${a.nombres} ${a.apellidos}</td>
-                                                        <td>${a.telefono}</td>
-                                                        <td>
-                                                            <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta" >
-                                                                <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
-                                                            </a>
-                                                            <a href="{{ route('secretaria.nuevaVacuna') }}/${v.cod_expediente}" title="Vacuna" id="vacuna" >
-                                                                <i class="fa fa-suitcase fa-2x mr-2" aria-hidden="true"></i>
-                                                            </a>
-                                                            <a href="{{ route('secretaria.nuevaPeluqueria') }}/${v.cod_expediente}" title="Peluqueria" id="peluqueria" >
-                                                                <i class="fa fa-paw fa-2x" aria-hidden="true"></i>
-                                                            </a>
-                                                        </td>
-                                                </tr>`
+                if(anterior != $(this).val()) {
+                    anterior = $(this).val();
+                    if ($(this).val().length > 2) {
+                        let metodo = $('#metodo').val();
+                        let busqueda = $.trim($(this).val());
+                        let data = $('#data');
+                        if (busqueda != '') {
+                            $('#mensaje').html('');
+                            $.ajax({
+                                type: 'GET',
+                                url: "{{ url('secretaria/busqueda') }}/" + metodo + "/" + busqueda,
+                                async: false,
+                                success: function (respuesta) {
+                                    let html = "";
+                                    if (respuesta.tipo == 1 || respuesta.tipo == 2) {
+                                        $(respuesta.data).each(function (k, v) {
+                                            html += `
+                                                <tr>
+                                                    <td>${v.cod_expediente}</td>
+                                                    <td>${v.nombre}</td>
+                                                    <td>${v.raza.raza}</td>
+                                                    <td>${v.propietario.nombres} ${v.propietario.apellidos}</td>
+                                                    <td>${v.propietario.telefono}</td>
+                                                    <td>
+                                                        <a href="{{ route('secretaria.actualizarMascota') }}/${v.cod_expediente}" title="Editar Expediente" id="consulta">
+                                                            <i class="fa  fa-pencil-square fa-2x" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            `;
                                         });
-                                     });
-                                    data.empty().html(html);
-                                }else{
-                                    data.empty().html('<p class="h3">No hay resultados</p>');
+                                        data.empty().html(html);
+                                    } else if (respuesta.tipo == 3) {
+                                        console.dir('si');
+                                        $(respuesta.data).each(function (k, a) {
+                                            $(a.mascota).each(function (k, v) {
+                                                html += `<tr>
+                                                            <td>${v.cod_expediente}</td>
+                                                            <td>${v.nombre}</td>
+                                                            <td>${v.raza.raza}</td>
+                                                            <td>${a.nombres} ${a.apellidos}</td>
+                                                            <td>${a.telefono}</td>
+                                                            <td>
+                                                                <a href="{{ route('secretaria.nuevaConsulta') }}/${v.cod_expediente}" title="Consulta" id="consulta" >
+                                                                    <i class="fa fa-user-md fa-2x mr-2" aria-hidden="true"></i>
+                                                                </a>
+                                                                <a href="{{ route('secretaria.nuevaVacuna') }}/${v.cod_expediente}" title="Vacuna" id="vacuna" >
+                                                                    <i class="fa fa-suitcase fa-2x mr-2" aria-hidden="true"></i>
+                                                                </a>
+                                                                <a href="{{ route('secretaria.nuevaPeluqueria') }}/${v.cod_expediente}" title="Peluqueria" id="peluqueria" >
+                                                                    <i class="fa fa-paw fa-2x" aria-hidden="true"></i>
+                                                                </a>
+                                                            </td>
+                                                    </tr>`
+                                            });
+                                        });
+                                        data.empty().html(html);
+                                    } else {
+                                        data.empty().html('<p class="h3">No hay resultados</p>');
+                                    }
+                                },
+                                error: function (respuesta) {
+                                    console.dir(respuesta);
                                 }
-                            },
-                            error: function(respuesta){
-                                console.dir(respuesta);
-                            }
-                        });
-                    }else{
-                        data.empty().html('<p class="h3">No hay resultados</p>');
-                        $('#mensaje').html('<p class="text-danger">Compo requerido</p>')
+                            });
+                        } else {
+                            data.empty().html('<p class="h3">No hay resultados</p>');
+                            $('#mensaje').html('<p class="text-danger">Compo requerido</p>')
+                        }
+                    } else {
+                        $("#data").empty().html('<p class="h3">No hay resultados</p>');
                     }
-                }else{
-                    $("#data").empty().html('<p class="h3">No hay resultados</p>');
                 }
             });
 

@@ -28,7 +28,7 @@
                     <option value="{{ $vacunas->cod_vacuna }}">{{$vacunas->vacuna}}</option>
                 @endforeach
             @else
-                <option value="a">No hay vacunas habilitadas o registradas</option>
+                <option value="">No hay vacunas registradas o no se han habilitado</option>
             @endif
         </select>
         <br>
@@ -39,7 +39,7 @@
                     <option value="{{ $veterinario->cod_usuario }}">{{$veterinario->nombres}} {{ $veterinario->apellidos }}</option>
                 @endforeach
             @else
-                <option value="a">No hay vaterinarios habilitados o registrados</option>
+                <option value="">No hay vaterinarios registrados o no se han habilitado</option>
             @endif
         </select>
         <br>

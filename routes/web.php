@@ -24,6 +24,8 @@ Route::get('/', function () {
  * */
 
 Route::get('razas/{id}', 'FuncionesComunesController@obtenerRazas');
+Route::get('razasMascota/{id}', 'FuncionesComunesController@obtenerRazasMascota');
+
 Route::group(['middleware'=> 'auth'], function () {
     Route::post('informacion', 'FuncionesComunesController@informacion')->name('informacion');
     Route::get('informacionfpass', 'FuncionesComunesController@cambioPass')->name('cambio.fpass');
@@ -156,6 +158,9 @@ Route::group(['prefix'=>'peluqueria', 'namespace' =>'Peluqueria','middleware'=>[
     Route::get('mascotas', 'MascotaController@index')->name('peluqueria.mascota');
     Route::get('busqueda/{metodo}/{busqueda}', 'MascotaController@busqueda')->name('peluqueria.busqueda');
     Route::get('historial/{cod_expediente?}', 'MascotaController@show')->name('peluqueria.historial');
+
+    Route::get('observacion/{cod_peluqueria}', 'PeluqueriaController@obervacion')->name('peluqueria.observacion');
+    Route::put('observacion/{cod_peluqueria}', 'PeluqueriaController@gobservacion')->name('peluqueria.gobservacion');
 });
 
 /*

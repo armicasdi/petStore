@@ -46,8 +46,8 @@
         <div class="form-group">
             <label for="exampleFormControlSelect2">Especie</label>
             <select class="form-control @error('especie') aria-invalid @enderror" id="especie" name="especie" >
-                <option value="a" selected>Seleccione una opción</option>
                   @if(!$especies->isEmpty())
+                    <option value="">Seleccione una especie</option>
                         @foreach($especies as $especie)
                             @if(isset($mascota) && $especie->cod_especie == $mascota->raza->cod_especie)
                                 <option value="{{ $especie->cod_especie }}" selected>{{ $especie->especie }}</option>
@@ -55,6 +55,8 @@
                             @endif
                                 <option value="{{ $especie->cod_especie }}">{{ $especie->especie }}</option>
                         @endforeach
+                    @else
+                    <option value="">No hay especies registradas o no han sido habilitadas</option>
                   @endif
             </select>
             @error('especie')
@@ -66,15 +68,15 @@
         <div class="form-group">
             <label for="exampleFormControlSelect3">Raza</label>
             <select class="form-control @error('raza') is-invalid @enderror" id="raza" name="raza">
-                @if(isset($mascota))
-                    @foreach($razas as $raza)
-                        @if($raza->cod_raza == $mascota->raza->cod_raza)
-                            <option value="{{ $raza->cod_raza }}" selected>{{ $raza->raza}}</option>
-                            @continue
-                        @endif
-                        <option value="{{ $raza->cod_raza }}">{{ $raza->raza}}</option>
-                    @endforeach
-                @endif
+                    @if(isset($mascota))
+                        @foreach($razas as $raza)
+                            @if($raza->cod_raza == $mascota->raza->cod_raza)
+                                <option value="{{ $raza->cod_raza }}" selected>{{ $raza->raza}}</option>
+                                @continue
+                            @endif
+                            <option value="{{ $raza->cod_raza }}">{{ $raza->raza}}</option>
+                        @endforeach
+                    @endif
             </select>
             @error('raza')
             <span class="invalid-feedback" role="alert">

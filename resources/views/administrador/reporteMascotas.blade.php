@@ -8,7 +8,7 @@
 
     <div class="container">
     <div><img src="{{ asset('img/logo.png') }}" alt="logo.png" style="height: 6rem; width:6rem;" class="logo_dashboard"></div>  <br />
-     
+
      <div class="row">
       <div class="col-md-7" align="left">
        <h4>Mascotas registradas en el mes de {{ $nombre_mes }}</h4>
@@ -36,7 +36,7 @@
          <td>{{ $customer->cod_expediente }}</td>
          <td>{{ $customer->nombre }}</td>
          <td>{{ $customer->Color }}</td>
-         <td>{{ date('Y-m-d', strtotime($customer->fecha_creacion)) }}</td>
+         <td>{{ date('d/m/Y', strtotime($customer->fecha_creacion)) }}</td>
         </tr>
        @endforeach
        </tbody>

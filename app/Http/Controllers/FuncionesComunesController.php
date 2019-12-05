@@ -19,6 +19,15 @@ class FuncionesComunesController extends Controller
         }
     }
 
+    public function obtenerRazasMascota($id){
+        if($id != 0){
+            $razas = Especie::findOrFail($id)->razas;
+            return response()->json($razas);
+        }else{
+            return '';
+        }
+    }
+
     public function informacion(Request $request){
 
         $pagActual = 'dashboard';

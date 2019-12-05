@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class PeluqueriaController extends Controller
 {
@@ -84,15 +85,6 @@ class PeluqueriaController extends Controller
         try{
                 $servicios = Arr::except($request, ['_token','_method'])->toArray();
 
-//                $detalles = Detalle_peluqueria::where('cod_peluqueria','=',$cod_peluqueria)->where('estado','=',0)->get();
-//
-//                foreach ($detalles as $detalle) {
-//                    $detalle->fill([
-//                        'estado' => 0,
-//                    ]);
-//                    $detalle->save();
-//                }
-
                 foreach ($servicios as $servicio){
                     $detalle = Detalle_peluqueria::findOrFail($servicio);
                     $detalle->fill([
@@ -110,6 +102,8 @@ class PeluqueriaController extends Controller
                     $peluqueria->save();
                 }
                 DB::commit();
+                return redirect()->route('peluqueria.observacion', compact('cod_peluqueria'))->with('success', 'Felicidades has terminado los servicios de la mascota');
+
         }catch (\Exception $e){
             DB::rollBack();
             return redirect()->route('peluqueria.atender')->with('error', 'Error al actualizar el registro');
@@ -127,5 +121,34 @@ class PeluqueriaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function obervacion($cod_peluqueria){
+        $pagActual = 'servicio';
+        return view('peluqueria.observacion', compact('cod_peluqueria','pagActual'));
+    }
+
+    public function gobservacion(Request $request, $cod_peluqueria){
+
+        $validator = Validator::make($request->all(), [
+            'observaciones' => ['nullable','max:300','string'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('peluqueria.observacion', compact($cod_peluqueria))
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $peluqueria = Peluqueria::findOrFail($cod_peluqueria);
+        $peluqueria->fill([
+            'observaciones' => $request->observaciones,
+        ]);
+
+        $success = $peluqueria->save();
+        if(!$success){
+            return redirect()->back()->with('error', 'Error al agregar la observación');
+        }
+        return redirect()->route('peluqueria.atender')->with('success', 'Registro actualizado correctamente');
     }
 }

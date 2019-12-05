@@ -53,10 +53,14 @@
                                                 <div class="form-group">
                                                     <label for="producto">Producto</label>
                                                     <select class="form-control" id="producto" name="cod_producto">
-                                                        <option value="0">Seleccione un producto</option>
-                                                        @foreach($productos as $producto)
-                                                            <option value="{{ $producto->cod_producto }}"> {{ $producto->nombre }}</option>
-                                                        @endforeach
+                                                        @if(!$productos->isEmpty())
+                                                            <option value="">Seleccione un producto</option>
+                                                            @foreach($productos as $producto)
+                                                                <option value="{{ $producto->cod_producto }}"> {{ $producto->nombre }}</option>
+                                                            @endforeach
+                                                        @else
+                                                            <option value="">No hay productos registrados o no estan habilitados</option>
+                                                        @endif
                                                     </select>
                                                 </div>
                                                 <div class="form-group">

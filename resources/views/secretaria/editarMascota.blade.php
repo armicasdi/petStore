@@ -32,23 +32,28 @@
             // Traer la raza la especie seleccionada
             $('#especie').change( function () {
                 let especie = $(this).val();
-                $.ajax({
-                    type: 'get',
-                    url: "{{ url('razas') }}/" + especie,
-                    async: false,
-                    success:function(respuesta){
-                        let html = "";
-                        $(respuesta).each(function(k,v){
-                            html += `
+                if(especie){
+                    $.ajax({
+                        type: 'get',
+                        url: "{{ url('razasMascota') }}/" + especie,
+                        async: false,
+                        success:function(respuesta){
+                            let html = "";
+                            $(respuesta).each(function(k,v){
+                                html += `
                                 <option value="${v.cod_raza}">${v.raza}</option>
                                 `;
-                        })
-                        $('#raza').empty().append(html);
-                    },
-                    error: function(respuesta){
-                        console.log(respuesta);
-                    }
-                });
+                            })
+                            $('#raza').empty().append(html);
+                        },
+                        error: function(respuesta){
+                            console.log(respuesta);
+                        }
+                    });
+                }else{
+                    $('#raza').empty();
+                }
+
             });
 
             $("#raza").change(function (event){
