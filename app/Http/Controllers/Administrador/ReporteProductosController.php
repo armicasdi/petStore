@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrador;
 
 use App\Detalle_entrada;
+use App\Detalle_venta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -19,13 +20,17 @@ class ReporteProductosController extends Controller
 
     public function get_customer_data()
     {
-        $customer_data = DB::table('productos')
-        ->select('nombre', 'precio', 'cantidad')
-        ->orderBy('cantidad', 'asc')
-        ->get();
+        $customer_data = DB::table('detalle_venta as d')
+            ->selectRaw('d.valor as precio,SUM(d.cantidad) as cantidad,p.nombre')
+            ->join('productos as p','d.cod_producto','=','p.cod_producto')
+            ->groupBy('d.cod_producto')
+            ->orderBy('cantidad', 'desc')
+            ->get();
 
         return $customer_data;
+
     }
+
     function pdf()
     {
      $pdf = \App::make('dompdf.wrapper');

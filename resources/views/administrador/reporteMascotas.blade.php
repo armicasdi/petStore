@@ -16,7 +16,7 @@
        <h4>Creado por: {{ Auth::user()->empleados->nombres }} {{ Auth::user()->empleados->apellidos }}</h4>
       </div>
       <div class="col-md-5" align="right">
-       <a href="{{ route('pdf') }}" class="btn btn-danger" target="_blank">Obtener Reporte</a>
+       <a href="{{ route('pdf') }}" class="btn btn-primary" target="_blank">Obtener Reporte</a>
       </div>
      </div>
      <br />

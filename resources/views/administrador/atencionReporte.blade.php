@@ -71,7 +71,7 @@
             </div>
             <br>
             <div class="col-md-5" align="right">
-                <a id="verRegistro"  class="btn btn-info">Ver Registro</a>
+                <a id="verRegistro"  class="btn btn-primary text-white">Ver Registro</a>
             </div>
         </form>
     </div>
