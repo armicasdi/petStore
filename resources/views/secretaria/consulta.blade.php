@@ -55,6 +55,9 @@
 
 @section('jsExtra')
     <script>
+
+
+
         $(document).ready(function (){
             // Agregar el token en la solicitud ajax
             $.ajaxSetup({
