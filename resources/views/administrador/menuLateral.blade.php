@@ -76,19 +76,19 @@
                             <ul class="nav">
                                 <li class="nav-item {{ $pagActual == 'reporte' ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('admin.reporte') }}">
-                                        <i class="material-icons">bar_chart</i>
+                                        <i class="material-icons">library_books</i>
                                         <p>Prod más vendidos</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ $pagActual == 'reporteMascotas' ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('admin.reporteMascotas') }}">
-                                        <i class="material-icons">bar_chart</i>
+                                        <i class="material-icons">library_books</i>
                                         <p>Rep de mascotas</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ $pagActual == 'Reporte de Atencion' ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('admin.reporteAtencion') }}">
-                                        <i class="material-icons">bar_chart</i>
+                                        <i class="material-icons">library_books</i>
                                         <p>Rep de atenciones</p>
                                     </a>
                                 </li>
@@ -110,32 +110,32 @@
                             <ul class="nav">
                                 <li class="nav-item {{ $pagActual == 'vacunas' ? 'active' : '' }} ">
                                     <a class="nav-link" href="{{ route('vacunas') }}">
-                                        <i class="material-icons">table_chart</i>
+                                        <i class="material-icons">view_list</i>
                                         <p>Vacunas</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ $pagActual == 'servicios' ? 'active' : '' }} ">
                                     <a class="nav-link" href="{{ route('servicios') }}">
-                                        <i class="material-icons">table_chart</i>
+                                        <i class="material-icons">view_list</i>
                                         <p>Servicios peluqueria</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ $pagActual == 'especies' ? 'active' : '' }} ">
                                     <a class="nav-link" href="{{ route('especies') }}">
-                                        <i class="material-icons">table_chart</i>
+                                        <i class="material-icons">view_list</i>
                                         <p>Especies</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ $pagActual == 'razas' ? 'active' : '' }} ">
                                     <a class="nav-link" href="{{ route('razas') }}">
-                                        <i class="material-icons">table_chart</i>
+                                        <i class="material-icons">view_list</i>
                                         <p>Razas</p>
                                     </a>
                                 </li>
 
 {{--                                <li class="nav-item {{ $pagActual == 'bodegas' ? 'active' : '' }}">--}}
 {{--                                    <a class="nav-link" href="{{ route('bodegas') }}">--}}
-{{--                                        <i class="material-icons">table_chart</i>--}}
+{{--                                        <i class="material-icons">view_list</i>--}}
 {{--                                        <p>Bodega</p>--}}
 {{--                                    </a>--}}
 {{--                                </li>--}}

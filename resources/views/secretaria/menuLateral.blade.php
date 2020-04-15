@@ -47,7 +47,7 @@
                         <ul class="nav">
                             <li class="nav-item  {{ $pagActual == 'agregar' ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('secretaria.crear') }}">
-                                    <i class="material-icons">post_add</i>
+                                    <i class="material-icons">add_box</i>
                                     <p>Nuevo registro</p>
                                 </a>
                             </li>
